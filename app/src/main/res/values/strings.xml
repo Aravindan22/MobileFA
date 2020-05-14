@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<resources>
+    <string name="app_name">Mobile FA</string>
+    <string name="name">NAME</string>
+    <string name="prefLoginState">loginstate</string>
+    <string name="dept">DEPARTMENT</string>
+    <string name="year">YEAR</string>
+    <string name="fa">FACULTY ADVISOR</string>
+    <string name="sem">SELECT SEMESTER</string>
+    <string name="cie">SELECT CIE</string>
+    <string name="sem_s1">SUBJECT 1 GRADE</string>
+    <string name="sem_s2">SUBJECT 2 GRADE</string>
+    <string name="sem_s3">SUBJECT 3 GRADE</string>
+    <string name="sem_s4">SUBJECT 4 GRADE</string>
+    <string name="sem_s5">SUBJECT 5 GRADE</string>
+    <string name="cie_s1">SUBJECT 1 MARKS</string>
+    <string name="cie_s2">SUBJECT 2 MARKS</string>
+    <string name="cie_s3">SUBJECT 3 MARKS</string>
+    <string name="cie_s4">SUBJECT 4 MARKS</string>
+    <string name="cie_s5">SUBJECT 5 MARKS</string>
+    <string name="submit">SUBMIT</string>
+    <string name="gpa">GPA</string>
+    <string name="cgpa">CGPA</string>
+    <string name="imp">IMPROVEMENTS</string>
+    <string name="iss">ISSUES</string>
+    <string name="sug">SUGGESTIONS</string>
+    <string-array name="sem_spin">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="cie_spin">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+    </string-array>
+</resources>
