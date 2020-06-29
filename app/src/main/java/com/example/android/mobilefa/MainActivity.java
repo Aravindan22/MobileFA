@@ -52,39 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-//    private void  registerNewuser(){
-//        final String regno ="13263838";
-//        final String passw ="htgqwtgsbns";
-//        final String dep = "IYT";
-//
-//
-//        String url = Constants.REGISTER_URL;
-//        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                if(response.equals("Registered")){
-//                    Toast.makeText(MainActivity.this, "Registered", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        }){
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                HashMap<String, String> params = new HashMap<>();
-//                params.put("regno", regno);
-//                params.put("password", passw);
-//                params.put("dep", dep);
-//                return params;
-//            }
-//        };
-//        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-//    }
 
     private void loginUser(){
         final String regno = mregno.getText().toString().trim();
@@ -95,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("Logged in")){
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(getResources().getString(R.string.prefLoginState),"Logged in");
                     Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
                     Constants.regno = regno;
                     startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
@@ -120,5 +85,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+    }
+    private void getDetails(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor
+
     }
 }

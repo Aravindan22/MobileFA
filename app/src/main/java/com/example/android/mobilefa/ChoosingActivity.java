@@ -1,6 +1,5 @@
 package com.example.android.mobilefa;
 
-import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.os.Bundle;
 
