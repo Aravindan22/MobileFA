@@ -4,34 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
+    android:background="#b1e8ed"
+    android:padding="10dp"
     tools:context=".MainActivity">
-<EditText
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginTop="300dp"
-    android:hint="Register No"
-    android:id="@+id/reg_edit_text_log"/>
-    <EditText
-        android:layout_width="200dp"
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/app_name"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="Password"
-        android:id="@+id/pass_edit_text_log"/>
+        android:textSize="50sp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="40dp"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="@string/reg_no"
+        android:id="@+id/regno_edittext"
+        android:inputType="number"
+        android:layout_margin="15dp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@android:color/secondary_text_dark"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:id="@+id/password_edittext"
+        android:inputType="number"
+        android:layout_margin="15dp"
+        android:background="@android:drawable/editbox_background"
+        android:backgroundTint="@android:color/secondary_text_dark" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/login_btn"
-        android:text="Login"
-        />
+        android:gravity="center"
+        android:text="@string/login"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/login_button"
+        android:background="#fff" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="No account,Regsiter?"
-        android:id="@+id/reg_text_view"
-        android:layout_gravity="right" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acc"
+        android:id="@+id/reg_textview"
+        android:layout_margin="5dp"
+        android:gravity="end"/>
+
 </LinearLayout>

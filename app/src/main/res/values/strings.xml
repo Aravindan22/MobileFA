@@ -1,30 +1,45 @@
-<?xml version="1.0"?>
-
 <resources>
     <string name="app_name">Mobile FA</string>
+    <string name="reg_no">REGISTER NUMBER</string>
     <string name="name">NAME</string>
-    <string name="prefLoginState">loginstate</string>
+    <string name="email_id">EMAIL ID</string>
     <string name="dept">DEPARTMENT</string>
     <string name="year">YEAR</string>
+    <string-array name="year_spin">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>IV</item>
+    </string-array>
+    <string-array name="section_spin">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+    <string name="section">SECTION</string>
+    <string name="password">PASSWORD</string>
     <string name="fa">FACULTY ADVISOR</string>
     <string name="sem">SELECT SEMESTER</string>
     <string name="cie">SELECT CIE</string>
-    <string name="sem_s1">SUBJECT 1 GRADE</string>
-    <string name="sem_s2">SUBJECT 2 GRADE</string>
-    <string name="sem_s3">SUBJECT 3 GRADE</string>
-    <string name="sem_s4">SUBJECT 4 GRADE</string>
-    <string name="sem_s5">SUBJECT 5 GRADE</string>
-    <string name="cie_s1">SUBJECT 1 MARKS</string>
-    <string name="cie_s2">SUBJECT 2 MARKS</string>
-    <string name="cie_s3">SUBJECT 3 MARKS</string>
-    <string name="cie_s4">SUBJECT 4 MARKS</string>
-    <string name="cie_s5">SUBJECT 5 MARKS</string>
+    <string name="login">LOGIN</string>
+    <string name="acc">New User? Register</string>
+    <string name="reg">REGISTER</string>
+    <string name="ac">Already have an account? Login</string>
     <string name="submit">SUBMIT</string>
     <string name="gpa">GPA</string>
     <string name="cgpa">CGPA</string>
-    <string name="imp">IMPROVEMENTS</string>
-    <string name="iss">ISSUES</string>
-    <string name="sug">SUGGESTIONS</string>
+    <string name="event_title">EVENT UPDATION FORM</string>
+    <string name="coun_title">GENERAL COUNSELLING FORM</string>
+    <string name="imp">Enter any improvements made</string>
+    <string name="iss">Enter any issues you face</string>
+    <string name="sug">Enter the suggestions given</string>
+    <string name="update_cie">UPDATE CIE MARKS</string>
+    <string name="update_sem">UPDATE SEMESTER MARKS</string>
+    <string name="update_event">UPDATE EVENTS PARTICIPATED</string>
+    <string name="gen_counselling_form">GENERAL COUNSELLING FORM</string>
+    <string name="cie_select_cie">SELECT CIE</string>
+    <string name="cie_select_sem">SELECT SEMESTER</string>
     <string-array name="sem_spin">
         <item>1</item>
         <item>2</item>
@@ -40,4 +55,59 @@
         <item>II</item>
         <item>III</item>
     </string-array>
+    <string-array name="prize_spin">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>Participation</item>
+    </string-array>
+    <string name="event_button">Event participated</string>
+    <string name="workshop_button">Workshop Attended</string>
+    <string name="course_button">Course Completed</string>
+    <string name="workshop_name">Enter info about the workshop you\'ve attended</string>
+    <string name="workshop_title">Topic of the Workshop</string>
+    <string name="workshop_clg">College Name</string>
+    <string name="workshop_date">Date of the Workshop</string>
+    <string name="workshop_submit">SUBMIT</string>
+    <string name="course_name">Enter info about the online course completed</string>
+    <string name="course_title">Subject Name</string>
+    <string name="course_org">Organization</string>
+    <string name="course_mark">Marks Obtained</string>
+    <string name="course_submit">SUBMIT</string>
+    <string name="comp_name">Enter info about the competition/event participated</string>
+    <string name="comp_submit">SUBMIT</string>
+    <string name="comp_title">Event name</string>
+    <string name="comp_clg">College name</string>
+    <string name="comp_prize">Prize won</string>
+    <string name="coun_submit">SUBMIT</string>
+
+    <string name="sem1">SEMESTER-I</string>
+    <string name="sem1_eng_I">TECHNICAL ENGLISH-I</string>
+    <string name="sem1_engg_mat_I">ENGINEERING MATHEMATICS-I</string>
+    <string name="sem1_engg_phy">ENGINEERING PHYSICS</string>
+    <string name="sem1_app_chem">APPLIED CHEMISTRY</string>
+    <string name="sem1_cpr">PROGRAMMING IN C</string>
+    <string name="sem1_beee">BASIC ELECTRICALS AND ELECTRONICS ENGINEERING</string>
+    <string name="sem1_pcl_lab">PHYSICS AND CHEMISTRY LABORATORY-I</string>
+    <string name="sem1_cpr_lab">C PROGRAMMING LABORATORY</string>
+    <string name="sem1_epl_lab">ENGINEERING PRACTICES LABORATORY</string>
+    <string name="sem1_gpa">GPA</string>
+    <string name="sem1_cgpa">CGPA</string>
+    <string name="sem1_submit">SUBMIT</string>
+
+    <string name="sem2">SEMESTER-II</string>
+    <string name="sem2_eng_II">TECHNICAL ENGLISH-II</string>
+    <string name="sem2_engg_mat_II">ENGINEERING MATHEMATICS-II</string>
+    <string name="sem2_phy_mat">PHYSICS OF MATERIALS</string>
+    <string name="sem2_evs">ENVIRONMENTAL SCIENCE AND ENGINEERING</string>
+    <string name="sem2_pds">PROGRAMMING AND DATA STRUCTURES</string>
+    <string name="sem2_eg">ENGINEERING GRAPHICS</string>
+    <string name="sem2_pcl_lab_II">PHYSICS AND CHEMISTRY LABORATORY-II</string>
+    <string name="sem2_pds_lab">PROGRAMMING AND DATA STRUCTURES LABORATORY</string>
+    <string name="sem2_beee_lab">BASIC ELECTRICAL AND ELECTRONICS ENGINEERING LABORATORY</string>
+    <string name="sem2_gpa">GPA</string>
+    <string name="sem2_cgpa">CGPA</string>
+    <string name="sem2_submit">SUBMIT</string>
+
+
 </resources>
