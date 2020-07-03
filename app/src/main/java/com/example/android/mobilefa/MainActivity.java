@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-        btn = findViewById(R.id.login_btn);
-        mregno =  findViewById(R.id.reg_edit_text_log);
-        mpassw = findViewById(R.id.pass_edit_text_log);
-        mReg = findViewById(R.id.reg_text_view);
+        btn = findViewById(R.id.activity_main_login_button);
+        mregno =  findViewById(R.id.activity_main_regno_edittext);
+        mpassw = findViewById(R.id.activity_main_password_edittext);
+        mReg = findViewById(R.id.activity_main_title);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

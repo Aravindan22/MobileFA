@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#deecfc"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/activity_comp_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comp_title"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="40dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/comp_name"
+        android:id="@+id/activity_event_comp_topic_edittext"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/comp_clg"
+        android:id="@+id/activity_event_comp_clg_edittext"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/activity_event_comp_prize_textview"
+            android:layout_width= "290dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="@string/comp_prize"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:background="#87a8d0"
+            android:textColor="#233142" />
+
+        <Spinner
+            android:id="@+id/activity_event_comp_prize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@id/activity_event_comp_prize_textview"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/prize_spin">
+
+        </Spinner>
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/comp_submit"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/activity_event_comp_submit_button"
+        android:background="#111d5e"
+        android:textColor="#fff" />
+
+</LinearLayout>

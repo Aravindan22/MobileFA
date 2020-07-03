@@ -18,10 +18,10 @@ public class ChoosingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choosing);
 
-        cie = findViewById(R.id.cie_btn);
-        sem = findViewById(R.id.sem_btn);
-        event = findViewById(R.id.event_btn);
-        counselling = findViewById(R.id.counselling_btn);
+        cie = findViewById(R.id.activity_choosing_cie_btn);
+        sem = findViewById(R.id.activity_choosing_sem_btn);
+        event = findViewById(R.id.activity_choosing_event_btn);
+        counselling = findViewById(R.id.activity_choosing_counselling_btn);
 
         cie.setOnClickListener(new View.OnClickListener() {
             @Override

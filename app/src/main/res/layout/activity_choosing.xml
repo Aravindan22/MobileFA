@@ -1,49 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChoosingActivity"
-    android:orientation="vertical"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:paddingTop="260dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp">
-    <Button
+    android:orientation="vertical"
+    android:background="#deecfc"
+    android:paddingLeft="40dp"
+    android:paddingTop="175dp"
+    android:paddingRight="40dp">
+
+    <TextView
+        android:id="@+id/activity_register_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_gravity="center"
+        android:textSize="50sp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="25dp"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/activity_choosing_cie_btn"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_cie"
         android:textAlignment="center"
-        android:id="@+id/cie_btn"
-        android:text="CIE UPDATION FORM">
+        android:background="#111d5e"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:padding="5dp" >
 
     </Button>
 
     <Button
-        android:layout_height="wrap_content"
+        android:id="@+id/activity_choosing_sem_btn"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_sem"
         android:textAlignment="center"
-        android:id="@+id/sem_btn"
-        android:text="SEMESTER UPDATION FORM">
+        android:background="#111d5e"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
     </Button>
 
     <Button
-        android:layout_height="wrap_content"
+        android:id="@+id/activity_choosing_event_btn"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_event"
         android:textAlignment="center"
-        android:id="@+id/event_btn"
-        android:text="EVENTS UPDATION FORM">
+        android:background="#111d5e"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
     </Button>
 
     <Button
-        android:layout_height="wrap_content"
+        android:id="@+id/activity_choosing_counselling_btn"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gen_counselling_form"
         android:textAlignment="center"
-        android:id="@+id/counselling_btn"
-        android:text="GENERAL COUNSELLING FORM">
+        android:background="#111d5e"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:padding="5dp">
 
     </Button>
+
+
 </LinearLayout>
