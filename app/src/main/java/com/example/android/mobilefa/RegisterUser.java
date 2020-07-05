@@ -20,18 +20,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
-    EditText mregno , mpassw , mdep;
+    EditText mregno , mpassw , mdep, mname, memail;
     Button btn;
     TextView mlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-        mregno =  findViewById(R.id.reg_edit_text);
-        mpassw = findViewById(R.id.pass_edit_text);
-        mdep = findViewById(R.id.dep_edit_text);
-        mlogin = findViewById(R.id.login_text_view);
-        btn = findViewById(R.id.reg_btn);
+        mregno =  findViewById(R.id.activity_register_regno_edittext);
+        mpassw = findViewById(R.id.activity_register_password_edittext);
+        mdep = findViewById(R.id.activity_register_dept_edittext);
+        mname = findViewById(R.id.activity_register_name_edittext);
+        memail = findViewById(R.id.activity_register_emailid_edittext);
+        btn = findViewById(R.id.activity_register_register_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

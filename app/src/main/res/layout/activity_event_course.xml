@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +8,11 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#deecfc"
-    android:padding="10dp" >
+    android:padding="10dp"
+    tools:context=".CourseEvent">
 
     <TextView
-        android:id="@+id/activity_course_title"
+        android:id="@+id/activity_event_course_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/course_title"
@@ -50,7 +52,7 @@
         android:gravity="center"
         android:hint="@string/course_mark"
         android:id="@+id/activity_event_course_marks_edittext"
-        android:inputType="date"
+        android:inputType="numberDecimal"
         android:layout_margin="10dp"
         android:background="#b9ceeb"
         android:textColorHint="#233142" />

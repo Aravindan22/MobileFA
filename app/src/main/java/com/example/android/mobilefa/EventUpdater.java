@@ -23,28 +23,56 @@ import static com.example.android.mobilefa.Constants.dep;
 import static com.example.android.mobilefa.Constants.regno;
 
 public class EventUpdater extends AppCompatActivity {
-    EditText editText ;
-    Button button;
+    Button workshop_btn, course_btn, comp_btn;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_updater);
-         editText = findViewById(R.id.event_text_view);
-         button = findViewById(R.id.event_button);
 
-         button.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                eventUpdater();
-             }
-         });
+        workshop_btn = findViewById(R.id.activity_event_workshop_btn);
+        course_btn = findViewById(R.id.activity_event_course_btn);
+        comp_btn = findViewById(R.id.activity_event_event_btn);
+
+        workshop_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent workshopIntent = new Intent(getApplicationContext(), WorkshopEvent.class);
+                startActivity(workshopIntent);
+                finish();
+            }
+        });
+
+        course_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent courseIntent = new Intent(getApplicationContext(), CourseEvent.class);
+                startActivity(courseIntent);
+                finish();
+            }
+        });
+
+        comp_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent compIntent = new Intent(getApplicationContext(), CompEvent.class);
+                startActivity(compIntent);
+                finish();
+            }
+        });
     }
     @Override
     public void onBackPressed() {
         startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
         finish();
     }
-    public void eventUpdater(){
+
+
+
+    /*public void eventUpdater(){
         String url = Constants.EVENT_URL;
         final String event = editText.getText().toString().trim();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -72,5 +100,5 @@ public class EventUpdater extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-    }
+    }*/
 }
