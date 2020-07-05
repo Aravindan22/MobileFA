@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if(response.equals("Logged in")){
                     Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    Constants.regno = regno;
-                    startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+                    Constants.REG_NO = Integer.parseInt(regno);
+                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                     finish();
                 }else{
                     Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
