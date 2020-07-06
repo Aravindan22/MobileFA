@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     EditText mregno , mpassw;
     TextView mReg;
+    String regno;
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(sharedPreferences.getBoolean("LOGGED_IN",false)){
+            startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+        }
+    }
+
     private void loginUser(){
-        final String regno = mregno.getText().toString().trim();
+        regno = mregno.getText().toString().trim();
         final String passw =mpassw.getText().toString().trim();
 
         String url = Constants.LOGIN_URL;
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.equals("Logged in")){
                     Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
                     Constants.REG_NO = Integer.parseInt(regno);
+                    getDetails();
                     startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                     finish();
                 }else{
@@ -86,7 +96,16 @@ public class MainActivity extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
     private void getDetails(){
+        fetchData f = new fetchData();
+        f.getCreds(regno,getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
+        editor.putBoolean("Logged_in",true);
+        editor.putInt("REG_NO",Constants.REG_NO);
+        editor.putString("NAME",Constants.NAME);
+        editor.putString("EMAIL",Constants.EMAIL);
+        editor.putString("DEP",Constants.DEP);
+        editor.putString("SEC",Constants.SECTION);
+        editor.putInt("YEAR",Constants.YEAR);
+        editor.commit();
     }
 }
