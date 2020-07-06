@@ -8,7 +8,7 @@ public class Constants {
     public static String NAME;
     public static int YEAR;
     public static String SECTION;
-    private static String url = "http://dupastone.byethost15.com/Android/";
+    private static String url = "https://android-php.herokuapp.com/";
     public static String REGISTER_URL = url + "register.php";
     public static String LOGIN_URL = url + "login.php";
     public static String EVENT_URL = url + "insertevent.php";
