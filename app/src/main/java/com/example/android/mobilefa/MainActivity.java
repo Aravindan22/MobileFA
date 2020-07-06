@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,19 +24,21 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Button btn;
-    EditText mregno , mpassw;
-    TextView mReg;
     String regno;
+    EditText mregno, mpassw;
+    TextView mReg;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+
         btn = findViewById(R.id.activity_main_login_button);
-        mregno =  findViewById(R.id.activity_main_regno_edittext);
+        mregno = findViewById(R.id.activity_main_regno_edittext);
         mpassw = findViewById(R.id.activity_main_password_edittext);
-        mReg = findViewById(R.id.activity_main_title);
+        mReg = findViewById(R.id.activity_main_newuser_textview);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,46 +48,46 @@ public class MainActivity extends AppCompatActivity {
         mReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterUser.class));
+                startActivity(new Intent(getApplicationContext(), RegisterUser.class));
                 finish();
             }
         });
-
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if(sharedPreferences.getBoolean("LOGGED_IN",false)){
-            startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+        if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
+            startActivity(new Intent(this, ChoosingActivity.class));
+            finish();
         }
     }
 
-    private void loginUser(){
+    private void loginUser() {
         regno = mregno.getText().toString().trim();
-        final String passw =mpassw.getText().toString().trim();
+        final String passw = mpassw.getText().toString().trim();
 
-        String url = Constants.LOGIN_URL;
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.LOGIN_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("Logged in")){
+                if (response.equals("Logged in")) {
                     Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    Constants.REG_NO = Integer.parseInt(regno);
                     getDetails();
                     startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                     finish();
-                }else{
+                } else {
+                    Toast.makeText(MainActivity.this, "Wrong Something", Toast.LENGTH_SHORT).show();
                     Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                    Log.d("Not Crt", response);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Volley Error", error.toString());
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
@@ -95,17 +98,24 @@ public class MainActivity extends AppCompatActivity {
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
-    private void getDetails(){
+
+    private void getDetails() {
         fetchData f = new fetchData();
-        f.getCreds(regno,getApplicationContext());
+        f.getCreds(regno, getApplicationContext());
+        storeDetails();
+    }
+
+    private void storeDetails() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Logged_in",true);
-        editor.putInt("REG_NO",Constants.REG_NO);
-        editor.putString("NAME",Constants.NAME);
-        editor.putString("EMAIL",Constants.EMAIL);
-        editor.putString("DEP",Constants.DEP);
-        editor.putString("SEC",Constants.SECTION);
-        editor.putInt("YEAR",Constants.YEAR);
+        editor.putBoolean("LOGGED_IN", true);
+        editor.putInt("REG_NO", Constants.REG_NO);
+        editor.putString("NAME", Constants.NAME);
+        editor.putString("DEP", Constants.DEP);
+        editor.putInt("YEAR", Constants.YEAR);
+        editor.putString("SECTION", Constants.SECTION);
+        editor.putString("EMAIL", Constants.EMAIL);
+        editor.putString("PASSWORD", Constants.PASSWORD);
         editor.commit();
+        Toast.makeText(this, String.valueOf(sharedPreferences.getString("EMAIL", null)), Toast.LENGTH_SHORT).show();
     }
 }
