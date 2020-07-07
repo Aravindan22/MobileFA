@@ -10,13 +10,13 @@
     android:layout_gravity="center"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="190dp"
+    android:paddingTop="100dp"
     android:paddingBottom="2dp"
     android:layout_margin="10dp"
     android:background="#deecfc"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    tools:context=".EventUpdater" >
+     >
 
     <TextView
         android:id="@+id/activity_event_title_textview"
@@ -27,18 +27,13 @@
         android:text="@string/event_title"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/activity_event_workshop_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:background="#111d5e"
             android:textColor="#fff"
             android:text="@string/workshop_button"
@@ -46,17 +41,11 @@
             android:textSize="20sp"
             android:layout_margin="10dp"/>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/activity_event_course_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:background="#111d5e"
             android:textColor="#fff"
             android:text="@string/course_button"
@@ -64,26 +53,15 @@
             android:textSize="20sp"
             android:layout_margin="10dp"/>
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <Button
             android:id="@+id/activity_event_event_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:background="#111d5e"
             android:textColor="#fff"
             android:text="@string/event_button"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_margin="10dp"/>
-
-    </RelativeLayout>
-
-
 
 </LinearLayout>
