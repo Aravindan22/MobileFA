@@ -1,5 +1,6 @@
 package com.example.android.mobilefa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-class CompEvent extends AppCompatActivity {
+public class CompEvent extends AppCompatActivity {
 
     EditText event_name, event_college;
     Button event_submit;
@@ -26,9 +27,9 @@ class CompEvent extends AppCompatActivity {
         prize_won = findViewById(R.id.activity_event_comp_prize);
         event_submit = findViewById(R.id.activity_event_comp_submit_button);
 
-        final String eventName = event_name.getText().toString().trim();
+        /*final String eventName = event_name.getText().toString().trim();
         final String eventCollege = event_college.getText().toString().trim();
-        final Spinner prizeWon = prize_won;
+        final Spinner prizeWon = prize_won;*/
 
         event_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,5 +37,11 @@ class CompEvent extends AppCompatActivity {
                 Toast.makeText(CompEvent.this, "Competition Event Updated", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),EventUpdater.class));
+        finish();
     }
 }
