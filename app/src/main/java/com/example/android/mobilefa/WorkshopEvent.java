@@ -1,7 +1,7 @@
 package com.example.android.mobilefa;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-class WorkshopEvent extends AppCompatActivity {
+public class WorkshopEvent extends AppCompatActivity {
 
     EditText workshop_topic, college_name, date_attended;
     Button workshop_submit;
@@ -32,8 +32,14 @@ class WorkshopEvent extends AppCompatActivity {
         workshop_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(WorkshopEvent.this, "Workshop Event Upadted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WorkshopEvent.this, "Workshop Event Updated", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),EventUpdater.class));
+        finish();
     }
 }
