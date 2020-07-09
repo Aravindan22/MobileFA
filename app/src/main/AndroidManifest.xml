@@ -16,6 +16,9 @@
         <activity android:name=".GeneralCounseling" />
         <activity android:name=".EventUpdater" />
         <activity android:name=".ChoosingActivity" />
+        <activity android:name=".WorkshopEvent" />
+        <activity android:name=".CourseEvent" />
+        <activity android:name=".CompEvent" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -24,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
