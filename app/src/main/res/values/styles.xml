@@ -1,11 +1,17 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#fff</item>
-        <!-- Background color of buttons in the app -->
-        <item name="colorButtonNormal">#FF9800</item>
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
+        <!-- Fullscreen Window -->
+        <item name="android:windowFullscreen">true</item>
+
+        <!-- Window Background while launching the app -->
+        <item name="android:windowBackground">@color/colorAccent</item>
+
+        <!-- Action Bar Background -->
+        <item name="colorPrimary">#303960</item>
+
+    </style>
+    
 </resources>
