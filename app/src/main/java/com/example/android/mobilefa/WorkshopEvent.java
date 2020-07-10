@@ -65,7 +65,7 @@ public class WorkshopEvent extends AppCompatActivity {
                         return params;
                     }
                 };
-                Toast.makeText(WorkshopEvent.this, "Workshop Event Updated", Toast.LENGTH_SHORT).show();
+                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
             }
         });
     }
