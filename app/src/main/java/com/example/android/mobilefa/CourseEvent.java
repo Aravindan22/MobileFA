@@ -59,9 +59,9 @@ public class CourseEvent extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String, String> params = new HashMap<>();
                         params.put("regno", String.valueOf(Constants.REG_NO));
-                        params.put("workshopTopic",subjectName);
-                        params.put("collegeName",organizationName);
-                        params.put("date",marksObtained);
+                        params.put("coursename",subjectName);
+                        params.put("organizationName",organizationName);
+                        params.put("marks",marksObtained);
                         return params;
                     }
                 };
