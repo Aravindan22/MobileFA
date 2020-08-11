@@ -157,7 +157,7 @@
     </string-array>
     <string name="sem5_cn_lab">COMPUTER NETWORKS LABORATORY</string>
     <string name="sem5_python_lab">PYTHON PROGRAMMING LABORATORY</string>
-    <string name="sem5_comm_lab">PROFESSIONAL COMMUNICATION SKILLS LABORATORY</string>
+    <string name="sem5_comm_lab">PROFESSIONAL COMMUNICATION SKILLS LAB</string>
     <string name="sem5_ss_apti">SOFT SKILLS AND APTITUDE-III</string>
     <string name="sem5_gpa">GPA</string>
     <string name="sem5_cgpa">CGPA</string>
@@ -177,7 +177,7 @@
         <item name="spm">SOFTWARE PROJECT MANAGEMENT</item>
         <item name="gtc">GRAPH THEORY AND COMBINATORICS</item>
     </string-array>
-    <string name="sem6_pcd_lab">PRINCIPLES OF COMPILER DESIGN LABORATORY</string>
+    <string name="sem6_pcd_lab">PRINCIPLES OF COMPILER DESIGN LAB</string>
     <string name="sem6_iot_lab">INTERNET OF THINGS LABORATORY</string>
     <string name="sem6_ss_apti">SOFT SKILLS AND APTITUDE-IV</string>
     <string name="sem6_gpa">GPA</string>
