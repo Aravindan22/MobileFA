@@ -13,4 +13,5 @@ public class Constants {
     public static String LOGIN_URL = url + "login.php";
     public static String EVENT_URL = url + "insertevent.php";
     public static String FETCHDATA_URL = url + "retrieveCreds.php";
+    public  static  String WORKSHOP_URL = url + "workshopUpdate.php";
 }
