@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#deecfc"
+    android:padding="20dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/activity_sem1_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:text="@string/sem1"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_eng_I"
+        android:id="@+id/activity_sem1_eng_I_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_engg_mat_I"
+        android:id="@+id/activity_sem1_engg_mat_I_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_engg_phy"
+        android:id="@+id/activity_sem1_engg_phy_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_app_chem"
+        android:id="@+id/activity_sem1_app_chem_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_cpr"
+        android:id="@+id/activity_sem1_cpr_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_beee"
+        android:id="@+id/activity_sem1_beee_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:textSize="15dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_pcl_lab"
+        android:id="@+id/activity_sem1_pcl_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_cpr_lab"
+        android:id="@+id/activity_sem1_cpr_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_epl_lab"
+        android:id="@+id/activity_sem1_epl_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_gpa"
+        android:id="@+id/activity_sem1_gpa_edittext"
+        android:inputType="numberDecimal"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem1_cgpa"
+        android:id="@+id/activity_sem1_cgpa_edittext"
+        android:inputType="numberDecimal"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sem1_submit"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/activity_sem1_submit_button"
+        android:background="#111d5e"
+        android:textColor="#fff" />
+
+
+</LinearLayout>
