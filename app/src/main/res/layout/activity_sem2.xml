@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#deecfc"
     android:padding="20dp"
-    tools:context=".MainActivity" >
+    tools:context=".Semester_2" >
 
     <TextView
         android:id="@+id/activity_sem2_title_textview"
