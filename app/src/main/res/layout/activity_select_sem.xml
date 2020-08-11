@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".SelectSem"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#deecfc" >
+
+    <TextView
+        android:id="@+id/activity_select_sem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_sem"
+        android:layout_gravity="center"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="25dp"
+        android:textAllCaps="true" />
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/activity_select_sem_semspin" >
+
+    </NumberPicker>
+
+
+    <Button
+        android:id="@+id/activity_select_sem_submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="#111d5e"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/select_sem_submit"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

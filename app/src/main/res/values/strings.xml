@@ -38,8 +38,13 @@
     <string name="update_sem">UPDATE SEMESTER MARKS</string>
     <string name="update_event">UPDATE EVENTS PARTICIPATED</string>
     <string name="gen_counselling_form">GENERAL COUNSELLING FORM</string>
+
+    <string name="select_sem">SELECT SEMESTER</string>
+
     <string name="cie_select_cie">SELECT CIE</string>
     <string name="cie_select_sem">SELECT SEMESTER</string>
+    <string name="select_sem_submit">SUBMIT</string>
+
     <string-array name="sem_spin">
         <item>1</item>
         <item>2</item>
@@ -50,20 +55,23 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+
     <string-array name="cie_spin">
         <item>I</item>
         <item>II</item>
         <item>III</item>
     </string-array>
+
     <string-array name="prize_spin">
         <item>I</item>
         <item>II</item>
         <item>III</item>
         <item>Participation</item>
     </string-array>
-    <string name="event_button">Event participated</string>
-    <string name="workshop_button">Workshop Attended</string>
-    <string name="course_button">Course Completed</string>
+
+    <string name="event_button">EVENT PARTICIPATED</string>
+    <string name="workshop_button">WORKSHOP ATTENDED</string>
+    <string name="course_button">COURSE COMPLETED</string>
     <string name="workshop_title">Enter info about the workshop attended</string>
     <string name="workshop_topic">WORKSHOP TOPIC</string>
     <string name="workshop_clg">COLLEGE NAME</string>
@@ -87,7 +95,7 @@
     <string name="sem1_engg_phy">ENGINEERING PHYSICS</string>
     <string name="sem1_app_chem">APPLIED CHEMISTRY</string>
     <string name="sem1_cpr">PROGRAMMING IN C</string>
-    <string name="sem1_beee">BASIC ELECTRICALS AND ELECTRONICS ENGINEERING</string>
+    <string name="sem1_beee">BASIC ELECTRICAL AND ELECTRONICS ENGINEERING</string>
     <string name="sem1_pcl_lab">PHYSICS AND CHEMISTRY LABORATORY-I</string>
     <string name="sem1_cpr_lab">C PROGRAMMING LABORATORY</string>
     <string name="sem1_epl_lab">ENGINEERING PRACTICES LABORATORY</string>
@@ -103,11 +111,78 @@
     <string name="sem2_pds">PROGRAMMING AND DATA STRUCTURES</string>
     <string name="sem2_eg">ENGINEERING GRAPHICS</string>
     <string name="sem2_pcl_lab_II">PHYSICS AND CHEMISTRY LABORATORY-II</string>
-    <string name="sem2_pds_lab">PROGRAMMING AND DATA STRUCTURES LABORATORY</string>
-    <string name="sem2_beee_lab">BASIC ELECTRICAL AND ELECTRONICS ENGINEERING LABORATORY</string>
+    <string name="sem2_pds_lab">PDS LABORATORY</string>
+    <string name="sem2_beee_lab">BEEE LABORATORY</string>
     <string name="sem2_gpa">GPA</string>
     <string name="sem2_cgpa">CGPA</string>
     <string name="sem2_submit">SUBMIT</string>
+
+    <string name="sem3">SEMESTER-III</string>
+    <string name="sem3_dis_mat">DISCRETE MATHEMATICS</string>
+    <string name="sem3_ds">DATA STRUCTURES</string>
+    <string name="sem3_dpsd">DIGITAL PRINCIPALS AND SYSTEM DESIGN</string>
+    <string name="sem3_oops">OBJECT ORIENTED PROGRAMMING</string>
+    <string name="sem3_coa">COMPUTER ORGANIZATION AND ARCHITECTURE</string>
+    <string name="sem3_ds_oops_lab">DATA STRUCTURES AND OOPS LABORATORY</string>
+    <string name="sem3_dig_lab">DIGITAL LABORATORY</string>
+    <string name="sem3_comm_lab">COMMUNICATION LABORATORY</string>
+    <string name="sem3_ss_apti">SOFT SKILLS AND APTITUDE</string>
+    <string name="sem3_gpa">GPA</string>
+    <string name="sem3_cgpa">CGPA</string>
+    <string name="sem3_submit">SUBMIT</string>
+
+    <string name="sem4">SEMESTER-IV</string>
+    <string name="sem4_pqt">PROBABILITY AND QUEUING THEORY</string>
+    <string name="sem4_dbms">DATABASE MANAGEMENT SYSTEM</string>
+    <string name="sem4_os">OPERATING SYSTEM</string>
+    <string name="sem4_daa">DESIGN AND ANALYSIS OF ALGORITHMS</string>
+    <string name="sem4_wp">WEB PROGRAMMING</string>
+    <string name="sem4_os_lab">OPERATING SYSTEMS LABORATORY</string>
+    <string name="sem4_dbms_lab">DATABASE MANAGEMENT SYSTEMS LABORATORY</string>
+    <string name="sem4_ss_apti_II">SOFT SKILLS AND APTITUDE-II</string>
+    <string name="sem4_gpa">GPA</string>
+    <string name="sem4_cgpa">CGPA</string>
+    <string name="sem4_submit">SUBMIT</string>
+
+    <string name="sem5">SEMESTER-V</string>
+    <string name="sem5_se">SOFTWARE ENGINEERING</string>
+    <string name="sem5_cn">COMPUTER NETWORKS</string>
+    <string name="sem5_es">EMBEDDED SYSTEM DESIGN</string>
+    <string name="sem5_toc">THEORY OF COMPUTATION</string>
+    <string name="sem5_elective">ELECTIVE-I</string>
+    <string-array name="elective_I_spin">
+        <item name="multimedia">MULTIMEDIA SYSTEM</item>
+        <item name="dwda">DATA WAREHOUSING AND DATA MINING</item>
+        <item name="c#">C# AND DOTNET PROGRAMMING</item>
+    </string-array>
+    <string name="sem5_cn_lab">COMPUTER NETWORKS LABORATORY</string>
+    <string name="sem5_python_lab">PYTHON PROGRAMMING LABORATORY</string>
+    <string name="sem5_comm_lab">PROFESSIONAL COMMUNICATION SKILLS LABORATORY</string>
+    <string name="sem5_ss_apti">SOFT SKILLS AND APTITUDE-III</string>
+    <string name="sem5_gpa">GPA</string>
+    <string name="sem5_cgpa">CGPA</string>
+    <string name="sem5_submit">SUBMIT</string>
+
+    <string name="sem6">SEMESTER-VI</string>
+    <string name="sem6_pom">PRINCIPLES OF MANAGEMENT</string>
+    <string name="sem6_pcd">PRINCIPLES OF COMPILER DESIGN</string>
+    <string name="sem6_iot">INTERNET OF THINGS</string>
+    <string name="sem6_elective_II">ELECTIVE-II</string>
+    <string-array name="elective_II_spin">
+        <item name="mdsd">MOBILE DEVICE SOFTWARE DEVELOPMENT</item>
+        <item name="bi">BUSINESS INTELLIGENCE</item>
+    </string-array>
+    <string name="sem6_elective_III">ELECTIVE-III</string>
+    <string-array name="elective_III_spin">
+        <item name="spm">SOFTWARE PROJECT MANAGEMENT</item>
+        <item name="gtc">GRAPH THEORY AND COMBINATORICS</item>
+    </string-array>
+    <string name="sem6_pcd_lab">PRINCIPLES OF COMPILER DESIGN LABORATORY</string>
+    <string name="sem6_iot_lab">INTERNET OF THINGS LABORATORY</string>
+    <string name="sem6_ss_apti">SOFT SKILLS AND APTITUDE-IV</string>
+    <string name="sem6_gpa">GPA</string>
+    <string name="sem6_cgpa">CGPA</string>
+    <string name="sem6_submit">SUBMIT</string>
 
 
 </resources>

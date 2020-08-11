@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#deecfc"
+    android:padding="10dp"
+    tools:context=".Semester_5" >
+
+    <TextView
+        android:id="@+id/activity_sem5_title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:text="@string/sem5"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_se"
+        android:id="@+id/activity_sem5_se_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_cn"
+        android:id="@+id/activity_sem5_cn_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_es"
+        android:id="@+id/activity_sem5_es_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_toc"
+        android:id="@+id/activity_sem5_toc_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/activity_sem5_elective_I_textview"
+            android:layout_width= "140dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="@string/sem5_elective"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:background="#87a8d0"
+            android:textColor="#233142" />
+
+        <Spinner
+            android:id="@+id/activity_sem5_elective_I_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@id/activity_sem5_elective_I_textview"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/elective_I_spin">
+
+        </Spinner>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_elective"
+        android:id="@+id/activity_sem5_elective_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_cn_lab"
+        android:id="@+id/activity_sem5_cn_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_python_lab"
+        android:id="@+id/activity_sem5_python_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_comm_lab"
+        android:id="@+id/activity_sem5_comm_lab_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/sem5_ss_apti"
+        android:id="@+id/activity_sem5_ss_apti_edittext"
+        android:inputType="text"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:hint="@string/sem5_gpa"
+        android:id="@+id/activity_sem5_gpa_edittext"
+        android:inputType="numberDecimal"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:hint="@string/sem5_cgpa"
+        android:id="@+id/activity_sem5_cgpa_edittext"
+        android:inputType="numberDecimal"
+        android:layout_margin="3dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sem5_submit"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:id="@+id/activity_sem5_submit_button"
+        android:background="#111d5e"
+        android:textColor="#fff" />
+
+
+</LinearLayout>
