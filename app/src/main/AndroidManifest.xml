@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectCie"></activity>
+        <activity android:name=".subjectMarksUpdation"></activity>
+        <activity android:name=".SelectCie" />
         <activity android:name=".GeneralCounseling" />
         <activity android:name=".EventUpdater" />
         <activity android:name=".ChoosingActivity" />
@@ -27,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.example.android.mobilefa;
 
+import java.util.HashMap;
+
 public class Constants {
     public static int REG_NO;
     public static String PASSWORD;
@@ -15,4 +17,5 @@ public class Constants {
     public static String FETCHDATA_URL = url + "retrieveCreds.php";
     public  static  String WORKSHOP_URL = url + "workshopUpdate.php";
     public  static  String GENERAL_COUNSELING_URL = url + "workshopUpdate.php";
+    public  static  HashMap<String,Integer> subjectandmark = new HashMap<>();
 }

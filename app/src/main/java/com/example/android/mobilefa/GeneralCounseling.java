@@ -37,8 +37,8 @@ public class GeneralCounseling extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, Constants.GENERAL_COUNSELING_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "WorkShop event Updated") {
-                            Toast.makeText(getApplicationContext(), "Workshop Included", Toast.LENGTH_SHORT).show();
+                        if (response == "General Counselling Data Filled") {
+                            Toast.makeText(getApplicationContext(), "General counselling Done", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

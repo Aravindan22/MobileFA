@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
-    EditText mregno , mpassw , mdep, mname, memail;
+    EditText mname,mregno , mpassw , mdep, memail;
     Button btn;
+    Spinner msection,myear;
     TextView mlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class RegisterUser extends AppCompatActivity {
         memail = findViewById(R.id.activity_register_emailid_edittext);
         btn = findViewById(R.id.activity_register_register_button);
         mlogin = findViewById(R.id.activity_register_loginacc_textview);
+        myear = findViewById(R.id.activity_register_year);
+        msection = findViewById(R.id.activity_register_section);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +54,6 @@ public class RegisterUser extends AppCompatActivity {
         });
     }
     private void  registerNewuser(){
-        final String regno = mregno.getText().toString().trim();
-        final String passw =mpassw.getText().toString().trim();
-        final String dep = mdep.getText().toString().trim();
-
-
         String url = Constants.REGISTER_URL;
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -76,9 +75,13 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("regno", regno);
-                params.put("password", passw);
-                params.put("dep", dep);
+                params.put("name",mname.getText().toString().trim());
+                params.put("regno", mregno.getText().toString().trim());
+                params.put("year",myear.getSelectedItem().toString());
+                params.put("password", mpassw.getText().toString().trim());
+                params.put("dep", mdep.getText().toString().trim());
+                params.put("mail",memail.getText().toString().trim());
+                params.put("section",msection.getSelectedItem().toString());
                 return params;
             }
         };

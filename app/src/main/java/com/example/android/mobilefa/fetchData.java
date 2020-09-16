@@ -25,12 +25,12 @@ class fetchData {
                 try {
 
                     JSONObject jsonObject = new JSONObject(response);
-                    Constants.REG_NO = Integer.parseInt(String.valueOf(jsonObject.get("Student_RegisterNo")));
-                    Constants.PASSWORD = jsonObject.getString("Student_Password");
-                    Constants.DEP = jsonObject.getString("Student_Dept");
-                    Constants.EMAIL = jsonObject.getString("Student_EmailID");
-                    Constants.NAME = jsonObject.getString("Student_Name");
-                    Constants.YEAR = Integer.parseInt(jsonObject.getString("Student_Year"));
+                    Constants.REG_NO = Integer.parseInt(String.valueOf(jsonObject.get("reg_no")));
+                    Constants.PASSWORD = jsonObject.getString("password");
+                    Constants.DEP = jsonObject.getString("dept");
+                    Constants.EMAIL = jsonObject.getString("mail");
+                    Constants.NAME = jsonObject.getString("name");
+                    Constants.YEAR = Integer.parseInt(jsonObject.getString("year"));
                     Constants.SECTION = jsonObject.getString("Student_Section");
 //                    Log.d("FetchedData", Constants.EMAIL);
                 } catch (JSONException e) {

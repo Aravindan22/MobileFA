@@ -36,10 +36,6 @@ public class CompEvent extends AppCompatActivity {
         organization = findViewById(R.id.activity_event_comp_clg_edittext);
         prize_won = findViewById(R.id.activity_event_comp_prize);
         event_submit = findViewById(R.id.activity_event_comp_submit_button);
-
-        /*final String eventName = event_name.getText().toString().trim();
-        final String eventCollege = event_college.getText().toString().trim();
-        final Spinner prizeWon = prize_won;*/
         
         event_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,8 +43,8 @@ public class CompEvent extends AppCompatActivity {
                 StringRequest  request = new StringRequest(Request.Method.POST, Constants.WORKSHOP_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "WorkShop event Updated") {
-                            Toast.makeText(getApplicationContext(), "Workshop Included", Toast.LENGTH_SHORT).show();
+                        if (response == "Event Updated") {
+                            Toast.makeText(getApplicationContext(), "Event Included", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -62,8 +58,9 @@ public class CompEvent extends AppCompatActivity {
                         HashMap<String, String> params = new HashMap<>();
                         params.put("regno", String.valueOf(Constants.REG_NO));
                         params.put("eventName",event_name.getText().toString());
-                        params.put("organization",organization.getText().toString());
-                        params.put("prize",prize_won.getSelectedItem().toString());
+                        params.put("organizationName",organization.getText().toString());
+                        params.put("eventPrize",prize_won.getSelectedItem().toString());
+//                        params.put("eventDate",date);
                         return params;
                     }
                 };
