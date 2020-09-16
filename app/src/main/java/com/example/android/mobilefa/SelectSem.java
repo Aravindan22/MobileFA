@@ -49,32 +49,7 @@ public class SelectSem extends AppCompatActivity  {
         select_submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (sem) {
-                    case 1:
-                        startActivity(new Intent(getApplicationContext(), Semester_1.class));
-                        finish();
-                        break;
-                    case 2:
-                        startActivity(new Intent(getApplicationContext(), Semester_2.class));
-                        finish();
-                        break;
-                    case 3:
-                        startActivity(new Intent(getApplicationContext(), Semester_3.class));
-                        finish();
-                        break;
-                    case 4:
-                        startActivity(new Intent(getApplicationContext(), Semester_4.class));
-                        finish();
-                        break;
-                    case 5:
-                        startActivity(new Intent(getApplicationContext(), Semester_5.class));
-                        finish();
-                        break;
-                    case 6:
-                        startActivity(new Intent(getApplicationContext(), Semester_6.class));
-                        finish();
-                        break;
-                }
+
             }
         });
 

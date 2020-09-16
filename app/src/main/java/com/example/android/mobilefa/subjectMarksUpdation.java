@@ -78,7 +78,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
             }
         });
     }
-    private  ArrayList<String> getData(int sem,String type_of_xam){
+    private  ArrayList<String> getData(int sem,String dep){
         ArrayList<String> arr=new ArrayList<>();
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
