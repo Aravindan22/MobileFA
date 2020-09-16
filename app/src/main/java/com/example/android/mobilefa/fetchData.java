@@ -32,7 +32,6 @@ class fetchData {
                     Constants.NAME = jsonObject.getString("name");
                     Constants.YEAR = Integer.parseInt(jsonObject.getString("year"));
                     Constants.SECTION = jsonObject.getString("Student_Section");
-//                    Log.d("FetchedData", Constants.EMAIL);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

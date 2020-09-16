@@ -10,12 +10,15 @@ public class Constants {
     public static String NAME;
     public static int YEAR;
     public static String SECTION;
-    private static String url = "https://android-php.herokuapp.com/";
+//    private static String url = "https://android-php.herokuapp.com/";
+    private  static String url = "http://localhost:3001/api";
     public static String REGISTER_URL = url + "register.php";
     public static String LOGIN_URL = url + "login.php";
     public static String EVENT_URL = url + "insertevent.php";
     public static String FETCHDATA_URL = url + "retrieveCreds.php";
     public  static  String WORKSHOP_URL = url + "workshopUpdate.php";
     public  static  String GENERAL_COUNSELING_URL = url + "workshopUpdate.php";
+    public  static  String SUBJECT_MARK_UPDATION_URL = url +"subjectMarkUpdation";
+    public  static  String GET_SUBJECTS = url +"getSubjects";
     public  static  HashMap<String,Integer> subjectandmark = new HashMap<>();
 }
