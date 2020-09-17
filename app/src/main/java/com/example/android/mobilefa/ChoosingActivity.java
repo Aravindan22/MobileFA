@@ -35,8 +35,8 @@ public class ChoosingActivity extends AppCompatActivity {
         sem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent sem_intent = new Intent(getApplicationContext(), Sem.class);
-//                startActivity(sem_intent);
+                Intent sem_intent = new Intent(getApplicationContext(), SelectSem.class);
+                startActivity(sem_intent);
                 finish();
             }
         });
