@@ -2,6 +2,7 @@ package com.example.android.mobilefa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,10 +19,9 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.security.auth.Subject;
 
 public class subjectMarksUpdation extends AppCompatActivity {
     ListView mlistView;
@@ -33,11 +33,20 @@ public class subjectMarksUpdation extends AppCompatActivity {
         setContentView(R.layout.activity_subject_marks_updation);
         mlistView = findViewById(R.id.list_view_subject_marks);
         btn = findViewById(R.id.btn_subject_marks_updation);
-        final String type_of_xam = "";   //pass value from bfre activity
+
+        Intent i = getIntent();
+        Bundle b = i.getBundleExtra("semester");
+
+        String dep = Constants.DEP;
+        int sem = b.getInt("sem");
+        int cie = b.getInt("cie");
+        final String type_of_xam = b.getString("type_of_exam");
 
         //get Array from api and create objects
-//        ArrayList<Subjects> subjectsArrayList = getData();
-        ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
+        ArrayList<Subjects> subjectsArrayList = getData(sem, dep);
+
+        //ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
+
 
         subjectsArrayList.add(new Subjects("TECHNICAL ENGLISH"));
         subjectsArrayList.add(new Subjects("TECHNICAL MATHS"));
@@ -78,12 +87,25 @@ public class subjectMarksUpdation extends AppCompatActivity {
             }
         });
     }
-    private  ArrayList<String> getData(int sem,String dep){
+    private ArrayList<Subjects> getData(int sem, String dep){
+
+
         ArrayList<String> arr=new ArrayList<>();
+
+        final ArrayList<Subjects> subjectList = new ArrayList<>();
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                //Get response, convert to arrays and return
+
+                String[] S = response.split(",");
+                for(int i=0; i<S.length; i++) {
+                    Subjects sub = new Subjects(S[i]);
+                    subjectList.add(sub);
+                }
+
+                //subjectList.addAll(Arrays.<Subjects>asList(S));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -98,6 +120,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-        return  arr;
+        return subjectList;
     }
 }
