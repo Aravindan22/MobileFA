@@ -12,7 +12,7 @@
     android:background="#deecfc" >
 
     <TextView
-        android:id="@+id/activity_select_sem_title"
+        android:id="@+id/activity_select_sem_semTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_sem"
@@ -25,9 +25,10 @@
         android:textAllCaps="true" />
 
     <NumberPicker
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
         android:layout_height="200dp"
-        android:id="@+id/activity_select_sem_semspin" >
+        android:id="@+id/activity_select_sem_semSpin"
+        android:solidColor="#b9ceeb">
 
     </NumberPicker>
 
