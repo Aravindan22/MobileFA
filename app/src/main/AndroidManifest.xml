@@ -14,6 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".subjectMarksUpdation"></activity>
         <activity android:name=".SelectCie" />
+        <activity android:name=".SelectSem" />
         <activity android:name=".GeneralCounseling" />
         <activity android:name=".EventUpdater" />
         <activity android:name=".ChoosingActivity" />
