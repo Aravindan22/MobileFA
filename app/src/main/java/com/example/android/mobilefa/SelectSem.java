@@ -36,6 +36,7 @@ public class SelectSem extends AppCompatActivity  {
                 Bundle b = new Bundle();
                 b.putString("type_of_exam", "sem");
                 b.putInt("sem", sem);
+                startActivity(new Intent(getApplicationContext(),subjectMarksUpdation.class));
             }
         });
 
