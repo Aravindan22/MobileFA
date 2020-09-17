@@ -5,18 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 
 public class SelectCie extends AppCompatActivity  {
 
     int cie,sem;
+    Button select_cie_submit_button;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_cie);
 
-        NumberPicker spin_cie = findViewById(R.id.ciespin);
-        NumberPicker spin_sem = findViewById(R.id.semspin);
+        NumberPicker spin_cie = findViewById(R.id.activity_select_cie_cieSpin);
+        NumberPicker spin_sem = findViewById(R.id.activity_select_cie_semSpin);
+
+        select_cie_submit_button = findViewById(R.id.activity_select_cie_submit_button);
 
         spin_cie.setMinValue(1);
         spin_cie.setMaxValue(3);
@@ -26,6 +32,17 @@ public class SelectCie extends AppCompatActivity  {
 
         spin_cie.setOnValueChangedListener(o1);
         spin_sem.setOnValueChangedListener(o2);
+
+        select_cie_submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putString("type_of_exam", "cie");
+                b.putInt("cie", cie);
+                b.putInt("sem", sem);
+
+            }
+        });
 
     }
 
@@ -48,5 +65,7 @@ public class SelectCie extends AppCompatActivity  {
              sem = picker.getValue();
         }
     };
+
+
 }
 
