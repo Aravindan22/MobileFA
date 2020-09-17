@@ -18,8 +18,7 @@ public class SelectSem extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_sem);
 
-
-        NumberPicker select_sem_spin_sem = (NumberPicker) findViewById(R.id.activity_select_sem_semspin);
+        NumberPicker select_sem_spin_sem = findViewById(R.id.activity_select_sem_semSpin);
 
         select_submit_button = findViewById(R.id.activity_select_sem_submit_button);
 
@@ -27,9 +26,18 @@ public class SelectSem extends AppCompatActivity  {
         select_sem_spin_sem.setMinValue(1);
         select_sem_spin_sem.setMaxValue(8);
 
-        select_sem_spin_sem.setWrapSelectorWheel(true);
+        //select_sem_spin_sem.setWrapSelectorWheel(true);
 
         select_sem_spin_sem.setOnValueChangedListener(o1);
+
+        select_submit_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b = new Bundle();
+                b.putString("type_of_exam", "sem");
+                b.putInt("sem", sem);
+            }
+        });
 
     }
 
@@ -44,14 +52,6 @@ public class SelectSem extends AppCompatActivity  {
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
             sem = picker.getValue();
 
-
-
-        select_submit_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         }
     };
