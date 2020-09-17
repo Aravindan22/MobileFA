@@ -4,36 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".SelectCie"
     android:orientation="vertical"
-    android:paddingTop="150dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp">
+    android:padding="5dp"
+    android:background="#deecfc">
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/activity_select_cie_semTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SELECT CIE"
+        android:text="@string/select_sem"
+        android:layout_gravity="center"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="15dp"
+        android:textAllCaps="true" />
+
     <NumberPicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ciespin">
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:id="@+id/activity_select_cie_semSpin"
+        android:solidColor="#b9ceeb">
+
 
     </NumberPicker>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/activity_select_cie_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SELECT SEMESTER"
+        android:text="@string/select_cie"
+        android:layout_gravity="center"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-    <NumberPicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/semspin">
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_margin="15dp"
+        android:textAllCaps="true" />
 
-    </NumberPicker>
+    <NumberPicker
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:id="@+id/activity_select_cie_cieSpin"
+        android:solidColor="#b9ceeb" />
+
+
+    <Button
+        android:id="@+id/activity_select_cie_submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#111d5e"
+        android:padding="10dp"
+        android:text="@string/select_cie_submit"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
 </LinearLayout>
