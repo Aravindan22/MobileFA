@@ -63,6 +63,8 @@
     <string name="comp_name">EVENT NAME</string>
     <string name="comp_clg">COLLEGE NAME</string>
     <string name="comp_prize">PRIZE WON</string>
+    <string name="select_cie_submit">SUBMIT</string>
+    <string name="select_cie">SELECT CIE</string>
 
 
 </resources>
