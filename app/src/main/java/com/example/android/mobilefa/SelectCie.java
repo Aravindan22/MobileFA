@@ -40,7 +40,11 @@ public class SelectCie extends AppCompatActivity  {
                 b.putString("type_of_exam", "cie");
                 b.putInt("cie", cie);
                 b.putInt("sem", sem);
-                startActivity(new Intent(getApplicationContext(),subjectMarksUpdation.class));
+                Intent i = new Intent(getApplicationContext(), subjectMarksUpdation.class);
+                i.putExtra("semester", b);
+                startActivity(i);
+                finish();
+                //startActivity(new Intent(getApplicationContext(),subjectMarksUpdation.class));
             }
         });
 

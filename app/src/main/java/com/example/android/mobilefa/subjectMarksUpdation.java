@@ -77,6 +77,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 //                            Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.get(x).toString(), Toast.LENGTH_SHORT).show();
                             JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
                             params.put(type_of_xam, jsonObject.toString());
+                            Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
                         }
                         return params;
                     }

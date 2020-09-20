@@ -64,6 +64,7 @@ public class SubjectListAdapter extends ArrayAdapter<Subjects> {
         convertView = inflater.inflate(mResource,parent,false);
         TextView tvSubj = convertView.findViewById(R.id.text_view_subject_name_adapter);
         EditText tvEdit= convertView.findViewById(R.id.edittext_mark_adapter);
+
         tvEdit.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 50)});
         tvEdit.addTextChangedListener(new TextWatcher() {
             @Override
