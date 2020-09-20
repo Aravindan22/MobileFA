@@ -6,11 +6,15 @@
 
     <TextView
         android:id="@+id/text_view_subject_name_adapter"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:textAlignment="center"
+        android:layout_margin="10dp"
+        android:background="#87a8d0"
+        android:textColor="#233142"
+        android:gravity="center"
+        android:textSize="18sp"
 
         />
 
@@ -18,8 +22,12 @@
         android:id="@+id/edittext_mark_adapter"
         android:layout_width="100dp"
         android:layout_margin="10dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:inputType="number"
-         />
+        android:background="#b9ceeb"
+        android:textColorHint="#233142"
+        android:gravity="center"
+        />
 
 </LinearLayout>
+

@@ -60,7 +60,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "Subjects and marks Updated") {
+                        if (response.equals("Subjects and marks Updated")) {
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -101,12 +101,10 @@ public class subjectMarksUpdation extends AppCompatActivity {
                //Get response, convert to arrays and return
 
                 String[] S = response.split(",");
-                for(int i=0; i<S.length; i++) {
-                    Subjects sub = new Subjects(S[i]);
-                    subjectList.add(sub);
-                }
 
-                //subjectList.addAll(Arrays.<Subjects>asList(S));
+                for(String sub : S) {
+                    subjectList.add(new Subjects(sub));
+                }
             }
         }, new Response.ErrorListener() {
             @Override

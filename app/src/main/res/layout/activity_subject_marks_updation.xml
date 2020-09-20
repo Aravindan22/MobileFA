@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".subjectMarksUpdation"
-    android:orientation="vertical">
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true"
-    android:id="@+id/list_view_subject_marks"/>
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#deecfc"
+    android:padding="10dp"
+    >
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_view_subject_marks" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_subject_marks_updation"
         android:gravity="center"
-        android:text="Submit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
+        android:text="@string/subject_marks_submit"
         android:layout_margin="15dp"
         android:padding="10dp"
         android:textSize="25sp"
         android:textStyle="bold"
         android:background="#111d5e"
-        android:textColor="#fff"
-        />
-</RelativeLayout>
+        android:textColor="#fff" />
+
+</LinearLayout>
