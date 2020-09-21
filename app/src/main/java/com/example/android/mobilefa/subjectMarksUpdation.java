@@ -38,16 +38,14 @@ public class subjectMarksUpdation extends AppCompatActivity {
         Bundle b = i.getBundleExtra("semester");
 
         String dep = Constants.DEP;
-        int sem = b.getInt("sem");
-        int cie = b.getInt("cie");
+        final int sem = b.getInt("sem");
+        final int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
 
         //get Array from api and create objects
-        ArrayList<Subjects> subjectsArrayList = getData(sem, dep);
+//        ArrayList<Subjects> subjectsArrayList = getData(sem, dep);
 
-        //ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
-
-
+        ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
         subjectsArrayList.add(new Subjects("TECHNICAL ENGLISH"));
         subjectsArrayList.add(new Subjects("TECHNICAL MATHS"));
         subjectsArrayList.add(new Subjects("MATERIAL PHYSICS"));
@@ -57,6 +55,9 @@ public class subjectMarksUpdation extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
+                Toast.makeText(subjectMarksUpdation.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("DATA",jsonObject.toString());
                 StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -73,12 +74,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String, String> params = new HashMap<>();
-                        for (String x : Constants.subjectandmark.keySet()) {
-//                            Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.get(x).toString(), Toast.LENGTH_SHORT).show();
-                            JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
-                            params.put(type_of_xam, jsonObject.toString());
-                            Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-                        }
+                        params.put("regno",String.valueOf(Constants.REG_NO));
+                        params.put("type",type_of_xam);
+                        params.put("semester",String.valueOf(sem));
+                        params.put("num",String.valueOf(cie));
+                        params.put("subject",jsonObject.toString());
                         return params;
                     }
                 };
@@ -105,8 +105,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
                     Subjects sub = new Subjects(S[i]);
                     subjectList.add(sub);
                 }
-
-                //subjectList.addAll(Arrays.<Subjects>asList(S));
             }
         }, new Response.ErrorListener() {
             @Override

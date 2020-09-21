@@ -42,7 +42,7 @@ public class CourseEvent extends AppCompatActivity {
         course_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StringRequest request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
+                StringRequest request = new StringRequest(Request.Method.POST, Constants.COURSE_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response == "Course event Updated") {

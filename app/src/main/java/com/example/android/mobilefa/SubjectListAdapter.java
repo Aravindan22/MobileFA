@@ -74,16 +74,15 @@ public class SubjectListAdapter extends ArrayAdapter<Subjects> {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length()>0){
-                    Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
-                    Toast.makeText(mContext, String.valueOf(position), Toast.LENGTH_SHORT).show();
-                }
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if(s.length()>0){
+                    Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
+                    Toast.makeText(mContext, String.valueOf(position)+";;;;", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

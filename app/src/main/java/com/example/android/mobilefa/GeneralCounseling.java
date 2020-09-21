@@ -44,7 +44,7 @@ public class GeneralCounseling extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("WORKSHOP ERROR",error.toString());
+                        Log.d("General Counselling",error.toString());
                     }
                 }){
                     @Override

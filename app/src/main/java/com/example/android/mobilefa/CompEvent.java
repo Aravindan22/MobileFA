@@ -40,7 +40,7 @@ public class CompEvent extends AppCompatActivity {
         event_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StringRequest  request = new StringRequest(Request.Method.POST, Constants.WORKSHOP_URL, new Response.Listener<String>() {
+                StringRequest  request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response == "Event Updated") {
