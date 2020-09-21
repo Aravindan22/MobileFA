@@ -54,8 +54,8 @@ public class RegisterUser extends AppCompatActivity {
         });
     }
     private void  registerNewuser(){
-        String url = Constants.REGISTER_URL;
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.REGISTER_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(response.equals("Registered")){
@@ -70,6 +70,7 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("REG ERR",error.toString());
             }
         }){
             @Override

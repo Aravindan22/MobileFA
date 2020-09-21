@@ -58,10 +58,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //startActivity(new Intent(this, ChoosingActivity.class));
-        startActivity(new Intent(this, RegisterUser.class));
-//        startActivity(new Intent(this, subjectMarksUpdation.class));
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
-//            startActivity(new Intent(this, ChoosingActivity.class));
+            startActivity(new Intent(this, ChoosingActivity.class));
             finish();
         }
     }
