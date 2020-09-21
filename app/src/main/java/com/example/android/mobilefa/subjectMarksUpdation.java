@@ -45,13 +45,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
         //get Array from api and create objects
         ArrayList<Subjects> subjectsArrayList = getData(sem, dep);
 
-        //ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
-
-
-        subjectsArrayList.add(new Subjects("TECHNICAL ENGLISH"));
-        subjectsArrayList.add(new Subjects("TECHNICAL MATHS"));
-        subjectsArrayList.add(new Subjects("MATERIAL PHYSICS"));
-
         SubjectListAdapter adapter = new SubjectListAdapter(this, R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
         mlistView.setAdapter(adapter);
         btn.setOnClickListener(new View.OnClickListener() {
