@@ -66,5 +66,7 @@
     <string name="select_cie_submit">SUBMIT</string>
     <string name="select_cie">SELECT CIE</string>
 
+    <string name="subject_marks_submit">SUBMIT</string>
+
 
 </resources>
