@@ -38,6 +38,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
         Bundle b = i.getBundleExtra("semester");
 
         String dep = Constants.DEP;
+        assert b != null;
         int sem = b.getInt("sem");
         int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
@@ -53,7 +54,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "Subjects and marks Updated") {
+                        if (response.equals("Subjects and marks Updated")) {
                             Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                         }
                     }
