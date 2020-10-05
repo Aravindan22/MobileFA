@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".subjectMarksUpdation"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:gravity="center"
     android:background="#deecfc"
     android:padding="10dp"
@@ -15,19 +15,22 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_view_subject_marks" />
+        android:id="@+id/list_view_subject_marks"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_subject_marks_updation"
-        android:gravity="center"
-        android:text="@string/subject_marks_submit"
+        android:layout_alignBottom="@id/list_view_subject_marks"
+        android:layout_alignParentRight="true"
+        android:text="OK"
         android:layout_margin="15dp"
+        android:layout_marginRight="20dp"
         android:padding="10dp"
         android:textSize="25sp"
         android:textStyle="bold"
         android:background="#111d5e"
         android:textColor="#fff" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -33,76 +33,71 @@ public class subjectMarksUpdation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
-        setContentView(R.layout.activity_subject_marks_updation);
-        mlistView = findViewById(R.id.list_view_subject_marks);
-        btn = findViewById(R.id.btn_subject_marks_updation);
-
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("semester");
-        int sem = b.getInt("sem");
+        final int sem = b.getInt("sem");
         int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
 
         //get Array from api and create objects
 
-        ArrayList<Subjects> subjectsArrayList = getData(sem);
-        Log.d("subsss: ",subjectsArrayList.toString());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
 
-        SubjectListAdapter adapter = new SubjectListAdapter(this, R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
-        mlistView.setAdapter(adapter);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response == "Subjects and marks Updated") {
-                            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("ERROR", error.toString());
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> params = new HashMap<>();
-                        for (String x : Constants.subjectandmark.keySet()) {
-//                            Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.get(x).toString(), Toast.LENGTH_SHORT).show();
-                            JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
-                            params.put(type_of_xam, jsonObject.toString());
-                            Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-                        }
-                        return params;
-                    }
-                };
-                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
-                Constants.subjectandmark.clear();
-            }
-        });
-    }
-    private ArrayList<Subjects> getData(final int sem){
-        final ArrayList<Subjects> subjectList = new ArrayList<>();
+
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-               //Get response, convert to arrays and return
+                setContentView(R.layout.activity_subject_marks_updation);
+                mlistView = findViewById(R.id.list_view_subject_marks);
+                btn = findViewById(R.id.btn_subject_marks_updation);
+                //Get response, convert to arrays and return
                 Log.d("SUBJECT DATA: ",response);
                 String[] S = response.split(",");
                 for(int i=0; i<S.length; i++) {
                     Subjects sub = new Subjects(S[i]);
-                    subjectList.add(sub);
+                    subjectsArrayList.add(sub);
                     Log.d("SUBJECT "+i+" : ",S[i]);
                 }
+
+
+                Log.d("subsss: ",subjectsArrayList.toString());
+                SubjectListAdapter adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+                mlistView.setAdapter(adapter);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if (response == "Subjects and marks Updated") {
+                                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("ERROR", error.toString());
+                            }
+                        }) {
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                HashMap<String, String> params = new HashMap<>();
+                                for (String x : Constants.subjectandmark.keySet()) {
+//                            Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.get(x).toString(), Toast.LENGTH_SHORT).show();
+                                    JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
+                                    params.put(type_of_xam, jsonObject.toString());
+                                    Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+                                }
+                                return params;
+                            }
+                        };
+                        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+                        Constants.subjectandmark.clear();
+                    }
+                });
+
 
             }
         }, new Response.ErrorListener() {
@@ -120,6 +115,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+    }
+    private ArrayList<Subjects> getData(final int sem){
+        final ArrayList<Subjects> subjectList = new ArrayList<>();
+
         return subjectList;
     }
 }
