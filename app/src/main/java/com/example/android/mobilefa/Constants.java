@@ -10,9 +10,9 @@ public class Constants {
     public static String NAME;
     public static int YEAR;
     public static String SECTION;
-    private static String url = "http://10.0.2.2:3001/api/";
+//    private static String url = "http://10.0.2.2:3001/api/";
+    private  static String url = "https://woolly-joyous-pisces.glitch.me/api/";
     public static String REGISTER_URL = url + "registerUser";
-
     public static String LOGIN_URL = url + "loginUser";
     public static String EVENT_URL = url + "addEvent";
     public static String FETCHDATA_URL = url + "fetchData";

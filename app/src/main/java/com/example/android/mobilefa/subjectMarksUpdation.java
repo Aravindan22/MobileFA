@@ -2,7 +2,9 @@ package com.example.android.mobilefa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,24 +28,30 @@ import java.util.Map;
 public class subjectMarksUpdation extends AppCompatActivity {
     ListView mlistView;
     Button btn;
-
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         setContentView(R.layout.activity_subject_marks_updation);
         mlistView = findViewById(R.id.list_view_subject_marks);
         btn = findViewById(R.id.btn_subject_marks_updation);
 
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("semester");
-
-        String dep = Constants.DEP;
         int sem = b.getInt("sem");
         int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
 
         //get Array from api and create objects
-        ArrayList<Subjects> subjectsArrayList = getData(sem, dep);
+
+        ArrayList<Subjects> subjectsArrayList = getData(sem);
+        Log.d("subsss: ",subjectsArrayList.toString());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         SubjectListAdapter adapter = new SubjectListAdapter(this, R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
         mlistView.setAdapter(adapter);
@@ -81,25 +89,21 @@ public class subjectMarksUpdation extends AppCompatActivity {
             }
         });
     }
-    private ArrayList<Subjects> getData(int sem, String dep){
-
-
-        ArrayList<String> arr=new ArrayList<>();
-
+    private ArrayList<Subjects> getData(final int sem){
         final ArrayList<Subjects> subjectList = new ArrayList<>();
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                //Get response, convert to arrays and return
-
+                Log.d("SUBJECT DATA: ",response);
                 String[] S = response.split(",");
                 for(int i=0; i<S.length; i++) {
                     Subjects sub = new Subjects(S[i]);
                     subjectList.add(sub);
+                    Log.d("SUBJECT "+i+" : ",S[i]);
                 }
 
-                //subjectList.addAll(Arrays.<Subjects>asList(S));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -110,6 +114,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
+                params.put("department",sharedPreferences.getString("DEP","").toLowerCase());
+                params.put("sem",String.valueOf(sem));
                 return params;
             }
         };

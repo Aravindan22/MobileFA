@@ -80,7 +80,7 @@ public class RegisterUser extends AppCompatActivity {
                 params.put("regno", mregno.getText().toString().trim());
                 params.put("year",myear.getSelectedItem().toString());
                 params.put("password", mpassw.getText().toString().trim());
-                params.put("dep", mdep.getText().toString().trim());
+                params.put("dept", mdep.getText().toString().trim());
                 params.put("mail",memail.getText().toString().trim());
                 params.put("section",msection.getSelectedItem().toString());
                 return params;

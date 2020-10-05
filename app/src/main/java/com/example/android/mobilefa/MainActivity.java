@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
 
         btn = findViewById(R.id.activity_main_login_button);
         mregno = findViewById(R.id.activity_main_regno_edittext);
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //startActivity(new Intent(this, ChoosingActivity.class));
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
+            Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
             startActivity(new Intent(this, ChoosingActivity.class));
             finish();
         }
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Wrong Something", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                     Log.d("Not Crt", response);
                 }
             }
@@ -102,21 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void getDetails() {
         fetchData f = new fetchData();
-        f.getCreds(regno, getApplicationContext());
-        storeDetails();
+        f.getCreds(regno,getApplicationContext());
+        Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
     }
 
-    private void storeDetails() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("LOGGED_IN", true);
-        editor.putInt("REG_NO", Constants.REG_NO);
-        editor.putString("NAME", Constants.NAME);
-        editor.putString("DEP", Constants.DEP);
-        editor.putInt("YEAR", Constants.YEAR);
-        editor.putString("SECTION", Constants.SECTION);
-        editor.putString("EMAIL", Constants.EMAIL);
-        editor.putString("PASSWORD", Constants.PASSWORD);
-        editor.commit();
-        Toast.makeText(this, String.valueOf(sharedPreferences.getString("EMAIL", null)), Toast.LENGTH_SHORT).show();
-    }
+
+
 }

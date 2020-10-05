@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ChoosingActivity extends AppCompatActivity {
 
-    Button cie, sem, event, counselling;
+    Button cie, sem, event, counselling,btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,7 +22,6 @@ public class ChoosingActivity extends AppCompatActivity {
         sem = findViewById(R.id.activity_choosing_sem_btn);
         event = findViewById(R.id.activity_choosing_event_btn);
         counselling = findViewById(R.id.activity_choosing_counselling_btn);
-
         cie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
