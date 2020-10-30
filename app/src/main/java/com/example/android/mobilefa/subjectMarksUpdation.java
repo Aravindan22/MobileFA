@@ -1,6 +1,8 @@
 package com.example.android.mobilefa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,14 +22,14 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class subjectMarksUpdation extends AppCompatActivity {
-    ListView mlistView;
+    RecyclerView mlistView;
     Button btn;
     SharedPreferences sharedPreferences;
+    SubjectListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
+
             public void onResponse(String response) {
                 setContentView(R.layout.activity_subject_marks_updation);
                 mlistView = findViewById(R.id.list_view_subject_marks);
@@ -61,9 +63,15 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 }
 
 
+
+
                 Log.d("subsss: ",subjectsArrayList.toString());
-                SubjectListAdapter adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+                adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                mlistView.setLayoutManager(mLayoutManager);
                 mlistView.setAdapter(adapter);
+
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

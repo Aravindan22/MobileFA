@@ -59,7 +59,7 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("Registered")){
-                    Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
                     startActivity( new Intent(getApplicationContext(),MainActivity.class));
                 }else{
                     Toast.makeText(RegisterUser.this, response, Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class RegisterUser extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("REG ERR",error.toString());
             }
         }){

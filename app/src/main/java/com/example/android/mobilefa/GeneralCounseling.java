@@ -37,7 +37,7 @@ public class GeneralCounseling extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, Constants.GENERAL_COUNSELING_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response == "General Counselling Data Filled") {
+                        if (response.equals("General Counselling Data Filled")) {
                             Toast.makeText(getApplicationContext(), "General counselling Done", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -50,10 +50,10 @@ public class GeneralCounseling extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String, String> params = new HashMap<>();
-                        params.put("regno", String.valueOf(Constants.REG_NO));
-                        params.put("improvement",improvement.getText().toString());
-                        params.put("issue",issue.getText().toString());
-                        params.put("suggestion",suggestion.getText().toString());
+                        params.put("reg_no", String.valueOf(Constants.REG_NO));
+                        params.put("improvements",improvement.getText().toString());
+                        params.put("issues",issue.getText().toString());
+                        params.put("suggestions",suggestion.getText().toString());
                         return params;
                     }
                 };

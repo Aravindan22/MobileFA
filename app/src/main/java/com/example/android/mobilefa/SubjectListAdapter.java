@@ -16,9 +16,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import javax.security.auth.Subject;
 
 //For Filtering the Inputs in edit text..............
 class InputFilterMinMax implements InputFilter {
@@ -45,8 +51,51 @@ class InputFilterMinMax implements InputFilter {
     }
 }
 
-public class SubjectListAdapter extends ArrayAdapter<Subjects> {
-    private  Context mContext;
+public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.MyViewHolder> {
+
+    List<Subjects> subjectList;
+
+    public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
+        this.subjectList = subjectsArrayList;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView subjectName;
+
+        public MyViewHolder(View view) {
+            super(view);
+            subjectName = view.findViewById(R.id.text_view_subject_name_adapter);
+
+        }
+    }
+
+    public SubjectListAdapter(List<Subjects> subjectList) {
+        this.subjectList = subjectList;
+    }
+
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.adapter_view_layout_subject_mark, parent, false);
+
+        return new MyViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Subjects sub = subjectList.get(position);
+        holder.subjectName.setText(sub.getSubject());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return subjectList.size();
+    }
+
+    /*private  Context mContext;
 
     int mResource;
     public SubjectListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Subjects> objects) {
@@ -89,6 +138,6 @@ public class SubjectListAdapter extends ArrayAdapter<Subjects> {
 
         tvSubj.setText(sub);
         return  convertView;
-    }
+    }*/
 
 }
