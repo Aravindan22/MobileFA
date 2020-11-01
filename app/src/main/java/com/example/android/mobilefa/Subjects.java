@@ -1,7 +1,7 @@
 package com.example.android.mobilefa;
 
 public class Subjects {
-    private String subject;
+    protected String subject;
 
     public String getSubject() {
         return subject;

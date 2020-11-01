@@ -61,6 +61,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView subjectName;
+        public EditText tvEdit;
 
         public MyViewHolder(View view) {
             super(view);
@@ -84,9 +85,35 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+
         Subjects sub = subjectList.get(position);
         holder.subjectName.setText(sub.getSubject());
+
+        holder.tvEdit.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+                holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+                String marks = holder.tvEdit.getText().toString();
+
+                if (s.length() > 0) {
+                    //Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
+                    // Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(s.toString()));
+
+                    Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(marks));
+
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //subjectList.get(position).subject = s.toString();
+            }
+        });
+
 
     }
 
@@ -94,6 +121,8 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     public int getItemCount() {
         return subjectList.size();
     }
+
+}
 
     /*private  Context mContext;
 
@@ -140,4 +169,3 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         return  convertView;
     }*/
 
-}
