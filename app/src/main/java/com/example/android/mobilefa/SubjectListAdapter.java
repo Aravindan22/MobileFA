@@ -8,23 +8,14 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import javax.security.auth.Subject;
 
 //For Filtering the Inputs in edit text..............
 class InputFilterMinMax implements InputFilter {
@@ -66,7 +57,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         public MyViewHolder(View view) {
             super(view);
             subjectName = view.findViewById(R.id.text_view_subject_name_adapter);
-
+            tvEdit = view.findViewById(R.id.edittext_mark_adapter);
         }
     }
 
@@ -90,17 +81,18 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         Subjects sub = subjectList.get(position);
         holder.subjectName.setText(sub.getSubject());
 
+        holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
         holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-                holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+
                 String marks = holder.tvEdit.getText().toString();
 
                 if (s.length() > 0) {
                     //Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
                     // Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(s.toString()));
 
-                    Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(marks));
+                    Constants.subjectandmark.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
 
                 }
             }
