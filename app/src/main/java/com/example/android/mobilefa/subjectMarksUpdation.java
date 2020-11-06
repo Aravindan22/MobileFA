@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -30,6 +31,12 @@ public class subjectMarksUpdation extends AppCompatActivity {
     Button btn;
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
+    protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        for(String sub:hm.keySet()){
+            jsonObject.put(sub,new Integer(hm.get(sub)));
+        }return jsonObject;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +50,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
         //get Array from api and create objects
 
         final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
+
 
 
 
@@ -73,8 +81,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.toString(), Toast.LENGTH_SHORT).show();
-                        Log.d("After Click ",Constants.subjectandmark.toString());
                         StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -90,19 +96,22 @@ public class subjectMarksUpdation extends AppCompatActivity {
                         }) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
+                                JSONObject jsonObject = null;
+                                try {
+                                    jsonObject = hashMapToJSON(Constants.subjectandmark);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Log.d("SUBJECT & MARK JSONED ",jsonObject.toString());
+
                                 HashMap<String, String> params = new HashMap<>();
-//                                for (String x : Constants.subjectandmark.keySet()) {
-////                            Toast.makeText(subjectMarksUpdation.this, Constants.subjectandmark.get(x).toString(), Toast.LENGTH_SHORT).show();
-//                                    JSONObject jsonObject = new JSONObject(Constants.subjectandmark);
-//                                    Log.d("SUBJECT & MARKs: ",jsonObject.toString());
-//                                    params.put(type_of_xam, jsonObject.toString());
-//                                    Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-//                                }
-                                params.put("submarks","{'SOFTWARE ENGINEERING':11,'COMPUTER NETWORKS':10,'EMBEDDED SYSTEMS DESIGN':9,'THEORY OF COMPUTATION':8,'ELECTIVE - MULTIMEDIA SYSTEM':7,'ELECTIVE - DATA WAREHOUSING AND DATA MINING ':6,'ELECTIVE - C# AND DOTNET PROGRAMMING':5,'COMPUTER NETWORKS LABORATORY':4,'PYTHON PROGRAMMING LABORATORY':3,'PROFESSIONAL COMMUNICATION SKILLS LABORATORY':2,'SOFT SKILLS AND APTITUDE – III':1}");
+                                params.put("type",type_of_xam);
                                 params.put("semester", String.valueOf(sem));
                                 params.put("num",String.valueOf(cie));
+                                params.put("submarks",jsonObject.toString());
                                 params.put("regno", String.valueOf(Constants.REG_NO));
-                                params.put("type",type_of_xam);
+
+
                                 return params;
                             }
                         };
