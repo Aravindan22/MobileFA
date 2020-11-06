@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
-    EditText mname,mregno , mpassw , mdep, memail;
+    EditText mname, mregno , mpassw , mdep, memail;
     Button btn;
-    Spinner msection,myear;
+    Spinner msection, myear;
     TextView mlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,40 @@ public class RegisterUser extends AppCompatActivity {
         mlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
     }
+
+    protected void Empty(String s, EditText et) {
+        if(TextUtils.isEmpty(s))
+            et.setError("This field cannot be empty!");
+    }
+
     private void  registerNewuser(){
+
+        final String regno = mregno.getText().toString().trim();
+        final String name = mname.getText().toString().trim();
+        final String email = memail.getText().toString().trim();
+        final String dept = mdep.getText().toString().trim();
+        final String year = myear.getSelectedItem().toString();
+        final String section = msection.getSelectedItem().toString();
+        final String password = mpassw.getText().toString().trim();
+
+        Empty(name, mname);
+        Empty(regno, mregno);
+        Empty(email, memail);
+        Empty(dept, mdep);
+        Empty(password, mpassw);
+
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        if(!(password.matches(pattern)))
+            mpassw.setError("Not a strong password!");
+
+        if(year.equals("Select"))
+            ((TextView)myear.getSelectedView()).setError("Please select one!");
+        if(section.equals("Select"))
+            ((TextView)msection.getSelectedView()).setError("Please select one!");
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.REGISTER_URL, new Response.Listener<String>() {
             @Override
@@ -73,16 +103,19 @@ public class RegisterUser extends AppCompatActivity {
                 Log.d("REG ERR",error.toString());
             }
         }){
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("name",mname.getText().toString().trim());
-                params.put("regno", mregno.getText().toString().trim());
-                params.put("year",myear.getSelectedItem().toString());
-                params.put("password", mpassw.getText().toString().trim());
-                params.put("dept", mdep.getText().toString().trim());
-                params.put("mail",memail.getText().toString().trim());
-                params.put("section",msection.getSelectedItem().toString());
+
+                params.put("regno", regno);
+                params.put("name",name);
+                params.put("mail", email);
+                params.put("dept", dept);
+                params.put("year",year);
+                params.put("section", section);
+                params.put("password", password);
+
                 return params;
             }
         };

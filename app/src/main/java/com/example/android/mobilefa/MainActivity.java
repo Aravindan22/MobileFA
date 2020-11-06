@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,9 +66,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    protected void Empty(String s, EditText et) {
+        if(TextUtils.isEmpty(s))
+            et.setError("This field cannot be empty!");
+    }
+
     private void loginUser() {
         regno = mregno.getText().toString().trim();
         final String passw = mpassw.getText().toString().trim();
+
+        Empty(regno, mregno);
+        Empty(passw, mpassw);
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.LOGIN_URL, new Response.Listener<String>() {
             @Override

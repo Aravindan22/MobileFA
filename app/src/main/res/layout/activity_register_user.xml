@@ -75,7 +75,7 @@
 
         <TextView
             android:id="@+id/activity_register_year_textview"
-            android:layout_width= "270dp"
+            android:layout_width= "175dp"
             android:layout_height="35dp"
             android:gravity="center"
             android:textSize="18sp"
@@ -87,12 +87,11 @@
 
         <Spinner
             android:id="@+id/activity_register_year"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@id/activity_register_year_textview"
-            android:layout_marginEnd="8dp"
             android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/activity_register_year_textview"
             android:background="@android:drawable/btn_dropdown"
             android:entries="@array/year_spin"
             ></Spinner>
@@ -106,7 +105,7 @@
 
         <TextView
             android:id="@+id/activity_register_section_textview"
-            android:layout_width= "270dp"
+            android:layout_width= "175dp"
             android:layout_height="35dp"
             android:gravity="center"
             android:textSize="18sp"
@@ -118,12 +117,11 @@
 
         <Spinner
             android:id="@+id/activity_register_section"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_toRightOf="@id/activity_register_section_textview"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/activity_register_section_textview"
             android:background="@android:drawable/btn_dropdown"
             android:entries="@array/section_spin"
             ></Spinner>

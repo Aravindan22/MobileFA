@@ -6,12 +6,14 @@
     <string name="dept">DEPARTMENT</string>
     <string name="year">YEAR</string>
     <string-array name="year_spin">
+        <item>Select</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
     </string-array>
     <string-array name="section_spin">
+        <item>Select</item>
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -39,6 +41,7 @@
     <string name="select_sem_submit">SUBMIT</string>
 
     <string-array name="prize_spin">
+        <item>Select</item>
         <item>I</item>
         <item>II</item>
         <item>III</item>

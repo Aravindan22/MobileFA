@@ -53,7 +53,7 @@
 
         <TextView
             android:id="@+id/activity_event_comp_prize_textview"
-            android:layout_width= "230dp"
+            android:layout_width= "185dp"
             android:layout_height="40dp"
             android:gravity="center"
             android:textSize="18sp"
@@ -65,12 +65,11 @@
 
         <Spinner
             android:id="@+id/activity_event_comp_prize"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_toRightOf="@id/activity_event_comp_prize_textview"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="5dp"
             android:layout_marginTop="8dp"
             android:background="@android:drawable/btn_dropdown"
             android:entries="@array/prize_spin">
