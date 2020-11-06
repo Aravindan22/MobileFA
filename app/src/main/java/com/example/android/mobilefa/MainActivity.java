@@ -66,56 +66,57 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void Empty(String s, EditText et) {
-        if(TextUtils.isEmpty(s))
+    protected boolean Empty(String s, EditText et) {
+        if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
+            return true;
+        }
+        return false;
     }
 
     private void loginUser() {
         regno = mregno.getText().toString().trim();
         final String passw = mpassw.getText().toString().trim();
 
-        Empty(regno, mregno);
-        Empty(passw, mpassw);
+        if(!(Empty(regno, mregno)) && !(Empty(passw, mpassw))){
 
-        StringRequest request = new StringRequest(Request.Method.POST, Constants.LOGIN_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.equals("Logged in")) {
-                    Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    getDetails();
-                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                    finish();
-                } else {
-                    Toast.makeText(MainActivity.this, "Wrong Something", Toast.LENGTH_SHORT).show();
+            StringRequest request = new StringRequest(Request.Method.POST, Constants.LOGIN_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    if (response.equals("Logged in")) {
+                        Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+                        getDetails();
+                        startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Something Wrong", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                    Log.d("Not Crt", response);
+                        Log.d("Not Crt", response);
+                    }
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                Log.d("Volley Error", error.toString());
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> params = new HashMap<>();
-                params.put("regno", regno);
-                params.put("password", passw);
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("Volley Error", error.toString());
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> params = new HashMap<>();
+                    params.put("regno", regno);
+                    params.put("password", passw);
+                    return params;
+                }
+            };
+            MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+        }
     }
 
     private void getDetails() {
         fetchData f = new fetchData();
-        f.getCreds(regno,getApplicationContext());
+        f.getCreds(regno, getApplicationContext());
         Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
     }
-
-
 
 }

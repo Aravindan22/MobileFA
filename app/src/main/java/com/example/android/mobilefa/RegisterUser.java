@@ -55,9 +55,12 @@ public class RegisterUser extends AppCompatActivity {
         });
     }
 
-    protected void Empty(String s, EditText et) {
-        if(TextUtils.isEmpty(s))
+    protected boolean Empty(String s, EditText et) {
+        if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
+            return true;
+        }
+        return false;
     }
 
     private void  registerNewuser(){
@@ -70,55 +73,69 @@ public class RegisterUser extends AppCompatActivity {
         final String section = msection.getSelectedItem().toString();
         final String password = mpassw.getText().toString().trim();
 
-        Empty(name, mname);
-        Empty(regno, mregno);
-        Empty(email, memail);
-        Empty(dept, mdep);
-        Empty(password, mpassw);
+        boolean flag_name = Empty(name, mname);
+        boolean flag_regno = Empty(regno, mregno);
+        boolean flag_email = Empty(email, memail);
+        boolean flag_dept = Empty(dept, mdep);
+        boolean flag_password = Empty(password, mpassw);
 
         String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-        if(!(password.matches(pattern)))
+
+        boolean flag_strongPassword = false;
+        if(!(password.matches(pattern))) {
             mpassw.setError("Not a strong password!");
+            flag_strongPassword = true;
+        }
 
-        if(year.equals("Select"))
-            ((TextView)myear.getSelectedView()).setError("Please select one!");
-        if(section.equals("Select"))
-            ((TextView)msection.getSelectedView()).setError("Please select one!");
+        boolean flag_year = false;
+        if(year.equals("Select")) {
+            ((TextView) myear.getSelectedView()).setError("Please select one!");
+            flag_year = true;
+        }
 
-        StringRequest request = new StringRequest(Request.Method.POST, Constants.REGISTER_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if(response.equals("Registered")){
-                    //Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
-                    startActivity( new Intent(getApplicationContext(),MainActivity.class));
-                }else{
-                    Toast.makeText(RegisterUser.this, response, Toast.LENGTH_SHORT).show();
-                    Log.d("Register error", response);
+        boolean flag_section = false;
+        if(section.equals("Select")) {
+            ((TextView) msection.getSelectedView()).setError("Please select one!");
+            flag_section = true;
+        }
+
+        if(!flag_name && !flag_regno && !flag_email && !flag_dept && !flag_password && !flag_year && !flag_section && !flag_strongPassword) {
+
+            StringRequest request = new StringRequest(Request.Method.POST, Constants.REGISTER_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    if (response.equals("Registered")) {
+                        //Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    } else {
+                        Toast.makeText(RegisterUser.this, response, Toast.LENGTH_SHORT).show();
+                        Log.d("Register error", response);
+                    }
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
-                Log.d("REG ERR",error.toString());
-            }
-        }){
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    Log.d("REG ERR", error.toString());
+                }
+            }) {
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> params = new HashMap<>();
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String, String> params = new HashMap<>();
 
-                params.put("regno", regno);
-                params.put("name",name);
-                params.put("mail", email);
-                params.put("dept", dept);
-                params.put("year",year);
-                params.put("section", section);
-                params.put("password", password);
+                    params.put("regno", regno);
+                    params.put("name", name);
+                    params.put("mail", email);
+                    params.put("dept", dept);
+                    params.put("year", year);
+                    params.put("section", section);
+                    params.put("password", password);
 
-                return params;
-            }
-        };
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+                    return params;
+                }
+            };
+            MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+        }
     }
 }
