@@ -51,9 +51,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
         final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
 
-
-
-
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
 

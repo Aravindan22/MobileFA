@@ -2,11 +2,13 @@ package com.example.android.mobilefa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -23,9 +25,17 @@ import java.util.Map;
 
 public class CompEvent extends AppCompatActivity {
 
-    EditText event_name, organization;
+    EditText event_name, organization, date_attended;
     Button event_submit;
     Spinner prize_won;
+
+    protected boolean Empty(String s, EditText et) {
+        if(TextUtils.isEmpty(s)) {
+            et.setError("This field cannot be empty!");
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,37 +44,61 @@ public class CompEvent extends AppCompatActivity {
 
         event_name = findViewById(R.id.activity_event_comp_topic_edittext);
         organization = findViewById(R.id.activity_event_comp_clg_edittext);
+        date_attended = findViewById(R.id.activity_event_comp_date_edittext);
         prize_won = findViewById(R.id.activity_event_comp_prize);
         event_submit = findViewById(R.id.activity_event_comp_submit_button);
-        
+
+
         event_submit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                StringRequest  request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response == "Event Updated") {
-                            Toast.makeText(getApplicationContext(), "Event Included", Toast.LENGTH_SHORT).show();
+
+                final String eventName = event_name.getText().toString();
+                final String eventDate = date_attended.getText().toString();
+                final String organizationName = organization.getText().toString();
+                final String eventPrize = prize_won.getSelectedItem().toString();
+
+                final boolean flag_eventName = Empty(eventName, event_name);
+                final boolean flag_eventDate = Empty(eventDate, date_attended);
+                final boolean flag_organizationName = Empty(organizationName, organization);
+                boolean flag_eventPrize = false;
+                if(eventPrize.equals("Select")) {
+                    ((TextView)prize_won.getSelectedView()).setError("Please select one!");
+                    flag_eventPrize = true;
+                }
+
+                if(!flag_eventName && !flag_eventDate && !flag_organizationName && !flag_eventPrize) {
+
+                    StringRequest request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response == "Event Updated") {
+                                Toast.makeText(getApplicationContext(), "Event Included", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("WORKSHOP ERROR",error.toString());
-                    }
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> params = new HashMap<>();
-                        params.put("regno", String.valueOf(Constants.REG_NO));
-                        params.put("eventName",event_name.getText().toString());
-                        params.put("organizationName",organization.getText().toString());
-                        params.put("eventPrize",prize_won.getSelectedItem().toString());
-//                        params.put("eventDate",date);
-                        return params;
-                    }
-                };
-                MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("COMPETITION_EVENT ERROR", error.toString());
+                        }
+                    }) {
+
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+
+
+                            HashMap<String, String> params = new HashMap<>();
+                            params.put("regno", String.valueOf(Constants.REG_NO));
+                            params.put("eventName", eventName);
+                            params.put("eventDate", eventDate);
+                            params.put("organizationName", organizationName);
+                            params.put("eventPrize", prize_won.getSelectedItem().toString());
+                            return params;
+                        }
+                    };
+                    MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+                }
             }
         });
     }

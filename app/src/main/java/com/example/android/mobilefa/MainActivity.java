@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(MainActivity.this, "Something Wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Invalid username and password", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                         Log.d("Not Crt", response);
                     }

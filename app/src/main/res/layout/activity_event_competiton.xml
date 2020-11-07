@@ -46,6 +46,17 @@
         android:background="#b9ceeb"
         android:textColorHint="#233142" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="@string/comp_date"
+        android:id="@+id/activity_event_comp_date_edittext"
+        android:inputType="date"
+        android:layout_margin="10dp"
+        android:background="#b9ceeb"
+        android:textColorHint="#233142" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
