@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 //For Filtering the Inputs in edit text..............
@@ -45,7 +50,7 @@ class InputFilterMinMax implements InputFilter {
 public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.MyViewHolder> {
 
     List<Subjects> subjectList;
-
+    static HashMap<String,Integer> hm = new HashMap<>();
     public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
         this.subjectList = subjectsArrayList;
     }
@@ -92,7 +97,13 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     //Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
                     // Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(s.toString()));
 
-                    Constants.subjectandmark.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
+                    try {
+                        hm.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
+//                        Log.d("SuB&marks",hm.toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.d("Adapter Exception",e.toString());
+                    }
 
                 }
             }
@@ -112,6 +123,13 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     @Override
     public int getItemCount() {
         return subjectList.size();
+    }
+
+
+    public static JSONObject getSubject(){
+        JSONObject jsonObject =new JSONObject(hm);
+        Log.d("HmToJson",jsonObject.toString());
+        return jsonObject;
     }
 
 }
