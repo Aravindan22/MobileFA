@@ -61,10 +61,10 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 //Get response, convert to arrays and return
                 Log.d("SUBJECT DATA: ",response);
                 String[] S = response.split(",");
-                for(int i=0; i<S.length; i++) {
-                    Subjects sub = new Subjects(S[i]);
-                    subjectsArrayList.add(sub);
-                    Log.d("SUBJECT "+i+" : ",S[i]);
+
+                for(String sub : S) {
+                    subjectsArrayList.add(new Subjects(sub));
+                    Log.d("SUBJECT " +  " : " , sub);
                 }
 
                 Log.d("subsss: ",subjectsArrayList.toString());
@@ -142,5 +142,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
         final ArrayList<Subjects> subjectList = new ArrayList<>();
 
         return subjectList;
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+        finish();
     }
 }

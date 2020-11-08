@@ -59,14 +59,14 @@ public class SelectCie extends AppCompatActivity  {
     NumberPicker.OnValueChangeListener o1 = new NumberPicker.OnValueChangeListener() {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-            cie = picker.getValue();
+            cie = picker.getValue() - 1;
         }
     };
 
     NumberPicker.OnValueChangeListener o2 = new NumberPicker.OnValueChangeListener() {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-             sem = picker.getValue();
+             sem = picker.getValue() - 1;
         }
     };
 

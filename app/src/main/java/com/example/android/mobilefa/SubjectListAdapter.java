@@ -89,11 +89,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                 String marks = holder.tvEdit.getText().toString();
 
                 if (s.length() > 0) {
-                    //Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
-                    // Constants.subjectandmark.put(holder.subjectName.toString(), Integer.parseInt(s.toString()));
-
                     Constants.subjectandmark.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
-
                 }
             }
 
