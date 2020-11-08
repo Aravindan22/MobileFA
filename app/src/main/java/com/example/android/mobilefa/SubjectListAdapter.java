@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 //For Filtering the Inputs in edit text..............
@@ -45,6 +49,7 @@ class InputFilterMinMax implements InputFilter {
 public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.MyViewHolder> {
 
     List<Subjects> subjectList;
+    static HashMap<String ,Integer>hm = new HashMap<>();
 
     public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
         this.subjectList = subjectsArrayList;
@@ -89,7 +94,8 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                 String marks = holder.tvEdit.getText().toString();
 
                 if (s.length() > 0) {
-                    Constants.subjectandmark.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
+                    Log.d("SUB Hm",hm.toString());
+                    hm.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
                 }
             }
 
@@ -109,7 +115,14 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     public int getItemCount() {
         return subjectList.size();
     }
-
+    public static JSONObject getSubject(){
+        JSONObject jsonObject =new JSONObject(hm);
+//        Log.d("HmToJson",jsonObject.toString());
+        return jsonObject;
+    }
+    public  static  void clearHashMap(){
+        hm.clear();
+    }
 }
 
     /*private  Context mContext;

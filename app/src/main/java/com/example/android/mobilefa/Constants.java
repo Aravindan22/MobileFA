@@ -23,7 +23,7 @@ public class Constants {
     public static String WORKSHOP_URL = url + "addWorkshop";
     public static String COURSE_URL = url + "addCourse";
     public static String GENERAL_COUNSELING_URL = url + "addGeneralCounsellingData";
-    public static String SUBJECT_MARK_UPDATION_URL = url +"test1"; //"subjectMarkUpdation";
+    public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";//"test1";
     public static String GET_SUBJECTS = url + "getSubjects";
 
 }

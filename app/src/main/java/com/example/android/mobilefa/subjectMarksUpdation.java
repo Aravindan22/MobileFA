@@ -82,7 +82,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 if (response == "Subjects and marks Updated") {
+                                    SubjectListAdapter.clearHashMap();
                                     Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Log.d("Response",response);
                                 }
                             }
                         }, new Response.ErrorListener() {
@@ -95,8 +99,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 JSONObject jsonObject = null;
                                 try {
-                                    jsonObject = hashMapToJSON(Constants.subjectandmark);
-                                } catch (JSONException e) {
+                                    jsonObject =SubjectListAdapter.getSubject();
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 Log.d("SUBJECT & MARK JSONED ",jsonObject.toString());
@@ -114,7 +118,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
                         };
                         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
-                        Constants.subjectandmark.clear();
                     }
                 });
 
