@@ -31,8 +31,12 @@ public class subjectMarksUpdation extends AppCompatActivity {
     Button btn;
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
-
-
+    protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        for(String sub:hm.keySet()){
+            jsonObject.put(sub,new Integer(hm.get(sub)));
+        }return jsonObject;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +46,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
         final int sem = b.getInt("sem");
         final int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
-        Log.d("Bundle",b.toString());
+
         //get Array from api and create objects
 
         final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
@@ -55,15 +59,15 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 mRecylcerView = findViewById(R.id.list_view_subject_marks);
                 btn = findViewById(R.id.btn_subject_marks_updation);
                 //Get response, convert to arrays and return
-//                Log.d("SUBJECT DATA: ",response);
-                final String[] S = response.split(",");
-                for(int i=0; i<S.length; i++) {
-                    Subjects sub = new Subjects(S[i]);
-                    subjectsArrayList.add(sub);
-//                    Log.d("SUBJECT "+i+" : ",S[i]);
+                Log.d("SUBJECT DATA: ",response);
+                String[] S = response.split(",");
+
+                for(String sub : S) {
+                    subjectsArrayList.add(new Subjects(sub));
+                    Log.d("SUBJECT " +  " : " , sub);
                 }
 
-
+                Log.d("subsss: ",subjectsArrayList.toString());
                 adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
 
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -79,37 +83,38 @@ public class subjectMarksUpdation extends AppCompatActivity {
                             public void onResponse(String response) {
                                 if (response == "Subjects and marks Updated") {
                                     Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                                    SubjectListAdapter.hm.clear();
-                                }else{
-                                    Log.d("Response",response);
                                 }
                             }
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Log.d("ERROR  ", error.toString());
+                                Log.d("ERROR . ", error.toString());
                             }
                         }) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
+                                JSONObject jsonObject = null;
+                                try {
+                                    jsonObject = hashMapToJSON(Constants.subjectandmark);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                Log.d("SUBJECT & MARK JSONED ",jsonObject.toString());
+
                                 HashMap<String, String> params = new HashMap<>();
-                                    params.put("type",type_of_xam);
-                                    params.put("semester", String.valueOf(sem));
-                                    params.put("num",String.valueOf(cie));
-                                    try {
-                                        JSONObject jsonObject = SubjectListAdapter.getSubject();
-                                        params.put("submarks",jsonObject.toString());
-                                        Log.d("subMarksHM",jsonObject.toString());
-                                    }catch (Exception e){
-                                        Log.d("Exception ",e.toString());
-                                    }
-                                    params.put("regno", String.valueOf(Constants.REG_NO));
+                                params.put("type",type_of_xam);
+                                params.put("semester", String.valueOf(sem));
+                                params.put("num",String.valueOf(cie));
+                                params.put("submarks",jsonObject.toString());
+                                params.put("regno", String.valueOf(Constants.REG_NO));
+
+
                                 return params;
                             }
                         };
                         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
-
+                        Constants.subjectandmark.clear();
                     }
                 });
 
@@ -137,5 +142,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
         final ArrayList<Subjects> subjectList = new ArrayList<>();
 
         return subjectList;
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+        finish();
     }
 }

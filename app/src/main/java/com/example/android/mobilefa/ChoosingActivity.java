@@ -1,6 +1,8 @@
 package com.example.android.mobilefa;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
@@ -12,6 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ChoosingActivity extends AppCompatActivity {
 
     Button cie, sem, event, counselling,btn;
+    Button logout;
+
+    protected  void logOut() {
+        SharedPreferences preferences = getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +35,8 @@ public class ChoosingActivity extends AppCompatActivity {
         sem = findViewById(R.id.activity_choosing_sem_btn);
         event = findViewById(R.id.activity_choosing_event_btn);
         counselling = findViewById(R.id.activity_choosing_counselling_btn);
+        logout = findViewById(R.id.activity_choosing_logout_btn);
+
         cie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +70,13 @@ public class ChoosingActivity extends AppCompatActivity {
                 Intent counselling_intent = new Intent(getApplicationContext(), GeneralCounseling.class);
                 startActivity(counselling_intent);
                 finish();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logOut();
             }
         });
     }

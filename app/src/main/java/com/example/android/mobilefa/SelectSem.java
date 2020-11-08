@@ -54,7 +54,7 @@ public class SelectSem extends AppCompatActivity  {
     NumberPicker.OnValueChangeListener o1 = new NumberPicker.OnValueChangeListener() {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-            sem = picker.getValue();
+            sem = picker.getValue() - 1;
 
 
         }
