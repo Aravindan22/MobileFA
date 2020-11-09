@@ -91,12 +91,16 @@
 
     <Button
         android:id="@+id/activity_choosing_logout_btn"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="right"
         android:layout_marginTop="25dp"
-        android:background="#f5feff"
-        android:drawableRight="@drawable/logout"
+        android:background="@drawable/button_shape"
+        android:text="@string/logout_btn"
+        android:textSize="16sp"
+        android:textColor="#111d5e"
+        android:padding="5dp"
+        android:drawableEnd="@drawable/logout"
         />
 
 

@@ -72,7 +72,8 @@
 
     <string name="subject_marks_submit">SUBMIT</string>
 
-    <string name="logout_btn">LOGOUT</string>
+    <string name="laoding">Loading...</string>
+    <string name="logout_btn">LOGOUT </string>
 
 
 </resources>

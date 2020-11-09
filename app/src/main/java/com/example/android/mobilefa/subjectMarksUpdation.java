@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
     Button btn;
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
+
+
     protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         for(String sub:hm.keySet()){
@@ -39,6 +42,9 @@ public class subjectMarksUpdation extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        final ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
+
         super.onCreate(savedInstanceState);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         Intent i = getIntent();
@@ -51,10 +57,20 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
         final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
 
+        progressDialog.startProgress();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismissProgress();
+            }
+        }, 1500);
+
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
             @Override
 
             public void onResponse(String response) {
+
                 setContentView(R.layout.activity_subject_marks_updation);
                 mRecylcerView = findViewById(R.id.list_view_subject_marks);
                 btn = findViewById(R.id.btn_subject_marks_updation);
@@ -78,6 +94,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
+
                         StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -117,6 +134,9 @@ public class subjectMarksUpdation extends AppCompatActivity {
                             }
                         };
                         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+                        startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                        finish();
 
                     }
                 });

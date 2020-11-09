@@ -34,17 +34,18 @@ public class GeneralCounseling extends AppCompatActivity {
         suggestion = findViewById(R.id.activity_general_counselling_suggestion_edittext);
         counseling_submit= findViewById(R.id.activity_general_counselling_submit_button);
 
-        final String improvements = improvement.getText().toString();
-        final String issues = issue.getText().toString();
-        final String suggestions = suggestion.getText().toString();
-
         counseling_submit.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
+
+                final String improvements = improvement.getText().toString();
+                final String issues = issue.getText().toString();
+                final String suggestions = suggestion.getText().toString();
+
                 boolean flag_counselling = false;
 
-                if(TextUtils.isEmpty(improvements) || TextUtils.isEmpty(issues) || TextUtils.isEmpty(suggestions)) {
+                if(TextUtils.isEmpty(improvements) && TextUtils.isEmpty(issues) && TextUtils.isEmpty(suggestions)) {
                     flag_counselling = true;
                     Toast.makeText(getApplicationContext(), "Please enter atleast one field!", Toast.LENGTH_LONG).show();
                 }
@@ -75,6 +76,9 @@ public class GeneralCounseling extends AppCompatActivity {
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                    finish();
                 }
             }
         });

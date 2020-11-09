@@ -81,6 +81,9 @@ public class CourseEvent extends AppCompatActivity {
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                    finish();
                 }
             }
         });
