@@ -67,7 +67,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:id="@+id/activity_event_course_submit_button"
-        android:background="#111d5e"
+        android:background="@drawable/button_shape"
         android:textColor="#fff" />
 
 </LinearLayout>

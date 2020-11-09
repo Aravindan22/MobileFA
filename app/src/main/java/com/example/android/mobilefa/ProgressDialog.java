@@ -14,6 +14,7 @@ class ProgressDialog {
     }
 
     void startProgress() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(progressActivity);
 
         LayoutInflater inflater = progressActivity.getLayoutInflater();

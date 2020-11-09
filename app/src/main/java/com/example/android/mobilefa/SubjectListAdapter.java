@@ -1,6 +1,8 @@
 package com.example.android.mobilefa;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -9,8 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,20 +54,23 @@ class InputFilterMinMax implements InputFilter {
 public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.MyViewHolder> {
 
     List<Subjects> subjectList;
-    static HashMap<String ,Integer>hm = new HashMap<>();
+    static HashMap<String ,String>hm = new HashMap<>();
 
     public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
         this.subjectList = subjectsArrayList;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         public TextView subjectName;
         public EditText tvEdit;
+        public Spinner spinner;
 
         public MyViewHolder(View view) {
             super(view);
             subjectName = view.findViewById(R.id.text_view_subject_name_adapter);
             tvEdit = view.findViewById(R.id.edittext_mark_adapter);
+            spinner = view.findViewById(R.id.spinner_sem_adapter);
         }
     }
 
@@ -70,12 +78,22 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         this.subjectList = subjectList;
     }
 
+    public String type = subjectMarksUpdation.DataHolder.getInstance().getType();
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.adapter_view_layout_subject_mark, parent, false);
+
+        View itemView;
+
+        if(type.equals("cie")) {
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.adapter_view_layout_subject_mark, parent, false);
+        }
+        else {
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.adapter_view_layout_subject_mark_sem, parent, false);
+        }
 
         return new MyViewHolder(itemView);
     }
@@ -86,28 +104,34 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         Subjects sub = subjectList.get(position);
         holder.subjectName.setText(sub.getSubject());
 
-        holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
-        holder.tvEdit.addTextChangedListener(new TextWatcher() {
+        if(type.equals("cie")) {
+            holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+            holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
-            public void afterTextChanged(Editable s) {
+                public void afterTextChanged(Editable s) {
 
-                String marks = holder.tvEdit.getText().toString();
+                    String marks = holder.tvEdit.getText().toString();
 
-                if (s.length() > 0) {
-                    Log.d("SUB Hm",hm.toString());
-                    hm.put(holder.subjectName.getText().toString(), Integer.parseInt(marks));
+                    if (s.length() > 0) {
+                        Log.d("SUB Hm",hm.toString());
+                        hm.put(holder.subjectName.getText().toString(), marks);
+                    }
                 }
-            }
 
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //subjectList.get(position).subject = s.toString();
-            }
-        });
-
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    //subjectList.get(position).subject = s.toString();
+                }
+            });
+        }
+        else {
+            String grade = holder.spinner.getSelectedItem().toString();
+            if(!grade.equals("Select"))
+                hm.put(holder.subjectName.getText().toString(), grade);
+        }
 
     }
 

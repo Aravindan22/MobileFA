@@ -33,6 +33,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
 
+    private Handler handler;
+    private ProgressDialog progressDialog;
+    private Context context;
+
+
 
     protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
         JSONObject jsonObject = new JSONObject();
@@ -52,6 +57,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
         final int sem = b.getInt("sem");
         final int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
+
+        DataHolder.getInstance().setType(type_of_xam);
 
         //get Array from api and create objects
 
@@ -84,7 +91,10 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 }
 
                 Log.d("subsss: ",subjectsArrayList.toString());
-                adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+                if(type_of_xam == "cie")
+                    adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+                else
+                    adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark_sem, subjectsArrayList);
 
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 mRecylcerView.setLayoutManager(mLayoutManager);
@@ -161,10 +171,28 @@ public class subjectMarksUpdation extends AppCompatActivity {
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
     }
+
+
     private ArrayList<Subjects> getData(final int sem){
         final ArrayList<Subjects> subjectList = new ArrayList<>();
 
         return subjectList;
+    }
+
+    public static class DataHolder {
+        protected String type;
+        protected String getType() {
+            return type;
+        }
+        protected void setType(String data) {
+            this.type = data;
+        }
+
+        protected static final DataHolder holder = new DataHolder();
+        protected static DataHolder getInstance() {
+            return holder;
+        }
+
     }
 
     @Override
