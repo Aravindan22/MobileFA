@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
-
     <TextView
         android:id="@+id/text_view_subject_name_adapter"
         android:layout_width="210dp"
@@ -17,6 +16,7 @@
         android:textSize="15sp"
 
         />
+
 
     <EditText
         android:id="@+id/edittext_mark_adapter"

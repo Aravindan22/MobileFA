@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //startActivity(new Intent(this, ChoosingActivity.class));
+        wakeBackend();
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
             Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
             startActivity(new Intent(this, ChoosingActivity.class));
@@ -112,7 +113,19 @@ public class MainActivity extends AppCompatActivity {
             MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
         }
     }
+    private void wakeBackend(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+    }
     private void getDetails() {
         fetchData f = new fetchData();
         f.getCreds(regno, getApplicationContext());
