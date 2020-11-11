@@ -136,8 +136,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                                 HashMap<String, String> params = new HashMap<>();
                                 params.put("type",type_of_xam);
-                                params.put("semester", String.valueOf(sem));
-                                params.put("num",String.valueOf(cie));
+                                params.put("semester", String.valueOf(sem+1));
+                                params.put("num",String.valueOf(cie+1));
                                 params.put("submarks",jsonObject.toString());
                                 params.put("regno",String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                                 return params;
