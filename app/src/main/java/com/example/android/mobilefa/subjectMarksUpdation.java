@@ -108,9 +108,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
                         StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                if (response == "Subjects and marks Updated") {
+                                if (response.equals("Subjects and marks Updated")) {
                                     SubjectListAdapter.clearHashMap();
                                     Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                    finish();
                                 }
                                 else {
                                     Log.d("Response",response);
@@ -137,16 +139,13 @@ public class subjectMarksUpdation extends AppCompatActivity {
                                 params.put("semester", String.valueOf(sem));
                                 params.put("num",String.valueOf(cie));
                                 params.put("submarks",jsonObject.toString());
-                                params.put("regno", String.valueOf(Constants.REG_NO));
-
-
+                                params.put("regno",String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                                 return params;
                             }
                         };
                         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
-                        startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                        finish();
+
 
                     }
                 });

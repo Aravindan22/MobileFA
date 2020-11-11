@@ -128,9 +128,26 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
             });
         }
         else {
-            String grade = holder.spinner.getSelectedItem().toString();
-            if(!grade.equals("Select"))
-                hm.put(holder.subjectName.getText().toString(), grade);
+
+            final String[] grade = {""};
+            holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    grade[0] = parent.getItemAtPosition(position).toString();
+                    if(!grade[0].equals("Select")){
+                        hm.put(holder.subjectName.getText().toString(), grade[0]);
+                        Log.d("Selcted Item",grade[0]);
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
         }
 
     }
@@ -141,7 +158,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     }
     public static JSONObject getSubject(){
         JSONObject jsonObject =new JSONObject(hm);
-//        Log.d("HmToJson",jsonObject.toString());
+        Log.d("HmToJson",jsonObject.toString());
         return jsonObject;
     }
     public  static  void clearHashMap(){

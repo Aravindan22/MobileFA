@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class Constants {
-    public static int REG_NO;
+    public static  int REG_NO;
     public static String PASSWORD;
     public static String DEP;
     public static String EMAIL;
@@ -23,7 +23,8 @@ public class Constants {
     public static String WORKSHOP_URL = url + "addWorkshop";
     public static String COURSE_URL = url + "addCourse";
     public static String GENERAL_COUNSELING_URL = url + "addGeneralCounsellingData";
-    public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";//"test1";
+    public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";
+    public  static  String TESTING_URL = url+"test1";
     public static String GET_SUBJECTS = url + "getSubjects";
 
 }
