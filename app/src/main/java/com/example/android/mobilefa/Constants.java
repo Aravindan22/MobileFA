@@ -4,7 +4,9 @@ import android.util.JsonReader;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Constants {
     public static  int REG_NO;
@@ -26,5 +28,6 @@ public class Constants {
     public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";
     public  static  String TESTING_URL = url+"test1";
     public static String GET_SUBJECTS = url + "getSubjects";
+    public  static List<String> electiveList = new ArrayList<>();
 
 }

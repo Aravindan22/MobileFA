@@ -19,7 +19,16 @@
         android:scrollbars="vertical"
         android:layout_marginBottom="80dp"
         />
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note: Click Electives You Chosen"
+        android:textAllCaps="true"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="10dp"
+        android:textColor="#993333"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

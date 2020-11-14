@@ -90,6 +90,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                     Log.d("SUBJECT " +  " : " , sub);
                 }
 
+
                 Log.d("subsss: ",subjectsArrayList.toString());
                 if(type_of_xam == "cie")
                     adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);

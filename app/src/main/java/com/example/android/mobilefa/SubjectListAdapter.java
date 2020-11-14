@@ -105,49 +105,108 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         holder.subjectName.setText(sub.getSubject());
 
         if(type.equals("cie")) {
-            holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
-            holder.tvEdit.addTextChangedListener(new TextWatcher() {
+            if(sub.getSubject().contains("ELECTIVE")){
+                holder.tvEdit.setVisibility(View.GONE);
+                holder.subjectName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.tvEdit.setVisibility(View.VISIBLE);
+                        holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+                        holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
-                public void afterTextChanged(Editable s) {
+                            public void afterTextChanged(Editable s) {
 
-                    String marks = holder.tvEdit.getText().toString();
+                                String marks = holder.tvEdit.getText().toString();
 
-                    if (s.length() > 0) {
-                        Log.d("SUB Hm",hm.toString());
-                        hm.put(holder.subjectName.getText().toString(), marks);
+                                if (s.length() > 0) {
+                                    Log.d("SUB Hm",hm.toString());
+                                    hm.put(holder.subjectName.getText().toString(), marks);
+                                }
+                            }
+
+                            public void beforeTextChanged(CharSequence s, int start,
+                                                          int count, int after) {
+                            }
+
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                //subjectList.get(position).subject = s.toString();
+                            }
+                        });
                     }
-                }
+                });
+            }else{
+                holder.tvEdit.setVisibility(View.VISIBLE);
+                holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+                holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
-                public void beforeTextChanged(CharSequence s, int start,
-                                              int count, int after) {
-                }
+                    public void afterTextChanged(Editable s) {
 
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    //subjectList.get(position).subject = s.toString();
-                }
-            });
+                        String marks = holder.tvEdit.getText().toString();
+
+                        if (s.length() > 0) {
+                            Log.d("SUB Hm",hm.toString());
+                            hm.put(holder.subjectName.getText().toString(), marks);
+                        }
+                    }
+
+                    public void beforeTextChanged(CharSequence s, int start,
+                                                  int count, int after) {
+                    }
+
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        //subjectList.get(position).subject = s.toString();
+                    }
+                });
+            }
         }
         else {
+            if(sub.getSubject().contains("ELECTIVE")){
+                holder.spinner.setVisibility(View.GONE);
+                holder.subjectName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.spinner.setVisibility(View.VISIBLE);
+                        final String[] grade = {""};
+                        holder.spinner.setVisibility(View.VISIBLE);
+                        holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                grade[0] = parent.getItemAtPosition(position).toString();
+                                if(!grade[0].equals("Select")){
+                                    hm.put(holder.subjectName.getText().toString(), grade[0]);
+                                    Log.d("Selcted Item",grade[0]);
+                                }
 
-            final String[] grade = {""};
-            holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    grade[0] = parent.getItemAtPosition(position).toString();
-                    if(!grade[0].equals("Select")){
-                        hm.put(holder.subjectName.getText().toString(), grade[0]);
-                        Log.d("Selcted Item",grade[0]);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+                    }
+                });
+            }
+            else{
+                final String[] grade = {""};
+                holder.spinner.setVisibility(View.VISIBLE);
+                holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        grade[0] = parent.getItemAtPosition(position).toString();
+                        if(!grade[0].equals("Select")){
+                            hm.put(holder.subjectName.getText().toString(), grade[0]);
+                            Log.d("Selcted Item",grade[0]);
+                        }
+
                     }
 
-                }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-
+                    }
+                });
+            }
         }
 
     }
@@ -167,14 +226,12 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 }
 
     /*private  Context mContext;
-
     int mResource;
     public SubjectListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Subjects> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource=resource;
     }
-
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -184,19 +241,14 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         convertView = inflater.inflate(mResource,parent,false);
         TextView tvSubj = convertView.findViewById(R.id.text_view_subject_name_adapter);
         EditText tvEdit= convertView.findViewById(R.id.edittext_mark_adapter);
-
         tvEdit.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 50)});
         tvEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 if(s.length()>0){
@@ -205,9 +257,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                 }
             }
         });
-
-
         tvSubj.setText(sub);
         return  convertView;
     }*/
-
