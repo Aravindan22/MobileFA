@@ -1,8 +1,6 @@
 package com.example.android.mobilefa;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -15,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -98,43 +95,74 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         return new MyViewHolder(itemView);
     }
 
+    final boolean[] flag = {true, true, true, true};
+
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
 
-        Subjects sub = subjectList.get(position);
+        final Subjects sub = subjectList.get(position);
         holder.subjectName.setText(sub.getSubject());
 
         if(type.equals("cie")) {
             if(sub.getSubject().contains("ELECTIVE")){
                 holder.tvEdit.setVisibility(View.GONE);
-                holder.subjectName.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        holder.tvEdit.setVisibility(View.VISIBLE);
-                        holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
-                        holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
-                            public void afterTextChanged(Editable s) {
+                    holder.subjectName.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if((sub.getSubject().contains("ELECTIVE")) && flag[0]) {
+                                holder.tvEdit.setVisibility(View.VISIBLE);
+                                flag[0] = false;
+                            }
+                            if(sub.getSubject().contains("ELECTIVE 2") && flag[1]) {
+                                holder.tvEdit.setVisibility(View.VISIBLE);
+                                flag[1] = false;
+                            }
+                            if(sub.getSubject().contains("ELECTIVE 3") && flag[2]) {
+                                holder.tvEdit.setVisibility(View.VISIBLE);
+                                flag[2] = false;
+                            }
+                            if(sub.getSubject().contains("OPEN ELECTIVE") && flag[3]) {
+                                holder.tvEdit.setVisibility(View.VISIBLE);
+                                flag[3] = false;
+                            }
+                            holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+                            holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
-                                String marks = holder.tvEdit.getText().toString();
+                                public void afterTextChanged(Editable s) {
 
-                                if (s.length() > 0) {
-                                    Log.d("SUB Hm",hm.toString());
-                                    hm.put(holder.subjectName.getText().toString(), marks);
+                                    String marks = holder.tvEdit.getText().toString();
+
+                                    if (s.length() > 0) {
+                                        Log.d("SUB Hm", hm.toString());
+                                        hm.put(holder.subjectName.getText().toString(), marks);
+                                    }
                                 }
-                            }
 
-                            public void beforeTextChanged(CharSequence s, int start,
-                                                          int count, int after) {
-                            }
+                                public void beforeTextChanged(CharSequence s, int start,
+                                                              int count, int after) {
+                                }
 
-                            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                //subjectList.get(position).subject = s.toString();
-                            }
-                        });
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    //subjectList.get(position).subject = s.toString();
+                                }
+                            });
+                        }
+                    });
+
+                holder.subjectName.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        holder.tvEdit.setVisibility(View.GONE);
+                        if(sub.getSubject().contains("ELECTIVE"))flag[0] = true;
+                        if(sub.getSubject().contains("ELECTIVE 2"))flag[1] = true;
+                        if(sub.getSubject().contains("ELECTIVE 3"))flag[2] = true;
+                        if(sub.getSubject().contains("OPEN ELECTIVE"))flag[3] = true;
+                        return true;
                     }
                 });
-            }else{
+            }
+            else{
                 holder.tvEdit.setVisibility(View.VISIBLE);
                 holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
                 holder.tvEdit.addTextChangedListener(new TextWatcher() {
@@ -165,16 +193,30 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                 holder.subjectName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        holder.spinner.setVisibility(View.VISIBLE);
+                        if((sub.getSubject().contains("ELECTIVE")) && flag[0]) {
+                            holder.spinner.setVisibility(View.VISIBLE);
+                            flag[0] = false;
+                        }
+                        if(sub.getSubject().contains("ELECTIVE 2") && flag[1]) {
+                            holder.spinner.setVisibility(View.VISIBLE);
+                            flag[1] = false;
+                        }
+                        if(sub.getSubject().contains("ELECTIVE 3") && flag[2]) {
+                            holder.spinner.setVisibility(View.VISIBLE);
+                            flag[2] = false;
+                        }
+                        if(sub.getSubject().contains("OPEN ELECTIVE") && flag[3]) {
+                            holder.spinner.setVisibility(View.VISIBLE);
+                            flag[3] = false;
+                        }
                         final String[] grade = {""};
-                        holder.spinner.setVisibility(View.VISIBLE);
                         holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 grade[0] = parent.getItemAtPosition(position).toString();
                                 if(!grade[0].equals("Select")){
                                     hm.put(holder.subjectName.getText().toString(), grade[0]);
-                                    Log.d("Selcted Item",grade[0]);
+                                    Log.d("Selected Item",grade[0]);
                                 }
 
                             }
@@ -186,6 +228,19 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                         });
                     }
                 });
+
+                holder.subjectName.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        holder.spinner.setVisibility(View.GONE);
+                        if(sub.getSubject().contains("ELECTIVE"))flag[0] = true;
+                        if(sub.getSubject().contains("ELECTIVE 2"))flag[1] = true;
+                        if(sub.getSubject().contains("ELECTIVE 3"))flag[2] = true;
+                        if(sub.getSubject().contains("OPEN ELECTIVE"))flag[3] = true;
+                        return true;
+                    }
+                });
+
             }
             else{
                 final String[] grade = {""};

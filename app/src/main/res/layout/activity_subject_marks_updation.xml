@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Note: Click Electives You Chosen"
+        android:text="Note: Click The Electives You've Chosen"
         android:textAllCaps="true"
         android:textAlignment="center"
         android:textStyle="bold"
