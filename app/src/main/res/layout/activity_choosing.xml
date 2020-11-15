@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,12 +9,10 @@
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:orientation="vertical"
-    android:background="#deecfc"
     android:paddingLeft="40dp"
     android:paddingTop="60dp"
-    android:paddingRight="40dp">
-
-
+    android:paddingRight="40dp"
+    android:theme="@style/Background" >
 
     <TextView
         android:id="@+id/activity_register_title"
@@ -24,10 +21,8 @@
         android:text="@string/app_name"
         android:layout_gravity="center"
         android:textSize="45sp"
-        android:textColor="#000"
-        android:textStyle="bold"
         android:layout_margin="25dp"
-        android:textAllCaps="true" />
+        android:theme="@style/Heading" />
 
     <Button
         android:id="@+id/activity_choosing_cie_btn"
@@ -35,14 +30,12 @@
         android:layout_height="wrap_content"
         android:text="@string/update_cie"
         android:textAlignment="center"
-        android:background="#111d5e"
-        android:textColor="#fff"
+        android:background="@color/buttonBg"
+        android:textColor="@color/buttonText"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:padding="5dp" >
-
-    </Button>
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/activity_choosing_sem_btn"
@@ -50,14 +43,12 @@
         android:layout_height="wrap_content"
         android:text="@string/update_sem"
         android:textAlignment="center"
-        android:background="#111d5e"
-        android:textColor="#fff"
+        android:background="@color/buttonBg"
+        android:textColor="@color/buttonText"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:padding="5dp">
-
-    </Button>
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/activity_choosing_event_btn"
@@ -65,14 +56,12 @@
         android:layout_height="wrap_content"
         android:text="@string/update_event"
         android:textAlignment="center"
-        android:background="#111d5e"
-        android:textColor="#fff"
+        android:background="@color/buttonBg"
+        android:textColor="@color/buttonText"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:padding="5dp">
-
-    </Button>
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/activity_choosing_counselling_btn"
@@ -80,14 +69,12 @@
         android:layout_height="wrap_content"
         android:text="@string/gen_counselling_form"
         android:textAlignment="center"
-        android:background="#111d5e"
-        android:textColor="#fff"
+        android:background="@color/buttonBg"
+        android:textColor="@color/buttonText"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_margin="5dp"
-        android:padding="5dp">
-
-    </Button>
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/activity_choosing_logout_btn"
@@ -98,11 +85,8 @@
         android:background="@drawable/button_shape"
         android:text="@string/logout_btn"
         android:textSize="16sp"
-        android:textColor="#fff"
+        android:textColor="@color/buttonText"
         android:padding="5dp"
-        android:drawableEnd="@drawable/logoutt"
-        />
-
-
+        android:drawableEnd="@drawable/logoutt" />
 
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.example.android.mobilefa;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,19 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class GeneralCounseling extends AppCompatActivity {
+
     EditText improvement, issue, suggestion;
     Button counseling_submit;
 
@@ -47,9 +44,8 @@ public class GeneralCounseling extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(improvements) && TextUtils.isEmpty(issues) && TextUtils.isEmpty(suggestions)) {
                     flag_counselling = true;
-                    Toast.makeText(getApplicationContext(), "Please enter atleast one field!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please fill atleast one field!", Toast.LENGTH_LONG).show();
                 }
-
 
                 if(!flag_counselling) {
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.GENERAL_COUNSELING_URL, new Response.Listener<String>() {

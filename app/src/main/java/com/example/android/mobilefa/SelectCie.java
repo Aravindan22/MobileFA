@@ -2,7 +2,6 @@ package com.example.android.mobilefa;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +43,6 @@ public class SelectCie extends AppCompatActivity  {
                 i.putExtra("semester", b);
                 startActivity(i);
                 finish();
-                //startActivity(new Intent(getApplicationContext(),subjectMarksUpdation.class));
             }
         });
 

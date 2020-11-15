@@ -4,23 +4,22 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.android.mobilefa.Constants.FETCHDATA_URL;
 
 class fetchData {
+
     SharedPreferences sharedPreferences;
+
     private void storeDetails(Context context) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("LOGGED_IN", true);
@@ -82,8 +81,6 @@ class fetchData {
             }
         };
         MySingleton.getInstance(context).addToRequestQueue(request);
-
-
 
         return true;
     }

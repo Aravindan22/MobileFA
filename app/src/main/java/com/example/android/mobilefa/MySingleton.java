@@ -1,7 +1,6 @@
 package com.example.android.mobilefa;
 
 import android.content.Context;
-
 import com.android.volley.Cache;
 import com.android.volley.Network;
 import com.android.volley.Request;
@@ -12,6 +11,7 @@ import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.Volley;
 
 public class MySingleton {
+
     private static  MySingleton mySingleton;
     private RequestQueue requestQueue;
     private Context context;
@@ -30,13 +30,16 @@ public class MySingleton {
         }
         return  requestQueue;
     }
+
     public static  synchronized  MySingleton getInstance(Context context){
         if(mySingleton == null){
             mySingleton = new MySingleton(context);
         }
         return  mySingleton;
     }
+
     public  <T> void  addToRequestQueue(Request<T> request){
         requestQueue.add(request);
     }
+
 }

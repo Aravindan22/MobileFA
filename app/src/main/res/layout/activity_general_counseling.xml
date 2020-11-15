@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/apk/res-auto"
@@ -6,8 +7,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#deecfc"
-    android:padding="5dp" >
+    android:padding="5dp"
+    android:theme="@style/Background" >
 
     <TextView
         android:id="@+id/activity_general_counselling_title"
@@ -16,12 +17,9 @@
         android:text="@string/coun_title"
         android:layout_gravity="center"
         android:textSize="20sp"
-        android:textColor="#000"
-        android:textStyle="bold"
         android:layout_margin="25dp"
         android:textAlignment="center"
-        android:textAllCaps="true"/>
-
+        android:theme="@style/Heading" />
 
     <EditText
         android:id="@+id/activity_general_counselling_improvement_edittext"
@@ -34,8 +32,7 @@
         android:textSize="16sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142" />
+        android:theme="@style/EditText" />
 
     <EditText
         android:id="@+id/activity_general_counselling_issue_edittext"
@@ -48,8 +45,7 @@
         android:textSize="16sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142"/>
+        android:theme="@style/EditText"/>
 
     <EditText
         android:id="@+id/activity_general_counselling_suggestion_edittext"
@@ -62,9 +58,7 @@
         android:textSize="16sp"
         android:textAlignment="center"
         android:layout_margin="5dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142"/>
-
+        android:theme="@style/EditText"/>
 
     <Button
         android:id="@+id/activity_general_counselling_submit_button"
@@ -78,8 +72,6 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:background="@drawable/button_shape"
-        android:textColor="#fff"/>
-
-
+        android:textColor="@color/buttonText" />
 
 </LinearLayout>

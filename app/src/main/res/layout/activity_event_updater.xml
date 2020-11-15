@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,10 +12,9 @@
     android:paddingRight="16dp"
     android:paddingTop="100dp"
     android:paddingBottom="2dp"
-    android:background="#deecfc"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-     >
+    android:theme="@style/Background" >
 
     <TextView
         android:id="@+id/activity_event_title_textview"
@@ -25,42 +24,40 @@
         android:layout_margin="25dp"
         android:text="@string/event_title"
         android:textAlignment="center"
-        android:textColor="#000"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:theme="@style/Heading" />
 
         <Button
             android:id="@+id/activity_event_workshop_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#111d5e"
-            android:textColor="#fff"
+            android:background="@color/buttonBg"
+            android:textColor="@color/buttonText"
             android:text="@string/workshop_button"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:layout_margin="10dp"/>
-
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/activity_event_course_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#111d5e"
-            android:textColor="#fff"
+            android:background="@color/buttonBg"
+            android:textColor="@color/buttonText"
             android:text="@string/course_button"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
 
         <Button
             android:id="@+id/activity_event_event_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#111d5e"
-            android:textColor="#fff"
+            android:background="@color/buttonBg"
+            android:textColor="@color/buttonText"
             android:text="@string/event_button"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
 
 </LinearLayout>

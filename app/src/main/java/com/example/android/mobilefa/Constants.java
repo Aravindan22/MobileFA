@@ -1,14 +1,10 @@
 package com.example.android.mobilefa;
 
-import android.util.JsonReader;
-
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Constants {
+
     public static  int REG_NO;
     public static String PASSWORD;
     public static String DEP;

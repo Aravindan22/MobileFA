@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +9,7 @@
     tools:context=".SelectCie"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="#deecfc">
+    android:theme="@style/Background" >
 
     <TextView
         android:id="@+id/activity_select_cie_semTitle"
@@ -18,19 +19,14 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="#000"
-        android:textStyle="bold"
         android:layout_margin="15dp"
-        android:textAllCaps="true" />
+        android:theme="@style/Heading" />
 
     <NumberPicker
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:id="@+id/activity_select_cie_semSpin"
-        android:solidColor="#b9ceeb">
-
-
-    </NumberPicker>
+        android:solidColor="#b9ceeb" />
 
     <TextView
         android:id="@+id/activity_select_cie_title"
@@ -40,17 +36,14 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:textAlignment="center"
-        android:textColor="#000"
-        android:textStyle="bold"
         android:layout_margin="15dp"
-        android:textAllCaps="true" />
+        android:theme="@style/Heading" />
 
     <NumberPicker
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:id="@+id/activity_select_cie_cieSpin"
         android:solidColor="#b9ceeb" />
-
 
     <Button
         android:id="@+id/activity_select_cie_submit_button"
@@ -61,11 +54,8 @@
         android:padding="10dp"
         android:text="@string/select_cie_submit"
         android:gravity="center"
-        android:textColor="#fff"
+        android:textColor="@color/buttonText"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
-
-
+        android:textStyle="bold" />
 
 </LinearLayout>

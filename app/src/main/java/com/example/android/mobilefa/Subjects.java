@@ -14,4 +14,5 @@ public class Subjects {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
 }

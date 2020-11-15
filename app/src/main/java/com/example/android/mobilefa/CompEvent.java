@@ -5,21 +5,19 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +46,9 @@ public class CompEvent extends AppCompatActivity {
         prize_won = findViewById(R.id.activity_event_comp_prize);
         event_submit = findViewById(R.id.activity_event_comp_submit_button);
 
+        ArrayAdapter<CharSequence> prizeAdapter = ArrayAdapter.createFromResource(this, R.array.prize_spin, R.layout.spinner_item);
+        prizeAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+        prize_won.setAdapter(prizeAdapter);
 
         event_submit.setOnClickListener(new View.OnClickListener() {
 
@@ -63,13 +64,13 @@ public class CompEvent extends AppCompatActivity {
                 final boolean flag_eventDate = Empty(eventDate, date_attended);
                 final boolean flag_organizationName = Empty(organizationName, organization);
                 boolean flag_eventPrize = false;
+
                 if(eventPrize.equals("Select")) {
                     ((TextView)prize_won.getSelectedView()).setError("Please select one!");
                     flag_eventPrize = true;
                 }
 
                 if(!flag_eventName && !flag_eventDate && !flag_organizationName && !flag_eventPrize) {
-
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -83,11 +84,8 @@ public class CompEvent extends AppCompatActivity {
                             Log.d("COMPETITION_EVENT ERROR", error.toString());
                         }
                     }) {
-
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
-
-
                             HashMap<String, String> params = new HashMap<>();
                             params.put("regno", String.valueOf(Constants.REG_NO));
                             params.put("eventName", eventName);

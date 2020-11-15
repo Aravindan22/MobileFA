@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,7 +10,7 @@
     tools:context=".SelectSem"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="#deecfc" >
+    android:theme="@style/Background" >
 
     <TextView
         android:id="@+id/activity_select_sem_semTitle"
@@ -19,19 +20,14 @@
         android:layout_gravity="center"
         android:textSize="40sp"
         android:textAlignment="center"
-        android:textColor="#000"
-        android:textStyle="bold"
         android:layout_margin="25dp"
-        android:textAllCaps="true" />
+        android:theme="@style/Heading" />
 
     <NumberPicker
         android:layout_width="170dp"
         android:layout_height="200dp"
         android:id="@+id/activity_select_sem_semSpin"
-        android:solidColor="#b9ceeb">
-
-    </NumberPicker>
-
+        android:solidColor="#b9ceeb" />
 
     <Button
         android:id="@+id/activity_select_sem_submit_button"
@@ -42,7 +38,7 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/select_sem_submit"
-        android:textColor="#fff"
+        android:textColor="@color/buttonText"
         android:textSize="25sp"
         android:textStyle="bold" />
 

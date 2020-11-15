@@ -1,5 +1,9 @@
 <resources>
+
+    <!-- Title -->
     <string name="app_name">Mobile FA</string>
+
+    <!-- Register Activity -->
     <string name="reg_no">REGISTER NUMBER</string>
     <string name="name">NAME</string>
     <string name="email_id">EMAIL ID</string>
@@ -12,6 +16,7 @@
         <item>3</item>
         <item>4</item>
     </string-array>
+    <string name="section">SECTION</string>
     <string-array name="section_spin">
         <item>Select</item>
         <item>A</item>
@@ -19,59 +24,34 @@
         <item>C</item>
         <item>D</item>
     </string-array>
-    <string name="section">SECTION</string>
     <string name="password">PASSWORD</string>
-    <string name="login">LOGIN</string>
-    <string name="acc">New User? Register</string>
     <string name="reg">REGISTER</string>
     <string name="ac">Already have an account? Login</string>
+
+    <!-- Login Activity -->
+    <string name="login">LOGIN</string>
+    <string name="acc">New User? Register</string>
     <string name="submit">SUBMIT</string>
-    <string name="event_title">UPDATE EVENTS</string>
-    <string name="coun_title">GENERAL COUNSELLING FORM</string>
-    <string name="imp">Enter any improvements made</string>
-    <string name="iss">Enter any issues you face</string>
-    <string name="sug">Enter the suggestions given</string>
+
+    <!-- Choosing Activity -->
     <string name="update_cie">UPDATE CIE MARKS</string>
     <string name="update_sem">UPDATE SEMESTER MARKS</string>
     <string name="update_event">UPDATE EVENTS PARTICIPATED</string>
     <string name="gen_counselling_form">GENERAL COUNSELLING FORM</string>
 
-    <string name="select_sem">SELECT SEMESTER</string>
+    <!-- Logout -->
+    <string name="logout_btn">LOGOUT\u0020</string>
 
+    <!-- Select Cie Activity -->
+    <string name="select_cie">SELECT CIE</string>
+    <string name="select_cie_submit">SUBMIT</string>
+
+    <!-- Select Semester Activity -->
+    <string name="select_sem">SELECT SEMESTER</string>
     <string name="select_sem_submit">SUBMIT</string>
 
-    <string-array name="prize_spin">
-        <item>Select</item>
-        <item>I</item>
-        <item>II</item>
-        <item>III</item>
-        <item>Participation</item>
-    </string-array>
-
-    <string name="event_button">EVENT PARTICIPATED</string>
-    <string name="workshop_button">WORKSHOP ATTENDED</string>
-    <string name="course_button">COURSE COMPLETED</string>
-    <string name="workshop_title">Enter info about the workshop attended</string>
-    <string name="workshop_topic">WORKSHOP TOPIC</string>
-    <string name="workshop_clg">COLLEGE NAME</string>
-    <string name="workshop_date">DATE ATTENDED</string>
-    <string name="workshop_submit">SUBMIT</string>
-    <string name="course_title">Enter info about the online course completed</string>
-    <string name="course_name">SUBJECT NAME</string>
-    <string name="course_org">ORGANIZATION NAME</string>
-    <string name="course_mark">MARKS OBTAINED</string>
-    <string name="course_submit">SUBMIT</string>
-    <string name="comp_title">Enter info about the competition/event participated</string>
-    <string name="comp_submit">SUBMIT</string>
-    <string name="comp_name">EVENT NAME</string>
-    <string name="comp_clg">COLLEGE NAME</string>
-    <string name="comp_date">DATE ATTENDED</string>
-    <string name="comp_prize">PRIZE WON</string>
-    <string name="select_cie_submit">SUBMIT</string>
-    <string name="select_cie">SELECT CIE</string>
-
-    <string name="subject_marks_submit">SUBMIT</string>
-
+    <!-- Subject List Adapter Activity -->
+    <string name="loading">Loading...</string>
     <string-array name="spinner_grade">
         <item>Select</item>
         <item>O</item>
@@ -82,8 +62,48 @@
         <item>RA</item>
     </string-array>
 
-    <string name="laoding">Loading...</string>
-    <string name="logout_btn">LOGOUT\u0020</string>
+    <!-- Update Subject Marks Activity -->
+    <string name="subject_marks_submit">SUBMIT</string>
 
+    <!-- Update Event Activity -->
+    <string name="event_title">UPDATE EVENTS</string>
+    <string name="workshop_button">WORKSHOP ATTENDED</string>
+    <string name="course_button">COURSE COMPLETED</string>
+    <string name="event_button">EVENT PARTICIPATED</string>
+
+    <!--  Workshop Activity -->
+    <string name="workshop_title">Enter info about the workshop attended</string>
+    <string name="workshop_topic">WORKSHOP TOPIC</string>
+    <string name="workshop_clg">COLLEGE NAME</string>
+    <string name="workshop_date">DATE ATTENDED</string>
+    <string name="workshop_submit">SUBMIT</string>
+
+    <!-- Course Activity -->
+    <string name="course_title">Enter info about the online course completed</string>
+    <string name="course_name">SUBJECT NAME</string>
+    <string name="course_org">ORGANIZATION NAME</string>
+    <string name="course_mark">MARKS OBTAINED</string>
+    <string name="course_submit">SUBMIT</string>
+
+    <!-- Competition Activity -->
+    <string name="comp_title">Enter info about the competition/event participated</string>
+    <string name="comp_name">EVENT NAME</string>
+    <string name="comp_clg">COLLEGE NAME</string>
+    <string name="comp_date">DATE ATTENDED</string>
+    <string name="comp_prize">PRIZE WON</string>
+    <string-array name="prize_spin">
+        <item>Select</item>
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>Participation</item>
+    </string-array>
+    <string name="comp_submit">SUBMIT</string>
+
+    <!-- General Counselling Activity -->
+    <string name="coun_title">GENERAL COUNSELLING FORM</string>
+    <string name="imp">Enter any improvements made</string>
+    <string name="iss">Enter any issues you face</string>
+    <string name="sug">Enter the suggestions given</string>
 
 </resources>

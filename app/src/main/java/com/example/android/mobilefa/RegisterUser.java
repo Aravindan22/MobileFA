@@ -7,30 +7,32 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
+
     EditText mname, mregno , mpassw , mdep, memail;
     Button btn;
     Spinner msection, myear;
     TextView mlogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+
         mregno =  findViewById(R.id.activity_register_regno_edittext);
         mpassw = findViewById(R.id.activity_register_password_edittext);
         mdep = findViewById(R.id.activity_register_dept_edittext);
@@ -40,6 +42,15 @@ public class RegisterUser extends AppCompatActivity {
         mlogin = findViewById(R.id.activity_register_loginacc_textview);
         myear = findViewById(R.id.activity_register_year);
         msection = findViewById(R.id.activity_register_section);
+
+        ArrayAdapter<CharSequence> yearAdapter = ArrayAdapter.createFromResource(this, R.array.year_spin, R.layout.spinner_item);
+        yearAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+        myear.setAdapter(yearAdapter);
+
+        ArrayAdapter<CharSequence> sectionAdapter = ArrayAdapter.createFromResource(this, R.array.section_spin, R.layout.spinner_item);
+        sectionAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+        msection.setAdapter(sectionAdapter);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,4 +1,5 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -13,5 +14,33 @@
         <item name="colorPrimary">#303960</item>
 
     </style>
-    
+
+    <!-- Body Theme -->
+
+    <style name="Background" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/bodyBg</item>
+    </style>
+
+    <!-- EditText Theme -->
+
+    <style name="EditText" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:editTextBackground">@color/editTextBg</item>
+        <item name="android:textColorHint">@color/editTextHint</item>
+    </style>
+
+    <!-- TextView Theme -->
+
+    <style name="TextView" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/textViewColor</item>
+        <item name="android:background">@color/textViewBg</item>
+    </style>
+
+    <!-- Heading Theme -->
+
+    <style name="Heading" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/headingText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

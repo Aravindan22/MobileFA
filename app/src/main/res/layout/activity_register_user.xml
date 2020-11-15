@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,9 +7,9 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#deecfc"
     android:padding="5dp"
-    tools:context=".MainActivity">
+    android:theme="@style/Background"
+    tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/activity_register_title"
@@ -17,10 +18,8 @@
         android:text="@string/app_name"
         android:layout_gravity="center"
         android:textSize="35sp"
-        android:textColor="#5d1451"
-        android:textStyle="bold"
         android:layout_margin="7dp"
-        android:textAllCaps="true" />
+        android:theme="@style/Heading" />
 
     <EditText
         android:layout_width="match_parent"
@@ -30,9 +29,7 @@
         android:id="@+id/activity_register_regno_edittext"
         android:inputType="number"
         android:layout_margin="7dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142"
-        />
+        android:theme="@style/EditText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -42,8 +39,7 @@
         android:id="@+id/activity_register_name_edittext"
         android:inputType="text"
         android:layout_margin="7dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142" />
+        android:theme="@style/EditText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -53,9 +49,7 @@
         android:id="@+id/activity_register_emailid_edittext"
         android:inputType="text"
         android:layout_margin="7dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142" />
-
+        android:theme="@style/EditText" />
 
     <EditText
         android:layout_width="match_parent"
@@ -65,13 +59,11 @@
         android:id="@+id/activity_register_dept_edittext"
         android:inputType="text"
         android:layout_margin="7dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142"/>
+        android:theme="@style/EditText" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/activity_register_year_textview"
@@ -82,8 +74,7 @@
             android:text="@string/year"
             android:textAlignment="center"
             android:layout_margin="7dp"
-            android:background="#87a8d0"
-            android:textColor="#233142" />
+            android:theme="@style/TextView" />
 
         <Spinner
             android:id="@+id/activity_register_year"
@@ -92,16 +83,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@id/activity_register_year_textview"
-            android:background="@android:drawable/btn_dropdown"
-            android:entries="@array/year_spin"
-            ></Spinner>
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:entries="@array/year_spin" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/activity_register_section_textview"
@@ -112,8 +101,7 @@
             android:text="@string/section"
             android:textAlignment="center"
             android:layout_margin="7dp"
-            android:background="#87a8d0"
-            android:textColor="#233142"/>
+            android:theme="@style/TextView" />
 
         <Spinner
             android:id="@+id/activity_register_section"
@@ -122,9 +110,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginEnd="8dp"
             android:layout_toRightOf="@id/activity_register_section_textview"
-            android:background="@android:drawable/btn_dropdown"
-            android:entries="@array/section_spin"
-            ></Spinner>
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:entries="@array/section_spin" />
 
     </RelativeLayout>
 
@@ -136,8 +123,7 @@
         android:id="@+id/activity_register_password_edittext"
         android:inputType="textPassword"
         android:layout_margin="7dp"
-        android:background="#b9ceeb"
-        android:textColorHint="#233142"/>
+        android:theme="@style/EditText" />
 
     <Button
         android:layout_width="wrap_content"
@@ -150,7 +136,7 @@
         android:textStyle="bold"
         android:id="@+id/activity_register_register_button"
         android:background="@drawable/button_shape"
-        android:textColor="#fff" />
+        android:textColor="@color/buttonText" />
 
     <TextView
         android:layout_width="match_parent"
@@ -159,6 +145,6 @@
         android:id="@+id/activity_register_loginacc_textview"
         android:layout_margin="5dp"
         android:textColor="#233142"
-        android:gravity="end"/>
+        android:gravity="end" />
 
 </LinearLayout>

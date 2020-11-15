@@ -10,15 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +49,9 @@ class InputFilterMinMax implements InputFilter {
 public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.MyViewHolder> {
 
     List<Subjects> subjectList;
-    static HashMap<String ,String>hm = new HashMap<>();
+    static HashMap<String, String>hm = new HashMap<>();
+
+    public ArrayAdapter<CharSequence> semesterAdapter;
 
     public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
         this.subjectList = subjectsArrayList;
@@ -68,6 +68,10 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
             subjectName = view.findViewById(R.id.text_view_subject_name_adapter);
             tvEdit = view.findViewById(R.id.edittext_mark_adapter);
             spinner = view.findViewById(R.id.spinner_sem_adapter);
+
+            semesterAdapter = ArrayAdapter.createFromResource(view.getContext(), R.array.spinner_grade, R.layout.spinner_item);
+            semesterAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
+
         }
     }
 
@@ -126,13 +130,13 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                                 holder.tvEdit.setVisibility(View.VISIBLE);
                                 flag[3] = false;
                             }
+
                             holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
                             holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
                                 public void afterTextChanged(Editable s) {
 
                                     String marks = holder.tvEdit.getText().toString();
-
                                     if (s.length() > 0) {
                                         Log.d("SUB Hm", hm.toString());
                                         hm.put(holder.subjectName.getText().toString(), marks);
@@ -144,7 +148,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                                 }
 
                                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                    //subjectList.get(position).subject = s.toString();
                                 }
                             });
                         }
@@ -154,10 +157,11 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     @Override
                     public boolean onLongClick(View view) {
                         holder.tvEdit.setVisibility(View.GONE);
-                        if(sub.getSubject().contains("ELECTIVE"))flag[0] = true;
-                        if(sub.getSubject().contains("ELECTIVE 2"))flag[1] = true;
-                        if(sub.getSubject().contains("ELECTIVE 3"))flag[2] = true;
-                        if(sub.getSubject().contains("OPEN ELECTIVE"))flag[3] = true;
+
+                        if(sub.getSubject().contains("ELECTIVE")) flag[0] = true;
+                        if(sub.getSubject().contains("ELECTIVE 2")) flag[1] = true;
+                        if(sub.getSubject().contains("ELECTIVE 3")) flag[2] = true;
+                        if(sub.getSubject().contains("OPEN ELECTIVE")) flag[3] = true;
                         return true;
                     }
                 });
@@ -165,12 +169,12 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
             else{
                 holder.tvEdit.setVisibility(View.VISIBLE);
                 holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
+
                 holder.tvEdit.addTextChangedListener(new TextWatcher() {
 
                     public void afterTextChanged(Editable s) {
 
                         String marks = holder.tvEdit.getText().toString();
-
                         if (s.length() > 0) {
                             Log.d("SUB Hm",hm.toString());
                             hm.put(holder.subjectName.getText().toString(), marks);
@@ -182,14 +186,17 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     }
 
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        //subjectList.get(position).subject = s.toString();
+
                     }
                 });
             }
         }
         else {
+            holder.spinner.setAdapter(semesterAdapter);
+
             if(sub.getSubject().contains("ELECTIVE")){
                 holder.spinner.setVisibility(View.GONE);
+
                 holder.subjectName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -209,7 +216,9 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                             holder.spinner.setVisibility(View.VISIBLE);
                             flag[3] = false;
                         }
+
                         final String[] grade = {""};
+
                         holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -223,7 +232,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
                             @Override
                             public void onNothingSelected(AdapterView<?> parent) {
-
                             }
                         });
                     }
@@ -233,10 +241,11 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     @Override
                     public boolean onLongClick(View view) {
                         holder.spinner.setVisibility(View.GONE);
-                        if(sub.getSubject().contains("ELECTIVE"))flag[0] = true;
-                        if(sub.getSubject().contains("ELECTIVE 2"))flag[1] = true;
-                        if(sub.getSubject().contains("ELECTIVE 3"))flag[2] = true;
-                        if(sub.getSubject().contains("OPEN ELECTIVE"))flag[3] = true;
+
+                        if(sub.getSubject().contains("ELECTIVE")) flag[0] = true;
+                        if(sub.getSubject().contains("ELECTIVE 2")) flag[1] = true;
+                        if(sub.getSubject().contains("ELECTIVE 3")) flag[2] = true;
+                        if(sub.getSubject().contains("OPEN ELECTIVE")) flag[3] = true;
                         return true;
                     }
                 });
@@ -245,6 +254,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
             else{
                 final String[] grade = {""};
                 holder.spinner.setVisibility(View.VISIBLE);
+
                 holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -258,7 +268,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
-
                     }
                 });
             }
@@ -270,48 +279,14 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     public int getItemCount() {
         return subjectList.size();
     }
+
     public static JSONObject getSubject(){
         JSONObject jsonObject =new JSONObject(hm);
         Log.d("HmToJson",jsonObject.toString());
         return jsonObject;
     }
+
     public  static  void clearHashMap(){
         hm.clear();
     }
 }
-
-    /*private  Context mContext;
-    int mResource;
-    public SubjectListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Subjects> objects) {
-        super(context, resource, objects);
-        mContext = context;
-        mResource=resource;
-    }
-    @NonNull
-    @Override
-    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String sub = getItem(position).getSubject();
-        Subjects subject = new Subjects(sub);
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        convertView = inflater.inflate(mResource,parent,false);
-        TextView tvSubj = convertView.findViewById(R.id.text_view_subject_name_adapter);
-        EditText tvEdit= convertView.findViewById(R.id.edittext_mark_adapter);
-        tvEdit.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 50)});
-        tvEdit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.length()>0){
-                    Constants.subjectandmark.put(getItem(position).getSubject(),Integer.parseInt(s.toString()));
-                    Toast.makeText(mContext, String.valueOf(position)+";;;", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        tvSubj.setText(sub);
-        return  convertView;
-    }*/

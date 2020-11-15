@@ -11,19 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
     Button btn;
     String regno;
     EditText mregno, mpassw;
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //startActivity(new Intent(this, ChoosingActivity.class));
         wakeBackend();
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
             Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
@@ -91,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     } else {
                         Toast.makeText(MainActivity.this, "Invalid username and password", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                         Log.d("Not Crt", response);
                     }
                 }
@@ -113,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
         }
     }
+
     private void wakeBackend(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.url, new Response.Listener<String>() {
             @Override
@@ -126,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void getDetails() {
         fetchData f = new fetchData();
         f.getCreds(regno, getApplicationContext());

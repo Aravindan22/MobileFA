@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <color name="colorAccent">#bbe1fa</color>
+
+    <color name="bodyBg">#deecfc</color>
+
+    <color name="headingText">#5d1451</color>
+
+    <color name="editTextHint">#233142</color>
+    <color name="editTextBg">#b9ceeb</color>
+
+    <color name="textViewColor">#233142</color>
+    <color name="textViewBg">#87a8d0</color>
+
+    <color name="buttonText">#fff</color>
+    <color name="buttonBg">#111d5e</color>
+
 </resources>

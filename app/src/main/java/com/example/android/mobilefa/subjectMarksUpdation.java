@@ -3,7 +3,6 @@ package com.example.android.mobilefa;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,31 +12,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class subjectMarksUpdation extends AppCompatActivity {
+
     RecyclerView mRecylcerView;
     Button btn;
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
-
-    private Handler handler;
-    private ProgressDialog progressDialog;
-    private Context context;
-
-
 
     protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
         JSONObject jsonObject = new JSONObject();
@@ -45,13 +36,16 @@ public class subjectMarksUpdation extends AppCompatActivity {
             jsonObject.put(sub,new Integer(hm.get(sub)));
         }return jsonObject;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         final ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
 
         super.onCreate(savedInstanceState);
+
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("semester");
         final int sem = b.getInt("sem");
@@ -61,7 +55,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
         DataHolder.getInstance().setType(type_of_xam);
 
         //get Array from api and create objects
-
         final ArrayList<Subjects> subjectsArrayList = new ArrayList<>();
 
         progressDialog.startProgress();
@@ -74,13 +67,14 @@ public class subjectMarksUpdation extends AppCompatActivity {
         }, 1500);
 
         StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_SUBJECTS, new Response.Listener<String>() {
-            @Override
 
+            @Override
             public void onResponse(String response) {
 
                 setContentView(R.layout.activity_subject_marks_updation);
                 mRecylcerView = findViewById(R.id.list_view_subject_marks);
                 btn = findViewById(R.id.btn_subject_marks_updation);
+
                 //Get response, convert to arrays and return
                 Log.d("SUBJECT DATA: ",response);
                 String[] S = response.split(",");
@@ -90,8 +84,8 @@ public class subjectMarksUpdation extends AppCompatActivity {
                     Log.d("SUBJECT " +  " : " , sub);
                 }
 
-
                 Log.d("subsss: ",subjectsArrayList.toString());
+
                 if(type_of_xam == "cie")
                     adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
                 else
@@ -105,7 +99,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-
                         StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -133,6 +126,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+
                                 Log.d("SUBJECT & MARK JSONED ",jsonObject.toString());
 
                                 HashMap<String, String> params = new HashMap<>();
@@ -144,14 +138,10 @@ public class subjectMarksUpdation extends AppCompatActivity {
                                 return params;
                             }
                         };
+
                         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-
-
-
                     }
                 });
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -159,6 +149,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 Log.d("ERROR", error.toString());
             }
         }) {
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
@@ -168,18 +159,18 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 return params;
             }
         };
+
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
     }
 
-
     private ArrayList<Subjects> getData(final int sem){
         final ArrayList<Subjects> subjectList = new ArrayList<>();
-
         return subjectList;
     }
 
     public static class DataHolder {
+
         protected String type;
         protected String getType() {
             return type;

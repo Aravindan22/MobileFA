@@ -5,11 +5,11 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 
 class ProgressDialog {
+
     protected Activity progressActivity;
     protected AlertDialog alertDialog;
 
     ProgressDialog(Activity activity) {
-
         progressActivity = activity;
     }
 
@@ -28,4 +28,5 @@ class ProgressDialog {
     void dismissProgress() {
         alertDialog.dismiss();
     }
+
 }
