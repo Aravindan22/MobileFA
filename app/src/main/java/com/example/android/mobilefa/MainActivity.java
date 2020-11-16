@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mReg;
     SharedPreferences sharedPreferences;
 
-    final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+    ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,4 +141,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismissProgress();
+            progressDialog = null;
+        }
+    }
 }
