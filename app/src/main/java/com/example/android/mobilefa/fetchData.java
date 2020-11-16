@@ -32,8 +32,6 @@ class fetchData {
         editor.putString("PASSWORD", Constants.PASSWORD);
         editor.commit();
 
-        Toast.makeText(context, String.valueOf(sharedPreferences.getString("EMAIL","")), Toast.LENGTH_SHORT).show();
-
     }
 
     public boolean getCreds(final String regno, final Context context) {
@@ -44,13 +42,13 @@ class fetchData {
                 try {
 
                     JSONObject jsonObject = new JSONObject(response);
-                    Log.d("Response Fetch Data||{}",
-                            jsonObject.getInt("reg_no")+"::::::" +
-                                    jsonObject.getString("password")+"::::::"+
-                                    jsonObject.getString("dept")+"::::::"+
-                                    jsonObject.getString("mail")+"::::::"+
-                                    jsonObject.getString("name")+"::::::"+
-                                    jsonObject.getInt("year")+"::::::"+
+                    Log.d("Response Fetch Data",
+                            jsonObject.getInt("reg_no") + ", " +
+                                    jsonObject.getString("password") + ", " +
+                                    jsonObject.getString("dept") + ", " +
+                                    jsonObject.getString("mail") + ", " +
+                                    jsonObject.getString("name") + ", " +
+                                    jsonObject.getInt("year") + ", " +
                                     jsonObject.getString("section")
                             );
                     Constants.REG_NO = jsonObject.getInt("reg_no");
@@ -60,7 +58,7 @@ class fetchData {
                     Constants.NAME = jsonObject.getString("name");
                     Constants.YEAR = jsonObject.getInt("year");
                     Constants.SECTION = jsonObject.getString("section");
-                    Log.d("FetchData 2 Constants:" ,Constants.REG_NO+" "+Constants.PASSWORD+" "+Constants.DEP+" "+Constants.EMAIL+" "+Constants.NAME+" "+Constants.YEAR+" "+Constants.SECTION+" ");
+                    //Log.d("FetchData 2 Constants:" ,Constants.REG_NO+" "+Constants.PASSWORD+" "+Constants.DEP+" "+Constants.EMAIL+" "+Constants.NAME+" "+Constants.YEAR+" "+Constants.SECTION+" ");
                     storeDetails(context);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -73,7 +71,7 @@ class fetchData {
             }
         }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 HashMap<String, String> params = new HashMap<>();
                 Log.d("Fetch Data: ",regno);
                 params.put("regno", regno);

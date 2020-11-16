@@ -37,7 +37,9 @@ class InputFilterMinMax implements InputFilter {
             int input = Integer.parseInt(dest.toString() + source.toString());
             if (isInRange(min, max, input))
                 return null;
-        } catch (NumberFormatException nfe) { }
+        } catch (NumberFormatException nfe) {
+            Log.d("Caught Exception ", String.valueOf(nfe));
+        }
         return "";
     }
 
@@ -73,10 +75,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
             semesterAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
 
         }
-    }
-
-    public SubjectListAdapter(List<Subjects> subjectList) {
-        this.subjectList = subjectList;
     }
 
     public String type = subjectMarksUpdation.DataHolder.getInstance().getType();
@@ -138,7 +136,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
                                     String marks = holder.tvEdit.getText().toString();
                                     if (s.length() > 0) {
-                                        Log.d("SUB Hm", hm.toString());
+                                        Log.d("Subject HashMap : ", hm.toString());
                                         hm.put(holder.subjectName.getText().toString(), marks);
                                     }
                                 }
@@ -158,15 +156,23 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     public boolean onLongClick(View view) {
                         holder.tvEdit.setVisibility(View.GONE);
 
-                        if(sub.getSubject().contains("ELECTIVE")) flag[0] = true;
-                        if(sub.getSubject().contains("ELECTIVE 2")) flag[1] = true;
-                        if(sub.getSubject().contains("ELECTIVE 3")) flag[2] = true;
-                        if(sub.getSubject().contains("OPEN ELECTIVE")) flag[3] = true;
+                        if(sub.getSubject().contains("ELECTIVE")) {
+                            flag[0] = true;
+                        }
+                        if(sub.getSubject().contains("ELECTIVE 2")) {
+                            flag[1] = true;
+                        }
+                        if(sub.getSubject().contains("ELECTIVE 3")) {
+                            flag[2] = true;
+                        }
+                        if(sub.getSubject().contains("OPEN ELECTIVE")) {
+                            flag[3] = true;
+                        }
                         return true;
                     }
                 });
             }
-            else{
+            else {
                 holder.tvEdit.setVisibility(View.VISIBLE);
                 holder.tvEdit.setFilters(new InputFilter[]{new InputFilterMinMax(0, 50)});
 
@@ -176,7 +182,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
                         String marks = holder.tvEdit.getText().toString();
                         if (s.length() > 0) {
-                            Log.d("SUB Hm",hm.toString());
+                            Log.d("Subject HashMap : ",hm.toString());
                             hm.put(holder.subjectName.getText().toString(), marks);
                         }
                     }
@@ -223,9 +229,9 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                 grade[0] = parent.getItemAtPosition(position).toString();
-                                if(!grade[0].equals("Select")){
+                                if(!grade[0].equals("Select")) {
                                     hm.put(holder.subjectName.getText().toString(), grade[0]);
-                                    Log.d("Selected Item",grade[0]);
+                                    Log.d("Selected Item : ", grade[0]);
                                 }
 
                             }
@@ -259,9 +265,9 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         grade[0] = parent.getItemAtPosition(position).toString();
-                        if(!grade[0].equals("Select")){
+                        if(!grade[0].equals("Select")) {
                             hm.put(holder.subjectName.getText().toString(), grade[0]);
-                            Log.d("Selcted Item",grade[0]);
+                            Log.d("Selcted Item : ", grade[0]);
                         }
 
                     }
@@ -280,9 +286,9 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
         return subjectList.size();
     }
 
-    public static JSONObject getSubject(){
+    public static JSONObject getSubject() {
         JSONObject jsonObject =new JSONObject(hm);
-        Log.d("HmToJson",jsonObject.toString());
+        Log.d("HashMap To Json ", jsonObject.toString());
         return jsonObject;
     }
 

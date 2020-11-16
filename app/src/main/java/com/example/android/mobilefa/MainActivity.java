@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     TextView mReg;
     SharedPreferences sharedPreferences;
 
+    final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +41,18 @@ public class MainActivity extends AppCompatActivity {
         mregno = findViewById(R.id.activity_main_regno_edittext);
         mpassw = findViewById(R.id.activity_main_password_edittext);
         mReg = findViewById(R.id.activity_main_newuser_textview);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.startProgress();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismissProgress();
+                    }
+                }, 1500);
                 loginUser();
             }
         });
@@ -99,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }) {
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams() {
                     HashMap<String, String> params = new HashMap<>();
                     params.put("regno", regno);
                     params.put("password", passw);

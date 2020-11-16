@@ -17,11 +17,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class subjectMarksUpdation extends AppCompatActivity {
 
@@ -29,13 +29,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
     Button btn;
     SharedPreferences sharedPreferences;
     SubjectListAdapter adapter;
-
-    protected  JSONObject hashMapToJSON(HashMap<String,Integer> hm ) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        for(String sub:hm.keySet()){
-            jsonObject.put(sub,new Integer(hm.get(sub)));
-        }return jsonObject;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +41,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("semester");
+        assert b != null;
         final int sem = b.getInt("sem");
         final int cie = b.getInt("cie");
         final String type_of_xam = b.getString("type_of_exam");
@@ -76,17 +70,17 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 btn = findViewById(R.id.btn_subject_marks_updation);
 
                 //Get response, convert to arrays and return
-                Log.d("SUBJECT DATA: ",response);
+                //Log.d("SUBJECT DATA : ", response);
                 String[] S = response.split(",");
 
                 for(String sub : S) {
                     subjectsArrayList.add(new Subjects(sub));
-                    Log.d("SUBJECT " +  " : " , sub);
                 }
 
-                Log.d("subsss: ",subjectsArrayList.toString());
+                Log.d("Subjects Array : ", subjectsArrayList.toString());
 
-                if(type_of_xam == "cie")
+                assert type_of_xam != null;
+                if(type_of_xam.equals("cie"))
                     adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
                 else
                     adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark_sem, subjectsArrayList);
@@ -104,22 +98,22 @@ public class subjectMarksUpdation extends AppCompatActivity {
                             public void onResponse(String response) {
                                 if (response.equals("Subjects and marks Updated")) {
                                     SubjectListAdapter.clearHashMap();
-                                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Marks Updated!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                                     finish();
                                 }
                                 else {
-                                    Log.d("Response",response);
+                                    Log.d("Response : ", response);
                                 }
                             }
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Log.d("ERROR . ", error.toString());
+                                Log.d("ERROR ", error.toString());
                             }
                         }) {
                             @Override
-                            protected Map<String, String> getParams() throws AuthFailureError {
+                            protected Map<String, String> getParams() {
                                 JSONObject jsonObject = null;
                                 try {
                                     jsonObject =SubjectListAdapter.getSubject();
@@ -127,14 +121,15 @@ public class subjectMarksUpdation extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                                Log.d("SUBJECT & MARK JSONED ",jsonObject.toString());
+                                assert jsonObject != null;
+                                Log.d("SUBJECT & MARK JSONED ", jsonObject.toString());
 
                                 HashMap<String, String> params = new HashMap<>();
-                                params.put("type",type_of_xam);
+                                params.put("type", type_of_xam);
                                 params.put("semester", String.valueOf(sem+1));
-                                params.put("num",String.valueOf(cie+1));
-                                params.put("submarks",jsonObject.toString());
-                                params.put("regno",String.valueOf(sharedPreferences.getInt("REG_NO",0)));
+                                params.put("num", String.valueOf(cie+1));
+                                params.put("submarks", jsonObject.toString());
+                                params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                                 return params;
                             }
                         };
@@ -151,10 +146,10 @@ public class subjectMarksUpdation extends AppCompatActivity {
         }) {
 
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("department",sharedPreferences.getString("DEP","").toLowerCase());
-                params.put("sem",String.valueOf(sem));
+                params.put("department", Objects.requireNonNull(sharedPreferences.getString("DEP", "")).toLowerCase());
+                params.put("sem", String.valueOf(sem));
                 params.put("regno", String.valueOf(Constants.REG_NO));
                 return params;
             }
@@ -162,11 +157,6 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
 
-    }
-
-    private ArrayList<Subjects> getData(final int sem){
-        final ArrayList<Subjects> subjectList = new ArrayList<>();
-        return subjectList;
     }
 
     public static class DataHolder {

@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 public class EventUpdater extends AppCompatActivity {
 
     Button workshop_btn, course_btn, comp_btn;
@@ -22,6 +24,7 @@ public class EventUpdater extends AppCompatActivity {
         workshop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Event Chosen : ", "Worskhop");
                 Intent workshopIntent = new Intent(getApplicationContext(), WorkshopEvent.class);
                 startActivity(workshopIntent);
                 finish();
@@ -31,6 +34,7 @@ public class EventUpdater extends AppCompatActivity {
         course_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Event Chosen : ", "Course");
                 Intent courseIntent = new Intent(getApplicationContext(), CourseEvent.class);
                 startActivity(courseIntent);
                 finish();
@@ -40,6 +44,7 @@ public class EventUpdater extends AppCompatActivity {
         comp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Event Chosen : ", "Competition");
                 Intent compIntent = new Intent(getApplicationContext(), CompEvent.class);
                 startActivity(compIntent);
                 finish();

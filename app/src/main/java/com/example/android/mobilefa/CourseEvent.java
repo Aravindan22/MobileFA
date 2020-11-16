@@ -57,8 +57,10 @@ public class CourseEvent extends AppCompatActivity {
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.COURSE_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if (response == "Course event Updated") {
+                            if (response.equals("Course event Updated")) {
                                 Toast.makeText(getApplicationContext(), "Course Event Updated", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                finish();
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -68,19 +70,17 @@ public class CourseEvent extends AppCompatActivity {
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
                             params.put("regno", String.valueOf(Constants.REG_NO));
                             params.put("coursename", subjectName);
                             params.put("organizationName", organizationName);
                             params.put("marks", marksObtained);
+                            Log.d("Course details : ", String.valueOf(params));
                             return params;
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-
-                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                    finish();
                 }
             }
         });

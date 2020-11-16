@@ -1,8 +1,5 @@
 package com.example.android.mobilefa;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Constants {
 
     public static  int REG_NO;
@@ -12,7 +9,6 @@ public class Constants {
     public static String NAME;
     public static int YEAR;
     public static String SECTION;
-    //private static String url = "http://10.0.2.2:3001/api/";
     public static String url = "https://woolly-joyous-pisces.glitch.me/api/";
     public static String REGISTER_URL = url + "registerUser";
     public static String LOGIN_URL = url + "loginUser";
@@ -22,8 +18,6 @@ public class Constants {
     public static String COURSE_URL = url + "addCourse";
     public static String GENERAL_COUNSELING_URL = url + "addGeneralCounsellingData";
     public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";
-    public  static  String TESTING_URL = url+"test1";
     public static String GET_SUBJECTS = url + "getSubjects";
-    public  static List<String> electiveList = new ArrayList<>();
 
 }

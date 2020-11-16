@@ -11,8 +11,4 @@ public class Subjects {
         this.subject = subject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
 }

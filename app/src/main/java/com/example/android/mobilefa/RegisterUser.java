@@ -1,7 +1,6 @@
 package com.example.android.mobilefa;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -116,23 +115,21 @@ public class RegisterUser extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     if (response.equals("Registered")) {
-                        //Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     } else {
-                        Toast.makeText(RegisterUser.this, response, Toast.LENGTH_SHORT).show();
-                        Log.d("Register error", response);
+                        Log.d("Registration error", response);
                     }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    //Toast.makeText(RegisterUser.this, error.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d("REG ERR", error.toString());
+                    Log.d("REGISTER USER ERROR", error.toString());
                 }
             }) {
 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams() {
                     HashMap<String, String> params = new HashMap<>();
 
                     params.put("regno", regno);

@@ -26,6 +26,7 @@ public class GeneralCounseling extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_counseling);
+
         improvement = findViewById(R.id.activity_general_counselling_improvement_edittext);
         issue = findViewById(R.id.activity_general_counselling_issue_edittext);
         suggestion = findViewById(R.id.activity_general_counselling_suggestion_edittext);
@@ -53,6 +54,8 @@ public class GeneralCounseling extends AppCompatActivity {
                         public void onResponse(String response) {
                             if (response.equals("General Counselling Data Filled")) {
                                 Toast.makeText(getApplicationContext(), "General counselling Done", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                finish();
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -62,19 +65,17 @@ public class GeneralCounseling extends AppCompatActivity {
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
                             params.put("reg_no", String.valueOf(Constants.REG_NO));
                             params.put("improvements", improvements);
                             params.put("issues", issues);
                             params.put("suggestions", suggestions);
+                            Log.d("General Counselling : ", String.valueOf(params));
                             return params;
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-
-                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                    finish();
                 }
             }
         });

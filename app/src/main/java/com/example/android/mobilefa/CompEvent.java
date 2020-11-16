@@ -74,8 +74,10 @@ public class CompEvent extends AppCompatActivity {
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if (response == "Event Updated") {
+                            if (response.equals("Event Updated")) {
                                 Toast.makeText(getApplicationContext(), "Event Included", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                finish();
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -85,20 +87,18 @@ public class CompEvent extends AppCompatActivity {
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
                             params.put("regno", String.valueOf(Constants.REG_NO));
                             params.put("eventName", eventName);
                             params.put("eventDate", eventDate);
                             params.put("organizationName", organizationName);
                             params.put("eventPrize", prize_won.getSelectedItem().toString());
+                            Log.d("Competition details : ", String.valueOf(params));
                             return params;
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-
-                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                    finish();
                 }
             }
         });

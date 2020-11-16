@@ -57,8 +57,10 @@ public class WorkshopEvent extends AppCompatActivity {
                     StringRequest request = new StringRequest(Request.Method.POST, Constants.WORKSHOP_URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if (response == "WorkShop event Updated") {
+                            if (response.equals("WorkShop event Updated")) {
                                 Toast.makeText(getApplicationContext(), "Workshop Included", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                finish();
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -68,19 +70,17 @@ public class WorkshopEvent extends AppCompatActivity {
                         }
                     }) {
                         @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
+                        protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
                             params.put("regno", String.valueOf(Constants.REG_NO));
                             params.put("workshopTopic", workshopTopic);
                             params.put("organizationName", organizationName);
                             params.put("workshopDate", dateAttended);
+                            Log.d("Workshop details : ", String.valueOf(params));
                             return params;
                         }
                     };
                     MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
-
-                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                    finish();
                 }
 
             }

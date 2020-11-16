@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -58,6 +59,7 @@ public class SelectCie extends AppCompatActivity  {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
             cie = picker.getValue() - 1;
+            Log.d("Cie : ", String.valueOf(cie));
         }
     };
 
@@ -65,6 +67,7 @@ public class SelectCie extends AppCompatActivity  {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
              sem = picker.getValue() - 1;
+            Log.d("Sem : ", String.valueOf(sem));
         }
     };
 
