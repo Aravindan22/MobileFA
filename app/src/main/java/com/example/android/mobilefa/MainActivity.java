@@ -143,12 +143,5 @@ public class MainActivity extends AppCompatActivity {
         Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (progressDialog != null) {
-            progressDialog.dismissProgress();
-            progressDialog = null;
-        }
-    }
+
 }

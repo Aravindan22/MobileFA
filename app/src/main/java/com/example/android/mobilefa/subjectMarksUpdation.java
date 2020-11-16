@@ -30,7 +30,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
     RecyclerView mRecylcerView;
     Button btn;
-    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences ;
     SubjectListAdapter adapter;
     ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
     @Override
@@ -39,7 +39,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
 
 
         Intent i = getIntent();
@@ -184,12 +184,5 @@ public class subjectMarksUpdation extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
         finish();
     }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (progressDialog != null) {
-            progressDialog.dismissProgress();
-            progressDialog = null;
-        }
-    }
+
 }

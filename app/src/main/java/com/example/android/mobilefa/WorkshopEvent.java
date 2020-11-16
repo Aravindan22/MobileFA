@@ -26,7 +26,7 @@ public class WorkshopEvent extends AppCompatActivity {
 
     EditText workshop_topic, organization_name, date_attended;
     Button workshop_submit;
-    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences ;
     protected boolean Empty(String s, EditText et) {
         if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
@@ -39,7 +39,7 @@ public class WorkshopEvent extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_workshop);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         workshop_topic = findViewById(R.id.activity_event_workshop_topic_edittext);
         organization_name = findViewById(R.id.activity_event_workshop_clg_edittext);
         date_attended = findViewById(R.id.activity_event_workshop_date_edittext);

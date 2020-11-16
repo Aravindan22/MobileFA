@@ -25,12 +25,12 @@ public class GeneralCounseling extends AppCompatActivity {
 
     EditText improvement, issue, suggestion;
     Button counseling_submit;
-    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_counseling);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         improvement = findViewById(R.id.activity_general_counselling_improvement_edittext);
         issue = findViewById(R.id.activity_general_counselling_issue_edittext);
         suggestion = findViewById(R.id.activity_general_counselling_suggestion_edittext);

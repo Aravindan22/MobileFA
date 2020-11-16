@@ -26,7 +26,7 @@ public class CourseEvent extends AppCompatActivity {
 
     EditText subject_name, organization_name, marks_obtained;
     Button course_submit;
-    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences ;
     protected boolean Empty(String s, EditText et) {
         if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
@@ -39,7 +39,7 @@ public class CourseEvent extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_course);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         subject_name = findViewById(R.id.activity_event_course_topic_edittext);
         organization_name = findViewById(R.id.activity_event_course_org_edittext);
         marks_obtained = findViewById(R.id.activity_event_course_marks_edittext);

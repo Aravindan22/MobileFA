@@ -30,7 +30,7 @@ public class CompEvent extends AppCompatActivity {
     EditText event_name, organization, date_attended;
     Button event_submit;
     Spinner prize_won;
-    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo",Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences ;
     protected boolean Empty(String s, EditText et) {
         if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
@@ -43,7 +43,7 @@ public class CompEvent extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_competiton);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         event_name = findViewById(R.id.activity_event_comp_topic_edittext);
         organization = findViewById(R.id.activity_event_comp_clg_edittext);
         date_attended = findViewById(R.id.activity_event_comp_date_edittext);
