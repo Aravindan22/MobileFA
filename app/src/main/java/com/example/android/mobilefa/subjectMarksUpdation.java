@@ -1,8 +1,5 @@
 package com.example.android.mobilefa;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +9,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,17 +30,17 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
     RecyclerView mRecylcerView;
     Button btn;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
     SubjectListAdapter adapter;
-
+    ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        final ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
+
 
         super.onCreate(savedInstanceState);
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
+
 
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("semester");
@@ -149,7 +153,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("department", Objects.requireNonNull(sharedPreferences.getString("DEP", "")).toLowerCase());
                 params.put("sem", String.valueOf(sem));
-                params.put("regno", String.valueOf(Constants.REG_NO));
+                params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                 return params;
             }
         };
@@ -179,5 +183,13 @@ public class subjectMarksUpdation extends AppCompatActivity {
     public void onBackPressed() {
         startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
         finish();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismissProgress();
+            progressDialog = null;
+        }
     }
 }

@@ -1,7 +1,8 @@
 package com.example.android.mobilefa;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,10 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +25,7 @@ public class GeneralCounseling extends AppCompatActivity {
 
     EditText improvement, issue, suggestion;
     Button counseling_submit;
-
+    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +71,7 @@ public class GeneralCounseling extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
-                            params.put("reg_no", String.valueOf(Constants.REG_NO));
+                            params.put("reg_no", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                             params.put("improvements", improvements);
                             params.put("issues", issues);
                             params.put("suggestions", suggestions);

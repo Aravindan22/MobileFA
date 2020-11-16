@@ -1,6 +1,8 @@
 package com.example.android.mobilefa;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,12 +13,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +30,7 @@ public class CompEvent extends AppCompatActivity {
     EditText event_name, organization, date_attended;
     Button event_submit;
     Spinner prize_won;
-
+    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo",Context.MODE_PRIVATE);
     protected boolean Empty(String s, EditText et) {
         if(TextUtils.isEmpty(s)) {
             et.setError("This field cannot be empty!");
@@ -88,7 +93,7 @@ public class CompEvent extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
-                            params.put("regno", String.valueOf(Constants.REG_NO));
+                            params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
                             params.put("eventName", eventName);
                             params.put("eventDate", eventDate);
                             params.put("organizationName", organizationName);
