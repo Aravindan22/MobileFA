@@ -33,6 +33,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
     SharedPreferences sharedPreferences ;
     SubjectListAdapter adapter;
     ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -84,9 +85,9 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                 assert type_of_xam != null;
                 if(type_of_xam.equals("cie"))
-                    adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark, subjectsArrayList);
+                    adapter = new SubjectListAdapter(subjectsArrayList);
                 else
-                    adapter = new SubjectListAdapter(getApplicationContext(), R.layout.adapter_view_layout_subject_mark_sem, subjectsArrayList);
+                    adapter = new SubjectListAdapter( subjectsArrayList);
 
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 mRecylcerView.setLayoutManager(mLayoutManager);
@@ -96,48 +97,54 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                if (response.equals("Subjects and marks Updated")) {
-                                    SubjectListAdapter.clearHashMap();
-                                    Toast.makeText(getApplicationContext(), "Marks Updated!", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-                                    finish();
-                                }
-                                else {
-                                    Log.d("Response : ", response);
-                                }
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.d("ERROR ", error.toString());
-                            }
-                        }) {
-                            @Override
-                            protected Map<String, String> getParams() {
-                                JSONObject jsonObject = null;
-                                try {
-                                    jsonObject =SubjectListAdapter.getSubject();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                        if(SubjectListAdapter.getSubject().length()>0){
 
-                                assert jsonObject != null;
-                                Log.d("SUBJECT & MARK JSONED ", jsonObject.toString());
+                            StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    if (response.equals("Subjects and marks Updated")) {
+                                        SubjectListAdapter.clearHashMap();
+                                        Toast.makeText(getApplicationContext(), "Marks Updated!", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                        finish();
+                                    }
+                                    else {
+                                        Log.d("Response : ", response);
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.d("ERROR ", error.toString());
+                                }
+                            }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+                                    JSONObject jsonObject = null;
+                                    try {
+                                        jsonObject =SubjectListAdapter.getSubject();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
 
-                                HashMap<String, String> params = new HashMap<>();
-                                params.put("type", type_of_xam);
-                                params.put("semester", String.valueOf(sem+1));
-                                params.put("num", String.valueOf(cie+1));
-                                params.put("submarks", jsonObject.toString());
-                                params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
-                                return params;
-                            }
-                        };
+                                    assert jsonObject != null;
+                                    Log.d("SUBJECT & MARK JSONED ", jsonObject.toString());
 
-                        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+                                    HashMap<String, String> params = new HashMap<>();
+                                    params.put("type", type_of_xam);
+                                    params.put("semester", String.valueOf(sem+1));
+                                    params.put("num", String.valueOf(cie+1));
+                                    params.put("submarks", jsonObject.toString());
+                                    params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
+                                    return params;
+                                }
+                            };
+
+                            MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+                        }
+                        else{
+                            Toast.makeText(subjectMarksUpdation.this, "Check All Fields", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }

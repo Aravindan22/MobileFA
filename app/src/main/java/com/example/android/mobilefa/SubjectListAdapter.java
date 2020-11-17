@@ -1,6 +1,5 @@
 package com.example.android.mobilefa;
 
-import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -14,9 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,10 +54,9 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
     List<Subjects> subjectList;
     static HashMap<String, String>hm = new HashMap<>();
-
     public ArrayAdapter<CharSequence> semesterAdapter;
 
-    public SubjectListAdapter(Context applicationContext, int adapter_view_layout_subject_mark, ArrayList<Subjects> subjectsArrayList) {
+    public SubjectListAdapter(ArrayList<Subjects> subjectsArrayList) {
         this.subjectList = subjectsArrayList;
     }
 
@@ -76,6 +77,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
         }
     }
+
 
     public String type = subjectMarksUpdation.DataHolder.getInstance().getType();
 
@@ -148,6 +150,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                                 }
                             });
+
                         }
                     });
 
