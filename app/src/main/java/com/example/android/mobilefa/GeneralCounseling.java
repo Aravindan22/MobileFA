@@ -71,10 +71,10 @@ public class GeneralCounseling extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() {
                             HashMap<String, String> params = new HashMap<>();
-                            params.put("reg_no", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
-                            params.put("improvements", improvements);
-                            params.put("issues", issues);
-                            params.put("suggestions", suggestions);
+                            params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
+                            params.put("improvement", improvements);
+                            params.put("issue", issues);
+                            params.put("suggestion", suggestions);
                             Log.d("General Counselling : ", String.valueOf(params));
                             return params;
                         }
