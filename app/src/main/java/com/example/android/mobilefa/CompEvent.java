@@ -1,5 +1,6 @@
 package com.example.android.mobilefa;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,7 +24,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class CompEvent extends AppCompatActivity {
@@ -54,13 +59,44 @@ public class CompEvent extends AppCompatActivity {
         prizeAdapter.setDropDownViewResource(R.layout.spinner_dropdown);
         prize_won.setAdapter(prizeAdapter);
 
+        final Calendar myCalendar = Calendar.getInstance();
+
+        final DatePickerDialog.OnDateSetListener eventDate = new DatePickerDialog.OnDateSetListener() {
+
+            private void updateLabel() {
+                String myFormat = "dd/MM/yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+                date_attended.setText(sdf.format(myCalendar.getTime()));
+            }
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        date_attended.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(CompEvent.this, eventDate, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         event_submit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
                 final String eventName = event_name.getText().toString();
-                final String eventDate = date_attended.getText().toString();
+                final String eventDate = date_attended.toString();
                 final String organizationName = organization.getText().toString();
                 final String eventPrize = prize_won.getSelectedItem().toString();
 

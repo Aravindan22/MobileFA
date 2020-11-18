@@ -88,14 +88,6 @@ public class RegisterUser extends AppCompatActivity {
         boolean flag_dept = Empty(dept, mdep);
         boolean flag_password = Empty(password, mpassw);
 
-        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-
-        boolean flag_strongPassword = false;
-        if(!(password.matches(pattern))) {
-            mpassw.setError("Not a strong password!");
-            flag_strongPassword = true;
-        }
-
         boolean flag_year = false;
         if(year.equals("Select")) {
             ((TextView) myear.getSelectedView()).setError("Please select one!");
@@ -108,7 +100,7 @@ public class RegisterUser extends AppCompatActivity {
             flag_section = true;
         }
 
-        if(!flag_name && !flag_regno && !flag_email && !flag_dept && !flag_password && !flag_year && !flag_section && !flag_strongPassword) {
+        if(!flag_name && !flag_regno && !flag_email && !flag_dept && !flag_password && !flag_year && !flag_section) {
 
             StringRequest request = new StringRequest(Request.Method.POST, Constants.REGISTER_URL, new Response.Listener<String>() {
                 @Override
