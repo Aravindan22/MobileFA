@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,14 +31,13 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
     RecyclerView mRecylcerView;
     Button btn;
+    TextView note;
     SharedPreferences sharedPreferences ;
     SubjectListAdapter adapter;
     ProgressDialog progressDialog = new ProgressDialog(subjectMarksUpdation.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         super.onCreate(savedInstanceState);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
@@ -72,6 +72,11 @@ public class subjectMarksUpdation extends AppCompatActivity {
                 setContentView(R.layout.activity_subject_marks_updation);
                 mRecylcerView = findViewById(R.id.list_view_subject_marks);
                 btn = findViewById(R.id.btn_subject_marks_updation);
+                note = findViewById(R.id.note_subject_marks_updation);
+
+                if(sem < 4) {
+                    note.setVisibility(View.GONE);
+                }
 
                 //Get response, convert to arrays and return
                 //Log.d("SUBJECT DATA : ", response);
@@ -97,7 +102,7 @@ public class subjectMarksUpdation extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        if(SubjectListAdapter.getSubject().length()>0){
+                        if(SubjectListAdapter.getSubject().length() > 0){
 
                             StringRequest request = new StringRequest(Request.Method.POST, Constants.SUBJECT_MARK_UPDATION_URL, new Response.Listener<String>() {
                                 @Override
