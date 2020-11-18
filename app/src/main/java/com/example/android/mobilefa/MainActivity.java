@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        wakeBackend();
         setContentView(R.layout.activity_main);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
-
         btn = findViewById(R.id.activity_main_login_button);
         mregno = findViewById(R.id.activity_main_regno_edittext);
         mpassw = findViewById(R.id.activity_main_password_edittext);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        wakeBackend();
+
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
             Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
             startActivity(new Intent(this, ChoosingActivity.class));
@@ -124,10 +124,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void wakeBackend(){
+        Log.d("Waking Backend server","");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+            Log.d("Wake response",response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 
     private void getDetails() {
