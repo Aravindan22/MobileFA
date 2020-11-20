@@ -108,6 +108,8 @@ public class RegisterUser extends AppCompatActivity {
                     if (response.equals("Registered")) {
                         Toast.makeText(RegisterUser.this, "Registered", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    } else if(response.equals("User Already Present")) {
+                        Toast.makeText(RegisterUser.this, "User Already Present!", Toast.LENGTH_LONG).show();
                     } else {
                         Log.d("Registration error", response);
                     }
