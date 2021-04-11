@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "321200725107",
+    "project_id": "mobilefa-aa96c",
+    "storage_bucket": "mobilefa-aa96c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321200725107:android:d9cf175edb81ed4b035e06",
+        "android_client_info": {
+          "package_name": "com.example.android.mobilefa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321200725107-tmkqa77gjr5990eba6o59dnb6s3845c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Vv1jU0Mv1JFUw6A9_fnIg7lgRF9YIrw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321200725107-tmkqa77gjr5990eba6o59dnb6s3845c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
