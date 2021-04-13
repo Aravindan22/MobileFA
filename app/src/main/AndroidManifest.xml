@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".subjectMarksUpdation"></activity>
+        <activity android:name=".AreaOfInterest"></activity>
+        <activity android:name=".subjectMarksUpdation" />
         <activity android:name=".SelectCie" />
         <activity android:name=".SelectSem" />
         <activity android:name=".GeneralCounseling" />
