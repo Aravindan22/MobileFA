@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -54,10 +55,13 @@ TextView aio_upload_info;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_of_interest);
+        sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
         aio_category=findViewById(R.id.activity_aoi_category_edittext);
         aio_description=findViewById(R.id.activity_aoi_description_edittext);
         aio_upload_media=findViewById(R.id.activity_aoi_uploadmedia_button);
         aio_submit_button=findViewById(R.id.activity_aoi_submit_Button);
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         aio_upload_info=findViewById(R.id.activity_aoi_upload_info);
       aio_submit_button.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -71,14 +75,19 @@ TextView aio_upload_info;
           }
       });
 
-
+aio_upload_media.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        chooseImage();
+    }
+});
     }
     private String upload(final String Category, final String Description) {
         if (filePath != null) {
             final android.app.ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("images/" +UUID.randomUUID().toString());
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -91,7 +100,7 @@ TextView aio_upload_info;
                                 public void onSuccess(Uri uri) {
                                     image_url=uri.toString();
                                     Log.e("Tuts+", "uri: " + uri.toString());
-                                    StringRequest request = new StringRequest(Request.Method.POST, Constants.EVENT_URL, new Response.Listener<String>() {
+                                    StringRequest request = new StringRequest(Request.Method.POST, Constants.AOI_URL, new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
                                             if (response.equals("Event Updated")) {

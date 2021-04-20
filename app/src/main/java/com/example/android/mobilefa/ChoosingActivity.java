@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ChoosingActivity extends AppCompatActivity {
 
-    Button cie, sem, event, counselling,btn;
+    Button cie, sem, event, counselling,btn,aio;
     Button logout;
 
     protected  void logOut() {
@@ -36,6 +36,7 @@ public class ChoosingActivity extends AppCompatActivity {
         event = findViewById(R.id.activity_choosing_event_btn);
         counselling = findViewById(R.id.activity_choosing_counselling_btn);
         logout = findViewById(R.id.activity_choosing_logout_btn);
+        aio=findViewById(R.id.activity_choosing_aio_btn);
 
         cie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +77,15 @@ public class ChoosingActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+aio.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Log.d("Activity Chosen : ", "Area of Interest");
+        Intent counselling_intent = new Intent(getApplicationContext(), AreaOfInterest.class);
+        startActivity(counselling_intent);
+        finish();
+    }
+});
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
