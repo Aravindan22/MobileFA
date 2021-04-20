@@ -103,7 +103,7 @@ TextView aio_upload_info;
                                     }, new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-                                            Log.d("COMPETITION_EVENT ERROR", error.toString());
+                                            Log.d("AIO_EVENT ERROR", error.toString());
                                         }
                                     }) {
                                         @Override
