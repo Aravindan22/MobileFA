@@ -1,8 +1,5 @@
 package com.example.android.mobilefa;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,7 +31,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class AreaOfInterest extends AppCompatActivity {
 EditText aio_category,aio_description;
@@ -62,7 +61,6 @@ TextView aio_upload_info;
         aio_submit_button=findViewById(R.id.activity_aoi_submit_Button);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        aio_upload_info=findViewById(R.id.activity_aoi_upload_info);
       aio_submit_button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -87,7 +85,7 @@ aio_upload_media.setOnClickListener(new View.OnClickListener() {
             final android.app.ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            final StorageReference ref = storageReference.child("images/" +UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("images/" + sharedPreferences.getInt("REG_NO", 0));
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -119,7 +117,7 @@ aio_upload_media.setOnClickListener(new View.OnClickListener() {
                                         protected Map<String, String> getParams() {
                                             HashMap<String, String> params = new HashMap<>();
                                             params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
-                                            params.put("Aio_Category", Category);
+                                            params.put("Aio_Category", Category.toLowerCase());
                                             params.put("Aio_Description", Description);
                                             params.put("Aio_media_image_url",image_url);
                                             Log.d("Aio details : ", String.valueOf(params));
@@ -180,4 +178,10 @@ aio_upload_media.setOnClickListener(new View.OnClickListener() {
         }
 
         }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),ChoosingActivity.class));
+        finish();
+    }
 }

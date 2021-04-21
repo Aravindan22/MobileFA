@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:text="@string/comp_title"
         android:layout_gravity="center"
-        android:textSize="20sp"
-        android:layout_margin="40dp"
+        android:textSize="15sp"
+        android:layout_margin="20dp"
         android:textAlignment="center"
         android:theme="@style/Heading" />
 

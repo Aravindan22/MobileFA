@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
@@ -12,7 +9,7 @@
     android:paddingLeft="40dp"
     android:paddingTop="60dp"
     android:paddingRight="40dp"
-    android:theme="@style/Background" >
+    android:theme="@style/Background">
 
     <TextView
         android:id="@+id/activity_register_title"
@@ -79,7 +76,7 @@
         android:id="@+id/activity_choosing_aio_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Area Of Interest"
+        android:text="AREA OF INTEREST"
         android:textAlignment="center"
         android:background="@color/buttonBg"
         android:textColor="@color/buttonText"

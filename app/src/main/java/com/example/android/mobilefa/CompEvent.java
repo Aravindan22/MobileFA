@@ -40,7 +40,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
 
 public class CompEvent extends AppCompatActivity {
 
@@ -159,7 +158,7 @@ public class CompEvent extends AppCompatActivity {
             final android.app.ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
-            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("images/" + sharedPreferences.getInt("REG_NO", 0));
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
