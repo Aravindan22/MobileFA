@@ -33,9 +33,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AreaOfInterest extends AppCompatActivity {
-EditText aio_category,aio_description;
-Button aio_upload_media,aio_submit_button;
-TextView aio_upload_info;
+EditText aoi_category,aoi_description;
+Button aoi_upload_media,aoi_submit_button;
+TextView aoi_upload_info;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     FirebaseStorage storage;
@@ -55,25 +55,27 @@ TextView aio_upload_info;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_of_interest);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
-        aio_category=findViewById(R.id.activity_aoi_category_edittext);
-        aio_description=findViewById(R.id.activity_aoi_description_edittext);
-        aio_upload_media=findViewById(R.id.activity_aoi_uploadmedia_button);
-        aio_submit_button=findViewById(R.id.activity_aoi_submit_Button);
+        aoi_category=findViewById(R.id.activity_aoi_category_edittext);
+        aoi_description=findViewById(R.id.activity_aoi_description_edittext);
+        aoi_upload_media=findViewById(R.id.activity_aoi_uploadmedia_button);
+        aoi_submit_button=findViewById(R.id.activity_aoi_submit_Button);
+        //aoi_upload_info=findViewById(R.id.activity_aoi_upload_info);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-      aio_submit_button.setOnClickListener(new View.OnClickListener() {
+
+      aoi_submit_button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              final String Category = aio_category.getText().toString().trim();
-              final String Description = aio_description.getText().toString().trim();
-              final boolean flag_Category = Empty(Category, aio_category);
-              final boolean flag_Description = Empty(Description,aio_description);
+              final String Category = aoi_category.getText().toString().trim();
+              final String Description = aoi_description.getText().toString().trim();
+              final boolean flag_Category = Empty(Category, aoi_category);
+              final boolean flag_Description = Empty(Description,aoi_description);
               if(!flag_Category && !flag_Description)
                   upload(Category,Description);
           }
       });
 
-aio_upload_media.setOnClickListener(new View.OnClickListener() {
+aoi_upload_media.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         chooseImage();
@@ -110,17 +112,17 @@ aio_upload_media.setOnClickListener(new View.OnClickListener() {
                                     }, new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-                                            Log.d("AIO_EVENT ERROR", error.toString());
+                                            Log.d("AOI_EVENT ERROR", error.toString());
                                         }
                                     }) {
                                         @Override
                                         protected Map<String, String> getParams() {
                                             HashMap<String, String> params = new HashMap<>();
                                             params.put("regno", String.valueOf(sharedPreferences.getInt("REG_NO",0)));
-                                            params.put("Aio_Category", Category.toLowerCase());
-                                            params.put("Aio_Description", Description);
-                                            params.put("Aio_media_image_url",image_url);
-                                            Log.d("Aio details : ", String.valueOf(params));
+                                            params.put("Aoi_Category", Category.toLowerCase());
+                                            params.put("Aoi_Description", Description);
+                                            params.put("Aoi_media_image_url",image_url);
+                                            Log.d("Aoi details : ", String.valueOf(params));
                                             return params;
                                         }
                                     };
@@ -165,16 +167,16 @@ aio_upload_media.setOnClickListener(new View.OnClickListener() {
                 && data != null && data.getData() != null) {
             filePath = data.getData();
 
-            if (filePath.toString().contains("image")) {
+            /*if (filePath.toString().contains("image")) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                aio_upload_info.setText("Selected");
+                aoi_upload_info.setText("Selected");
 
 
             } else if (filePath.toString().contains("video")) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-               aio_upload_info.setText("Selected");
+               aoi_upload_info.setText("Selected");
 
-            }
+            }*/
         }
 
         }

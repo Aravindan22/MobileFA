@@ -82,10 +82,10 @@
         android:id="@+id/activity_event_comp_prize_upload_info"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="Upload Your Certificate"
+        android:padding="3dp"
+        android:text="@string/comp_certificate"
         android:textStyle="bold" />
     <ImageView
         android:id="@+id/activity_event_comp_prize_upload_button"
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/comp_submit"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:padding="10dp"
         android:textSize="25sp"
         android:textStyle="bold"

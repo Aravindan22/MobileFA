@@ -57,7 +57,7 @@
         android:layout_margin="15dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Upload Your Certificate"
+        android:text="@string/workshop_certificate"
         android:textStyle="bold" />
     <ImageView
         android:id="@+id/activity_workshop_course_upload_button"

@@ -16,4 +16,6 @@
     <color name="buttonText">#fff</color>
     <color name="buttonBg">#111d5e</color>
 
+    <color name="icLauncherBackground">#4854dc</color>
+
 </resources>

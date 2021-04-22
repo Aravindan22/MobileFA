@@ -38,6 +38,7 @@
     <string name="update_sem">UPDATE SEMESTER MARKS</string>
     <string name="update_event">UPDATE EVENTS PARTICIPATED</string>
     <string name="gen_counselling_form">GENERAL COUNSELLING FORM</string>
+    <string name="area_of_interest">AREA OF INTEREST</string>
 
     <!-- Logout -->
     <string name="logout_btn">LOGOUT\u0020</string>
@@ -76,6 +77,7 @@
     <string name="workshop_topic">WORKSHOP TOPIC</string>
     <string name="workshop_clg">COLLEGE NAME</string>
     <string name="workshop_date">DATE ATTENDED</string>
+    <string name="workshop_certificate">Upload Your Certificate</string>
     <string name="workshop_submit">SUBMIT</string>
 
     <!-- Course Activity -->
@@ -83,6 +85,7 @@
     <string name="course_name">SUBJECT NAME</string>
     <string name="course_org">ORGANIZATION NAME</string>
     <string name="course_mark">MARKS OBTAINED</string>
+    <string name="course_certificate">Upload Your Certificate</string>
     <string name="course_submit">SUBMIT</string>
 
     <!-- Competition Activity -->
@@ -98,6 +101,7 @@
         <item>III</item>
         <item>Participation</item>
     </string-array>
+    <string name="comp_certificate">Upload Your Certificate</string>
     <string name="comp_submit">SUBMIT</string>
 
     <!-- General Counselling Activity -->
@@ -105,5 +109,14 @@
     <string name="imp">Enter any improvements made</string>
     <string name="iss">Enter any issues you face</string>
     <string name="sug">Enter the suggestions given</string>
+
+    <!-- Area Of Interest Activity -->
+    <string name="aoi_category_textview">Category</string>
+    <string name="aoi_category_edittext">Enter the topic</string>
+    <string name="aoi_media_textview">Media</string>
+    <string name="aoi_media_button">Upload Media</string>
+    <string name="aoi_desc_textview">Description/Comments</string>
+    <string name="aoi_desc_edittext">Type your description here</string>
+    <string name="aoi_submit">SUBMIT</string>
 
 </resources>

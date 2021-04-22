@@ -9,62 +9,62 @@
     android:paddingTop="60dp"
     android:paddingRight="40dp"
     tools:context=".AreaOfInterest">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="15dp">
-    <TextView
-        android:id="@+id/activity_aoi_category_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Category"
-        android:textStyle="bold"
-        android:textSize="24sp"
-         />
 
-    <EditText
-        android:id="@+id/activity_aoi_category_edittext"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Enter the topic"
-        android:layout_toRightOf="@id/activity_aoi_category_textview"
-        android:paddingLeft="3dp"
-        android:layout_marginLeft="10dp"
-        />
-</RelativeLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="15dp">
-    <TextView
-        android:id="@+id/activity_aoi_media_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Media"
-        android:textSize="24dp"
-        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_margin="15dp">
+        <TextView
+            android:id="@+id/activity_aoi_category_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aoi_category_textview"
+            android:textStyle="bold"
+            android:textSize="24sp" />
 
-         />
+        <EditText
+            android:id="@+id/activity_aoi_category_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/aoi_category_edittext"
+            android:layout_toRightOf="@id/activity_aoi_category_textview"
+            android:paddingLeft="3dp"
+            android:layout_marginLeft="10dp"
+            />
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/activity_aoi_uploadmedia_button"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload Media"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/activity_aoi_media_textview"
-        android:layout_marginLeft="50dp"
-      />
-</RelativeLayout>
+        android:layout_gravity="center"
+        android:layout_margin="15dp">
+        <TextView
+            android:id="@+id/activity_aoi_media_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aoi_media_textview"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/activity_aoi_uploadmedia_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aoi_media_button"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/activity_aoi_media_textview"
+            android:layout_marginLeft="50dp"
+            />
+
+    </RelativeLayout>
     <TextView
         android:id="@+id/activity_aoi_description_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description/Comments"
+        android:text="@string/aoi_desc_textview"
         android:textSize="24dp"
         android:textStyle="bold"
         android:layout_gravity="center"
@@ -82,19 +82,24 @@
         android:layout_width="match_parent"
         android:textSize="16sp"
         android:textAlignment="center"
-        android:hint="Type"
+        android:hint="@string/aoi_desc_edittext"
         android:inputType="textMultiLine"
         android:lines="5"
         android:maxLines="5"
-         />
+        />
 
     <Button
         android:id="@+id/activity_aoi_submit_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Submit"
-        android:layout_gravity="center" />
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="@string/aoi_submit"
+        android:layout_gravity="center"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/buttonText"/>
 
 
 </LinearLayout>

@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 loginUser();
             }
         });
+
         mReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         if (sharedPreferences.getBoolean("LOGGED_IN", false)) {
-            Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
+            Log.d("STORING DETAILS : ", sharedPreferences.getAll().toString());
             startActivity(new Intent(this, ChoosingActivity.class));
             finish();
         }
@@ -142,8 +143,6 @@ public class MainActivity extends AppCompatActivity {
     private void getDetails() {
         fetchData f = new fetchData();
         f.getCreds(regno, getApplicationContext());
-        Log.d("STORING DETAILS : ",sharedPreferences.getAll().toString());
+        Log.d("STORING DETAILS : ", sharedPreferences.getAll().toString());
     }
-
-
 }

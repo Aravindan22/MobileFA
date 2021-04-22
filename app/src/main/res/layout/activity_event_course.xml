@@ -64,10 +64,10 @@
         android:id="@+id/activity_event_course_upload_info"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="Upload Your Certificate"
+        android:padding="3dp"
+        android:text="@string/course_certificate"
         android:textStyle="bold" />
     <ImageView
         android:id="@+id/activity_event_course_upload_button"
@@ -79,7 +79,7 @@
         android:id="@+id/activity_event_course_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:background="@drawable/button_shape"
         android:gravity="center"
         android:padding="10dp"

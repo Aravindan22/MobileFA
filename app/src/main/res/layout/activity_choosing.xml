@@ -7,7 +7,7 @@
     android:layout_centerVertical="true"
     android:orientation="vertical"
     android:paddingLeft="40dp"
-    android:paddingTop="60dp"
+    android:paddingTop="20dp"
     android:paddingRight="40dp"
     android:theme="@style/Background">
 
@@ -76,7 +76,7 @@
         android:id="@+id/activity_choosing_aio_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AREA OF INTEREST"
+        android:text="@string/area_of_interest"
         android:textAlignment="center"
         android:background="@color/buttonBg"
         android:textColor="@color/buttonText"

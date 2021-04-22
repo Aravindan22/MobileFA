@@ -185,7 +185,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
 
                         String marks = holder.tvEdit.getText().toString();
                         if (s.length() > 0) {
-                            Log.d("Subject HashMap : ",hm.toString());
+                            Log.d("Subject HashMap : ", hm.toString());
                             hm.put(holder.subjectName.getText().toString(), marks);
                         }
                     }
@@ -236,7 +236,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                                     hm.put(holder.subjectName.getText().toString(), grade[0]);
                                     Log.d("Selected Item : ", grade[0]);
                                 }
-
                             }
 
                             @Override
@@ -272,7 +271,6 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
                             hm.put(holder.subjectName.getText().toString(), grade[0]);
                             Log.d("Selcted Item : ", grade[0]);
                         }
-
                     }
 
                     @Override
@@ -290,7 +288,7 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     }
 
     public static JSONObject getSubject() {
-        JSONObject jsonObject =new JSONObject(hm);
+        JSONObject jsonObject = new JSONObject(hm);
         Log.d("HashMap To Json ", jsonObject.toString());
         return jsonObject;
     }
@@ -298,4 +296,5 @@ public class SubjectListAdapter extends RecyclerView.Adapter<SubjectListAdapter.
     public  static  void clearHashMap(){
         hm.clear();
     }
+
 }
