@@ -165,12 +165,12 @@ public class CourseEvent extends AppCompatActivity {
                                         StringRequest request = new StringRequest(Request.Method.POST, Constants.COURSE_URL, new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
-//                            if (response.equals("Course event Updated")) {
-//
-//                                Toast.makeText(getApplicationContext(), "Course Event Updated", Toast.LENGTH_SHORT).show();
-//                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
-//                                finish();
-//                            }
+                                            if (response.equals("Course Updated")) {
+
+                                                Toast.makeText(getApplicationContext(), "Course Event Updated", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
+                                                finish();
+                                            }
                                                 Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
                                                 Log.d("Response from Backend",response);
                                                 startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
@@ -189,8 +189,8 @@ public class CourseEvent extends AppCompatActivity {
                                                 params.put("courseName", subjectName);
                                                 params.put("organizationName", organizationName);
                                                 params.put("marks", marksObtained);
-                                                params.put("courseDate",dateAttended);
-                                                params.put("course_certificate_image_url",image_url);
+                                                params.put("courseDate", dateAttended);
+                                                params.put("course_certificate_image_url", image_url);
                                                 Log.d("Course details : ", String.valueOf(params));
                                                 return params;
                                             }

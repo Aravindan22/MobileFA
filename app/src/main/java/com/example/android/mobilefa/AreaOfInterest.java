@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +31,17 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.android.mobilefa.Constants.*;
+
 public class AreaOfInterest extends AppCompatActivity {
-EditText aoi_category,aoi_description;
+EditText aoi_description;
 Button aoi_upload_media,aoi_submit_button;
 TextView aoi_upload_info;
+Spinner aoi_category_spinner;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     FirebaseStorage storage;
@@ -55,32 +61,62 @@ TextView aoi_upload_info;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_of_interest);
         sharedPreferences = getApplicationContext().getSharedPreferences("StudentInfo", Context.MODE_PRIVATE);
-        aoi_category=findViewById(R.id.activity_aoi_category_edittext);
-        aoi_description=findViewById(R.id.activity_aoi_description_edittext);
-        aoi_upload_media=findViewById(R.id.activity_aoi_uploadmedia_button);
-        aoi_submit_button=findViewById(R.id.activity_aoi_submit_Button);
+        aoi_category_spinner = findViewById(R.id.activity_aoi_category_spinner);
+        aoi_description = findViewById(R.id.activity_aoi_description_edittext);
+        aoi_upload_media = findViewById(R.id.activity_aoi_uploadmedia_button);
+        aoi_submit_button = findViewById(R.id.activity_aoi_submit_Button);
         //aoi_upload_info=findViewById(R.id.activity_aoi_upload_info);
+
+        final ArrayList<String> categoryArrayList = new ArrayList<String>();
+        categoryArrayList.add("Select");
+
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.GET_CATEGORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String[] S = response.split(",");
+                for (String s: S) {
+                    categoryArrayList.add(s);
+                }
+                Log.d("Categories.........", String.valueOf(categoryArrayList));
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("ERROR", error.toString());
+            }
+        });
+        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(request);
+
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoryArrayList);
+
+        aoi_category_spinner.setAdapter(categoryAdapter);
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
       aoi_submit_button.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              final String Category = aoi_category.getText().toString().trim();
+              final String Category = aoi_category_spinner.getSelectedItem().toString();
               final String Description = aoi_description.getText().toString().trim();
-              final boolean flag_Category = Empty(Category, aoi_category);
-              final boolean flag_Description = Empty(Description,aoi_description);
+              final boolean flag_Description = Empty(Description, aoi_description);
+              boolean flag_Category = false;
+              if(Category.equals("Select")) {
+                  ((TextView) aoi_category_spinner.getSelectedView()).setError("Please select one!");
+                  flag_Category = true;
+              }
               if(!flag_Category && !flag_Description)
                   upload(Category,Description);
           }
       });
 
-aoi_upload_media.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        chooseImage();
-    }
-});
+        aoi_upload_media.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+            }
+        });
     }
     private String upload(final String Category, final String Description) {
         if (filePath != null) {
@@ -100,11 +136,11 @@ aoi_upload_media.setOnClickListener(new View.OnClickListener() {
                                 public void onSuccess(Uri uri) {
                                     image_url=uri.toString();
                                     Log.e("Tuts+", "uri: " + uri.toString());
-                                    StringRequest request = new StringRequest(Request.Method.POST, Constants.AOI_URL, new Response.Listener<String>() {
+                                    StringRequest request = new StringRequest(Request.Method.POST, AOI_URL, new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
-                                            if (response.equals("Event Updated")) {
-                                                Toast.makeText(getApplicationContext(), "Event Included", Toast.LENGTH_SHORT).show();
+                                            if (response.equals("Area of Interest Updated")) {
+                                                Toast.makeText(getApplicationContext(), "Activity Included", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(getApplicationContext(), ChoosingActivity.class));
                                                 finish();
                                             }

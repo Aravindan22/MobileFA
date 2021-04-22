@@ -1,5 +1,6 @@
 package com.example.android.mobilefa;
 
+
 public class Constants {
 
     public static  int REG_NO;
@@ -22,5 +23,5 @@ public class Constants {
     public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";
     public static String GET_SUBJECTS = url + "getSubjects";
     public static String RESET_PASSWORD = url +"resetpassword";
-
+    public static String GET_CATEGORY = url + "getCategory";
 }

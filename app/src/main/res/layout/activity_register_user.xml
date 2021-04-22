@@ -48,7 +48,8 @@
         android:id="@+id/activity_register_emailid_edittext"
         android:inputType="text"
         android:layout_margin="7dp"
-        android:theme="@style/EditText" />
+        android:theme="@style/EditText"
+        android:autofillHints="" />
 
     <RelativeLayout
         android:layout_width="match_parent"
