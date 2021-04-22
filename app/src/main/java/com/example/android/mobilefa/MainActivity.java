@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        progressDialog.dismissProgress();
+                        if(progressDialog !=null){
+                            progressDialog.dismissProgress();
+                        }
                     }
                 }, 1500);
                 loginUser();
@@ -76,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
             Log.d("STORING DETAILS : ", sharedPreferences.getAll().toString());
             startActivity(new Intent(this, ChoosingActivity.class));
             finish();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (progressDialog !=null){
+            progressDialog.dismissProgress();
+            progressDialog=null;
         }
     }
 

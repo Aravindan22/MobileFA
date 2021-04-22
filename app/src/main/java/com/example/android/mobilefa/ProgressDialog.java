@@ -26,7 +26,8 @@ class ProgressDialog {
     }
 
     void dismissProgress() {
-        alertDialog.dismiss();
+        if(alertDialog!=null)
+            alertDialog.dismiss();
     }
 
 }
