@@ -21,5 +21,6 @@ public class Constants {
     public static String GENERAL_COUNSELING_URL = url + "addGeneralCounsellingData";
     public static String SUBJECT_MARK_UPDATION_URL = url + "subjectMarkUpdation";
     public static String GET_SUBJECTS = url + "getSubjects";
+    public static String RESET_PASSWORD = url +"resetpassword";
 
 }

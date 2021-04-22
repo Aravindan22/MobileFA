@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     String regno;
     EditText mregno, mpassw;
-    TextView mReg;
+    TextView mReg,mforgotpassword;
     SharedPreferences sharedPreferences;
 
     ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mregno = findViewById(R.id.activity_main_regno_edittext);
         mpassw = findViewById(R.id.activity_main_password_edittext);
         mReg = findViewById(R.id.activity_main_newuser_textview);
-
+        mforgotpassword = findViewById(R.id.activity_main_forgotpassword_textview);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), RegisterUser.class));
+                finish();
+            }
+        });
+
+        mforgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ResetPassword.class));
                 finish();
             }
         });
