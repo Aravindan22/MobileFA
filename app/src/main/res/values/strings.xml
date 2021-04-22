@@ -8,6 +8,16 @@
     <string name="name">NAME</string>
     <string name="email_id">EMAIL ID</string>
     <string name="dept">DEPARTMENT</string>
+    <string-array name="dept_spin">
+        <item>Select</item>
+        <item>CSE</item>
+        <item>Mech</item>
+        <item>Civil</item>
+        <item>EEE</item>
+        <item>ECE</item>
+        <item>IT</item>
+        <item>FT</item>
+    </string-array>
     <string name="year">YEAR</string>
     <string-array name="year_spin">
         <item>Select</item>

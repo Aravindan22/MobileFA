@@ -21,9 +21,9 @@ import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
 
-    EditText mname, mregno , mpassw , mdep, memail;
+    EditText mname, mregno , mpassw , memail;
     Button btn;
-    Spinner msection, myear;
+    Spinner msection, myear, mdep;
     TextView mlogin;
 
     @Override
@@ -33,7 +33,7 @@ public class RegisterUser extends AppCompatActivity {
 
         mregno =  findViewById(R.id.activity_register_regno_edittext);
         mpassw = findViewById(R.id.activity_register_password_edittext);
-        mdep = findViewById(R.id.activity_register_dept_edittext);
+        mdep = findViewById(R.id.activity_register_dept);
         mname = findViewById(R.id.activity_register_name_edittext);
         memail = findViewById(R.id.activity_register_emailid_edittext);
         btn = findViewById(R.id.activity_register_register_button);
@@ -77,7 +77,7 @@ public class RegisterUser extends AppCompatActivity {
         final String regno = mregno.getText().toString().trim();
         final String name = mname.getText().toString().trim();
         final String email = memail.getText().toString().trim();
-        final String dept = mdep.getText().toString().trim();
+        final String dept = mdep.getSelectedItem().toString().trim();
         final String year = myear.getSelectedItem().toString();
         final String section = msection.getSelectedItem().toString();
         final String password = mpassw.getText().toString().trim();
@@ -85,8 +85,13 @@ public class RegisterUser extends AppCompatActivity {
         boolean flag_name = Empty(name, mname);
         boolean flag_regno = Empty(regno, mregno);
         boolean flag_email = Empty(email, memail);
-        boolean flag_dept = Empty(dept, mdep);
         boolean flag_password = Empty(password, mpassw);
+
+        boolean flag_dept = false;
+        if(dept.equals("Select")) {
+            ((TextView) myear.getSelectedView()).setError("Please select one!");
+            flag_dept = true;
+        }
 
         boolean flag_year = false;
         if(year.equals("Select")) {
